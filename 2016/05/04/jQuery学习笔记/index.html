@@ -1,0 +1,772 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jQuery," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="核心jQuery jQuery() 函数详解jQuery()函数是jQuery库的最核心函数，jQuery的一切都是基于此函数的。该函数主要用于获取HTML DOM元素并将其封装为jQuery对象，以便于使用jQuery对象提供的其他属性和方法对DOM元素进行操作。1jQuery( selector, [ context ] )
+将选择器字符串selector所对应的HTML DOM元素封装为jQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery学习笔记">
+<meta property="og:url" content="http://zy380196088.github.io./2016/05/04/jQuery学习笔记/index.html">
+<meta property="og:site_name" content="Zoey's Garden">
+<meta property="og:description" content="核心jQuery jQuery() 函数详解jQuery()函数是jQuery库的最核心函数，jQuery的一切都是基于此函数的。该函数主要用于获取HTML DOM元素并将其封装为jQuery对象，以便于使用jQuery对象提供的其他属性和方法对DOM元素进行操作。1jQuery( selector, [ context ] )
+将选择器字符串selector所对应的HTML DOM元素封装为jQ">
+<meta property="og:updated_time" content="2016-05-05T10:12:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery学习笔记">
+<meta name="twitter:description" content="核心jQuery jQuery() 函数详解jQuery()函数是jQuery库的最核心函数，jQuery的一切都是基于此函数的。该函数主要用于获取HTML DOM元素并将其封装为jQuery对象，以便于使用jQuery对象提供的其他属性和方法对DOM元素进行操作。1jQuery( selector, [ context ] )
+将选择器字符串selector所对应的HTML DOM元素封装为jQ">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zy380196088.github.io./2016/05/04/jQuery学习笔记/"/>
+
+  <title> jQuery学习笔记 | Zoey's Garden </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zoey's Garden</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                jQuery学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-04T17:48:09+08:00" content="2016-05-04">
+              2016-05-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><h3 id="jQuery-jQuery-函数详解"><a href="#jQuery-jQuery-函数详解" class="headerlink" title="jQuery jQuery() 函数详解"></a>jQuery jQuery() 函数详解</h3><p>jQuery()函数是jQuery库的最核心函数，jQuery的一切都是基于此函数的。该函数主要用于获取HTML DOM元素并将其封装为jQuery对象，以便于使用jQuery对象提供的其他属性和方法对DOM元素进行操作。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jQuery( selector, [ context ] )</div></pre></td></tr></table></figure></p>
+<p>将选择器字符串selector所对应的HTML DOM元素封装为jQuery对象。可选参数context用于指定查找DOM元素的范围。</p>
+<a id="more"></a>
+<h3 id="jQuery-noConfilick"><a href="#jQuery-noConfilick" class="headerlink" title="jQuery.noConfilick()"></a>jQuery.noConfilick()</h3><p>jQuery.noConflict()函数用于让出jQuery库对变量$(和变量jQuery)的控制权。<br>一般情况下，在jQuery库中，变量$是变量jQuery的别名，它们之间是等价的，例如jQuery(“p”)和$(“p”)是等价的。由于变量$只有一个字符，并且特点鲜明，因此我们更加习惯使用$来操作jQuery库。<br>不过，其他JS库也可能使用变量$来进行操作，例如Prototype库。这个时候两个库可能会由于变量$的控制权问题而发生冲突。</p>
+<h3 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h3><h3 id="context"><a href="#context" class="headerlink" title="context"></a>context</h3><h3 id="length"><a href="#length" class="headerlink" title="length"></a>length</h3><h3 id="size"><a href="#size" class="headerlink" title="size()"></a>size()</h3><h3 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h3><h3 id="index"><a href="#index" class="headerlink" title="index()"></a>index()</h3><h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p>标题</p>
+<h2 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h2><h3 id="hasClass"><a href="#hasClass" class="headerlink" title="hasClass()"></a>hasClass()</h3><h3 id="is"><a href="#is" class="headerlink" title="is()"></a>is()</h3><h3 id="eq"><a href="#eq" class="headerlink" title="eq()"></a>eq()</h3><h3 id="first"><a href="#first" class="headerlink" title="first()"></a>first()</h3><h3 id="last"><a href="#last" class="headerlink" title="last()"></a>last()</h3><h3 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h3><h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><h3 id="has"><a href="#has" class="headerlink" title="has()"></a>has()</h3><h3 id="not"><a href="#not" class="headerlink" title="not()"></a>not()</h3><h3 id="each"><a href="#each" class="headerlink" title="each()"></a>each()</h3><h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><h3 id="children"><a href="#children" class="headerlink" title="children()"></a>children()</h3><h3 id="contents"><a href="#contents" class="headerlink" title="contents()"></a>contents()</h3><h3 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h3><h3 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h3><h3 id="next"><a href="#next" class="headerlink" title="next()"></a>next()</h3><h3 id="nextAll"><a href="#nextAll" class="headerlink" title="nextAll()"></a>nextAll()</h3><h3 id="nextUntil"><a href="#nextUntil" class="headerlink" title="nextUntil()"></a>nextUntil()</h3><h3 id="parent"><a href="#parent" class="headerlink" title="parent()"></a>parent()</h3><h3 id="parents"><a href="#parents" class="headerlink" title="parents()"></a>parents()</h3><h3 id="offsetParent"><a href="#offsetParent" class="headerlink" title="offsetParent()"></a>offsetParent()</h3><h3 id="closest"><a href="#closest" class="headerlink" title="closest()"></a>closest()</h3><h3 id="prev"><a href="#prev" class="headerlink" title="prev()"></a>prev()</h3><h3 id="prevAll"><a href="#prevAll" class="headerlink" title="prevAll()"></a>prevAll()</h3><h3 id="prevUntil"><a href="#prevUntil" class="headerlink" title="prevUntil()"></a>prevUntil()</h3><h3 id="siblings"><a href="#siblings" class="headerlink" title="siblings()"></a>siblings()</h3><h3 id="add"><a href="#add" class="headerlink" title="add()"></a>add()</h3><h3 id="addBack"><a href="#addBack" class="headerlink" title="addBack()"></a>addBack()</h3><h3 id="addSelf"><a href="#addSelf" class="headerlink" title="addSelf()"></a>addSelf()</h3><h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="attr-、removeAttr"><a href="#attr-、removeAttr" class="headerlink" title="attr()、removeAttr()"></a>attr()、removeAttr()</h3><h3 id="prop-、removeProp"><a href="#prop-、removeProp" class="headerlink" title="prop()、removeProp()"></a>prop()、removeProp()</h3><h3 id="attr-和prop-的区别"><a href="#attr-和prop-的区别" class="headerlink" title="attr()和prop()的区别"></a>attr()和prop()的区别</h3><h3 id="addClass-、removeClass"><a href="#addClass-、removeClass" class="headerlink" title="addClass()、removeClass()"></a>addClass()、removeClass()</h3><h3 id="toggleClass"><a href="#toggleClass" class="headerlink" title="toggleClass()"></a>toggleClass()</h3><h3 id="html"><a href="#html" class="headerlink" title="html()"></a>html()</h3><h3 id="text"><a href="#text" class="headerlink" title="text()"></a>text()</h3><h3 id="val"><a href="#val" class="headerlink" title="val()"></a>val()</h3><h2 id="文档操作"><a href="#文档操作" class="headerlink" title="文档操作"></a>文档操作</h2><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><h3 id="jQuery-ajax"><a href="#jQuery-ajax" class="headerlink" title="jQuery.ajax()"></a>jQuery.ajax()</h3><p>jQuery.ajax()函数用语通过后台HTTP请求加载远程数据。<br>用法一:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jQuery.ajax( [ settings ] )</div></pre></td></tr></table></figure></p>
+<p>用法二:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jQuery.ajax( url [, settings ] )</div></pre></td></tr></table></figure></p>
+<p>用法二是用法一的变体，它只是将参数对象settings中的可选属性url单独提取出来作为一个独立的参数。<br>settings是一个object对象，其中的每个属性来置顶发送请求所需的额外参数设置:</p>
+<h4 id="accepts"><a href="#accepts" class="headerlink" title="accepts"></a>accepts</h4><h4 id="async"><a href="#async" class="headerlink" title="async"></a>async</h4><p>默认值：true<br>致使是否异步请求。同步请求将锁定浏览器，直到获取到远程书记后才能执行其他操作。</p>
+<h4 id="beforeSend"><a href="#beforeSend" class="headerlink" title="beforeSend"></a>beforeSend</h4><h4 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h4><h4 id="complete"><a href="#complete" class="headerlink" title="complete"></a>complete</h4><h3 id="jQuery-get"><a href="#jQuery-get" class="headerlink" title="jQuery.get()"></a>jQuery.get()</h3><h3 id="jQuery-post"><a href="#jQuery-post" class="headerlink" title="jQuery.post()"></a>jQuery.post()</h3><h3 id="jQuery-getJSON"><a href="#jQuery-getJSON" class="headerlink" title="jQuery.getJSON()"></a>jQuery.getJSON()</h3><h3 id="jQuery-getScript"><a href="#jQuery-getScript" class="headerlink" title="jQuery.getScript()"></a>jQuery.getScript()</h3><h3 id="load"><a href="#load" class="headerlink" title="load()"></a>load()</h3><h3 id="jQuery-ajaxPrefilter"><a href="#jQuery-ajaxPrefilter" class="headerlink" title="jQuery.ajaxPrefilter()"></a>jQuery.ajaxPrefilter()</h3><h3 id="jQuery-ajaxSetup"><a href="#jQuery-ajaxSetup" class="headerlink" title="jQuery.ajaxSetup()"></a>jQuery.ajaxSetup()</h3><h3 id="serialize"><a href="#serialize" class="headerlink" title="serialize()"></a>serialize()</h3><h3 id="serializeArray"><a href="#serializeArray" class="headerlink" title="serializeArray()"></a>serializeArray()</h3><h3 id="jQuery-param"><a href="#jQuery-param" class="headerlink" title="jQuery.param()"></a>jQuery.param()</h3><h3 id="ajaxStart"><a href="#ajaxStart" class="headerlink" title="ajaxStart()"></a>ajaxStart()</h3><h3 id="ajaxSend"><a href="#ajaxSend" class="headerlink" title="ajaxSend()"></a>ajaxSend()</h3><h3 id="ajaxComplete"><a href="#ajaxComplete" class="headerlink" title="ajaxComplete()"></a>ajaxComplete()</h3><h3 id="ajaxSuccess"><a href="#ajaxSuccess" class="headerlink" title="ajaxSuccess()"></a>ajaxSuccess()</h3><h3 id="ajaxError"><a href="#ajaxError" class="headerlink" title="ajaxError()"></a>ajaxError()</h3><h3 id="ajaxStop"><a href="#ajaxStop" class="headerlink" title="ajaxStop()"></a>ajaxStop()</h3><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jQuery/" rel="tag">#jQuery</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/04/Sublime-Text快捷键/" rel="next" title="Sublime Text快捷键">
+                <i class="fa fa-chevron-left"></i> Sublime Text快捷键
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/06/mysql入门学习/" rel="prev" title="mysql入门学习">
+                mysql入门学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zoey" />
+          <p class="site-author-name" itemprop="name">Zoey</p>
+          <p class="site-description motion-element" itemprop="description"><人生永远没有太晚的开始><br>对于一个真正有所追求的人来来说,生命的每个时期都是年轻和及时的.<br>-摩西奶奶</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zy380196088" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/Joy380196088" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心"><span class="nav-number">1.</span> <span class="nav-text">核心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-jQuery-函数详解"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery jQuery() 函数详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-noConfilick"><span class="nav-number">1.2.</span> <span class="nav-text">jQuery.noConfilick()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selector"><span class="nav-number">1.3.</span> <span class="nav-text">selector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#context"><span class="nav-number">1.4.</span> <span class="nav-text">context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#length"><span class="nav-number">1.5.</span> <span class="nav-text">length</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#size"><span class="nav-number">1.6.</span> <span class="nav-text">size()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">1.7.</span> <span class="nav-text">get()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index"><span class="nav-number">1.8.</span> <span class="nav-text">index()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器"><span class="nav-number">2.</span> <span class="nav-text">选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#筛选"><span class="nav-number">3.</span> <span class="nav-text">筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hasClass"><span class="nav-number">3.1.</span> <span class="nav-text">hasClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is"><span class="nav-number">3.2.</span> <span class="nav-text">is()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eq"><span class="nav-number">3.3.</span> <span class="nav-text">eq()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#first"><span class="nav-number">3.4.</span> <span class="nav-text">first()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#last"><span class="nav-number">3.5.</span> <span class="nav-text">last()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice"><span class="nav-number">3.6.</span> <span class="nav-text">slice()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter"><span class="nav-number">3.7.</span> <span class="nav-text">filter()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#has"><span class="nav-number">3.8.</span> <span class="nav-text">has()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#not"><span class="nav-number">3.9.</span> <span class="nav-text">not()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#each"><span class="nav-number">3.10.</span> <span class="nav-text">each()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">3.11.</span> <span class="nav-text">map()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#children"><span class="nav-number">3.12.</span> <span class="nav-text">children()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#contents"><span class="nav-number">3.13.</span> <span class="nav-text">contents()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#end"><span class="nav-number">3.14.</span> <span class="nav-text">end()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">3.15.</span> <span class="nav-text">find()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next"><span class="nav-number">3.16.</span> <span class="nav-text">next()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nextAll"><span class="nav-number">3.17.</span> <span class="nav-text">nextAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nextUntil"><span class="nav-number">3.18.</span> <span class="nav-text">nextUntil()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parent"><span class="nav-number">3.19.</span> <span class="nav-text">parent()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parents"><span class="nav-number">3.20.</span> <span class="nav-text">parents()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offsetParent"><span class="nav-number">3.21.</span> <span class="nav-text">offsetParent()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#closest"><span class="nav-number">3.22.</span> <span class="nav-text">closest()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prev"><span class="nav-number">3.23.</span> <span class="nav-text">prev()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prevAll"><span class="nav-number">3.24.</span> <span class="nav-text">prevAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prevUntil"><span class="nav-number">3.25.</span> <span class="nav-text">prevUntil()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#siblings"><span class="nav-number">3.26.</span> <span class="nav-text">siblings()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add"><span class="nav-number">3.27.</span> <span class="nav-text">add()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addBack"><span class="nav-number">3.28.</span> <span class="nav-text">addBack()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addSelf"><span class="nav-number">3.29.</span> <span class="nav-text">addSelf()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">4.</span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#attr-、removeAttr"><span class="nav-number">4.1.</span> <span class="nav-text">attr()、removeAttr()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prop-、removeProp"><span class="nav-number">4.2.</span> <span class="nav-text">prop()、removeProp()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attr-和prop-的区别"><span class="nav-number">4.3.</span> <span class="nav-text">attr()和prop()的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addClass-、removeClass"><span class="nav-number">4.4.</span> <span class="nav-text">addClass()、removeClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toggleClass"><span class="nav-number">4.5.</span> <span class="nav-text">toggleClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html"><span class="nav-number">4.6.</span> <span class="nav-text">html()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text"><span class="nav-number">4.7.</span> <span class="nav-text">text()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#val"><span class="nav-number">4.8.</span> <span class="nav-text">val()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档操作"><span class="nav-number">5.</span> <span class="nav-text">文档操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">6.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">7.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">8.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">9.</span> <span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-ajax"><span class="nav-number">9.1.</span> <span class="nav-text">jQuery.ajax()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#accepts"><span class="nav-number">9.1.1.</span> <span class="nav-text">accepts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#async"><span class="nav-number">9.1.2.</span> <span class="nav-text">async</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beforeSend"><span class="nav-number">9.1.3.</span> <span class="nav-text">beforeSend</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cache"><span class="nav-number">9.1.4.</span> <span class="nav-text">cache</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#complete"><span class="nav-number">9.1.5.</span> <span class="nav-text">complete</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-get"><span class="nav-number">9.2.</span> <span class="nav-text">jQuery.get()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-post"><span class="nav-number">9.3.</span> <span class="nav-text">jQuery.post()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-getJSON"><span class="nav-number">9.4.</span> <span class="nav-text">jQuery.getJSON()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-getScript"><span class="nav-number">9.5.</span> <span class="nav-text">jQuery.getScript()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load"><span class="nav-number">9.6.</span> <span class="nav-text">load()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-ajaxPrefilter"><span class="nav-number">9.7.</span> <span class="nav-text">jQuery.ajaxPrefilter()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-ajaxSetup"><span class="nav-number">9.8.</span> <span class="nav-text">jQuery.ajaxSetup()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#serialize"><span class="nav-number">9.9.</span> <span class="nav-text">serialize()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#serializeArray"><span class="nav-number">9.10.</span> <span class="nav-text">serializeArray()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-param"><span class="nav-number">9.11.</span> <span class="nav-text">jQuery.param()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajaxStart"><span class="nav-number">9.12.</span> <span class="nav-text">ajaxStart()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajaxSend"><span class="nav-number">9.13.</span> <span class="nav-text">ajaxSend()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajaxComplete"><span class="nav-number">9.14.</span> <span class="nav-text">ajaxComplete()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajaxSuccess"><span class="nav-number">9.15.</span> <span class="nav-text">ajaxSuccess()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajaxError"><span class="nav-number">9.16.</span> <span class="nav-text">ajaxError()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajaxStop"><span class="nav-number">9.17.</span> <span class="nav-text">ajaxStop()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">10.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件对象"><span class="nav-number">11.</span> <span class="nav-text">事件对象</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zoey</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

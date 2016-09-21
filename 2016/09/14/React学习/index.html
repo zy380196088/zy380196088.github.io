@@ -1,0 +1,865 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Component 的创建和复合React简介对 React.JS 的认识 及其优点React 并不是一个完整的 MVC 框架,最多可以认为是 MVC 中的 V(View);React 不是一个新的模板语言, JSX 只是一个表现,没有 JSX 的 React也能工作.
+React本质上是一个”状态机”,可以帮助开发者管理复杂的随着时间变化的状态.React只关心两件事情:
+
+更新 DOM
+响应时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React学习">
+<meta property="og:url" content="http://zy380196088.github.io./2016/09/14/React学习/index.html">
+<meta property="og:site_name" content="Zoey's Garden">
+<meta property="og:description" content="Component 的创建和复合React简介对 React.JS 的认识 及其优点React 并不是一个完整的 MVC 框架,最多可以认为是 MVC 中的 V(View);React 不是一个新的模板语言, JSX 只是一个表现,没有 JSX 的 React也能工作.
+React本质上是一个”状态机”,可以帮助开发者管理复杂的随着时间变化的状态.React只关心两件事情:
+
+更新 DOM
+响应时">
+<meta property="og:updated_time" content="2016-09-21T02:27:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React学习">
+<meta name="twitter:description" content="Component 的创建和复合React简介对 React.JS 的认识 及其优点React 并不是一个完整的 MVC 框架,最多可以认为是 MVC 中的 V(View);React 不是一个新的模板语言, JSX 只是一个表现,没有 JSX 的 React也能工作.
+React本质上是一个”状态机”,可以帮助开发者管理复杂的随着时间变化的状态.React只关心两件事情:
+
+更新 DOM
+响应时">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zy380196088.github.io./2016/09/14/React学习/"/>
+
+  <title> React学习 | Zoey's Garden </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zoey's Garden</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T13:27:46+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Component-的创建和复合"><a href="#Component-的创建和复合" class="headerlink" title="Component 的创建和复合"></a>Component 的创建和复合</h1><h2 id="React简介"><a href="#React简介" class="headerlink" title="React简介"></a>React简介</h2><h3 id="对-React-JS-的认识-及其优点"><a href="#对-React-JS-的认识-及其优点" class="headerlink" title="对 React.JS 的认识 及其优点"></a>对 React.JS 的认识 及其优点</h3><p>React 并不是一个完整的 MVC 框架,最多可以认为是 MVC 中的 V(View);<br>React 不是一个新的模板语言, JSX 只是一个表现,没有 JSX 的 React也能工作.</p>
+<p>React本质上是一个”状态机”,可以帮助开发者管理复杂的随着时间变化的状态.<br>React只关心两件事情:</p>
+<ol>
+<li>更新 DOM</li>
+<li>响应时事件</li>
+</ol>
+<p>React运用一个虚拟的 DOM 实现了一个非常强大的渲染系统,在 React 忠对 DOM 只更新不读取.<br>它以渲染函数为基础. 当函数读入当前的状态,将其转换为目标页面上的一个虚拟表现.只要 React 被告知状态有变化,它就会重新运行这些函数,计算出页面的一个新的虚拟表现,接着自动的把结果转换成必要的 DOM 更新来反映新的表现.</p>
+<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><h3 id="在-React-中使用-JSX-的好处"><a href="#在-React-中使用-JSX-的好处" class="headerlink" title="在 React 中使用 JSX 的好处:"></a>在 React 中使用 JSX 的好处:</h3><ol>
+<li>允许使用熟悉的语法来定义 HTML 元素树;</li>
+<li>提供更加语义化且易懂的标签;</li>
+<li>程序结构更容易被直观化;</li>
+<li>抽象了 React Element 的创建过程;</li>
+<li>可以随时掌控 HTML 标签以及生成这些标签的代码;</li>
+<li>是原生的 JavaScript;</li>
+</ol>
+<p>JSX 允许你在应用程序中使用所有预定义的 HTML5标签及自定义组件.</p>
+<h3 id="复合组件"><a href="#复合组件" class="headerlink" title="复合组件"></a>复合组件</h3><ol>
+<li>定义一个自定义组件<br>假设我们想写一个分页组件,希望输出如下 HTML:</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div className = <span class="string">"divider"</span>&gt;</div><div class="line">	<span class="xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Questions<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span> &lt;hr /&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>想要将 HTML 片段表示为 React Component , 只需要像下面这样包装起来,然后再 render 方法中返回这些标签.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Divider = React.createClass(&#123;</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> (</div><div class="line">		<span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span> =<span class="string">"divider"</span>&gt;</span></span></div><div class="line">			<span class="tag">&lt;<span class="name">h2</span>&gt;</span>Questions<span class="tag">&lt;/<span class="name">h2</span>&gt;</span> <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>目前这还是个一次性的组件,想要让这个组件变得实用,还需要一种将 h2标签中的文本表示出来的动态方法.</p>
+<ol>
+<li>使用动态值<br>JSX 将两个花括号之间的内容{…}渲染为动态值.花括号指明了一个 JavaScript 上下文环境–你在花括号中放入的任何东西都会被进行求值,得到的结果被渲染为标签中的若干节点.</li>
+</ol>
+<p>React 通过将数组中的每个元素渲染为一个节点的方式对数组进行自动求值;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var text = ['hello','world'];</div><div class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;text&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">//<span class="tag">&lt;<span class="name">h2</span>&gt;</span>helloworld<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li>子节点<br>在 HTML 中,使用<h2>Questions</h2>来渲染一个 header元素,这里” Question” 就是 h2元素的子文本节点.而在 JSX 中,我们的目标是用下面的方式来表示它:</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Divider</span>&gt;</span>Question<span class="tag">&lt;/<span class="name">Divider</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>React 将开始标签与结束标签之间的所有子节点保存在一个名为 this.props.children的特殊组件属性中.<br>在上面的例子中,<code>this.props.children == [&quot;Questions&quot;].</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Divider = React.createClass(&#123;</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> (</div><div class="line">			<span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span> =<span class="string">"divider"</span>&gt;</span></span></div><div class="line">				<span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;this.props.children&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span> <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>将上面的 JSX 代码转换为 JavaScript 时,会得到下面的结果:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Divder = React.createClass(&#123;<span class="attr">displayName</span>:<span class="string">'Divider'</span>,</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> (</div><div class="line">			React.createElement(<span class="string">"div"</span>,&#123;<span class="attr">className</span>:<span class="string">"divider"</span>&#125;,</div><div class="line">			React.createElement(<span class="string">"h2"</span>,<span class="literal">null</span>,<span class="keyword">this</span>.props.children),</div><div class="line">			React.createElement(<span class="string">"hr"</span>,<span class="literal">null</span>)</div><div class="line">			)</div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="JSX与-HTML-有何不同"><a href="#JSX与-HTML-有何不同" class="headerlink" title="JSX与 HTML 有何不同"></a>JSX与 HTML 有何不同</h3><h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>JSX 提供了将属性设置为动态 JavaScript 变量的便利,要设置动态的属性,需要将原本用引号括起来的文本替换成花括号包裹的 JavaScript 变量.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> surveyQuestionId = <span class="keyword">this</span>.props.id;</div><div class="line"><span class="keyword">var</span> classes =<span class="string">'some-class-name'</span>;</div><div class="line">...</div><div class="line">&lt;div id=&#123;surveyQuestionId&#125; className =&#123;classes&#125;&gt;...&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<p>对于更复杂的情景,还可以将属性设置为一个函数调用返回的结果:</p>
+<p><code>&lt;div id={this.getSurveyId()}&gt;...&lt;/div&gt;</code></p>
+<h4 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h4><p>想要在组件中添加条件判断似乎是件很困难的事情,若直接往 JSX 中加入 if 语句会渲染出无效的 JavaScript,解决的办法可以使用以下某种方法:</p>
+<ol>
+<li><p>使用三目运算符</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span> = <span class="string">&#123;</span></span></span></div><div class="line">		<span class="attr">this.state.isComplete</span> ? '<span class="attr">is-complete</span>' <span class="attr">:</span>''</div><div class="line">	&#125;&gt;...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>设置一个变量并在属性中引用它</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">getIsComplete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.state.isComplete ? <span class="string">'is-complete'</span> : <span class="string">''</span>;</div><div class="line">&#125;,</div><div class="line"><span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> isComplete = <span class="keyword">this</span>.getIsComplete();</div><div class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span> = <span class="string">&#123;isComplete&#125;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>将逻辑转化到函数中</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">getIsComplete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.state.isComplete ? <span class="string">'is-complete'</span> : <span class="string">''</span>;</div><div class="line">&#125;,</div><div class="line"><span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span> = <span class="string">&#123;this.getIsComlete()&#125;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;	&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>4. 使用&amp;&amp;运算符
+</code></pre><p>由于对于null  或 false 值 React 不会输出任何内容,因此你可以使用一个后面跟随了期望字符串的布尔值来实现条件判断,如果这个布尔值为 true, 那么后续的字符串就会被使用.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span> = <span class="string">&#123;this.state.isComplete</span> &amp;&amp; '<span class="attr">is-complete</span>'&#125;&gt;</span></span></div><div class="line">	...</div><div class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="非-DOM-属性"><a href="#非-DOM-属性" class="headerlink" title="非 DOM 属性"></a>非 DOM 属性</h4><p>下面特殊属性只在 JSX 中存在:</p>
+<ol>
+<li><p>key</p>
+<p> key 是一个可选的唯一标识符.在程序运行的过程中,一个组件可能会在组件树中调整位置,比如当用户在进行搜索操作时,或者当一个列表中的物品被增加,删除时,当这些情况发生时,组件可能并不需要被销毁并重新创建.<br> 通过给组件设置一个独一无二的键,并确保它在一个渲染周期中保持一致,似的 react 能够更智能地决定应该重用一个组件,还是销毁并重新创建一个组件,进而提升渲染性能.当两个已经存在于 DOM 中的组件交换位置是, react 能够匹配对应的键并进行相应的移动,且不需要完全重新渲染 DOM.</p>
+</li>
+<li><p>ref</p>
+<p> ref 允许父组件在 render 方法之外保持对子组件的一个引用.<br> JSX 中,你可以通过在属性中设置期望的引用名来定义一个引用.</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">"myInput"</span> <span class="attr">...</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 之后,你就可以在组件中的任何地方使用 this.refs.myInput获取这个引用.通过引用获取到的这个对象被称为<strong>支持实例</strong>.它并不是真正的 DOM, 而是 react 在需要时用来创建 DOM 的一个描述对象.可以使用 this.refs.myInput.getDOMNode()访问真实的 DOM 节点.</p>
+<ol>
+<li>dangerouslySetInnerHTML</li>
+</ol>
+</li>
+</ol>
+<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><p>在 JSX 中,捕获一个事件就像给组件的方法设置一个属性一样简单.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">handleClick : <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;...&#125;,</div><div class="line"><span class="attr">render</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onClick</span> = <span class="string">&#123;this.handleClick&#125;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意, react 自动绑定了组件所有方法的作用域,因此你永远都不需要手动绑定.</p>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>注释可以用以下两种形式添加:</p>
+<ol>
+<li>当作一个元素的在子节点</li>
+<li>内年在元素属性中</li>
+</ol>
+<h4 id="特殊属性"><a href="#特殊属性" class="headerlink" title="特殊属性"></a>特殊属性</h4><p>由于 JSX 会转换为原生的 JavaScript 函数,因此有些关键词使我们不能用的—例如 for 和 class.<br>要给表单里的标签添加for属性需要使用htmlFor.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span> =<span class="string">"for-text"</span><span class="attr">...</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><p>React把所有内敛样式都规划为了驼峰形式,与JavaScript中 DOM 的 style 属性一致.<br>要添加一个自定义的样式属性,只需简单地把驼峰形式的属性名及期望的 CSS 值拼装为对象即可.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> styles = &#123;</div><div class="line">	<span class="attr">borderColor</span>:<span class="string">"#999"</span>,</div><div class="line">	<span class="attr">borderThickness</span>:<span class="string">"1px"</span></div><div class="line">&#125;;</div><div class="line">React.renderComponent(<span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span> =<span class="string">&#123;styles&#125;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>,node);</div></pre></td></tr></table></figure>
+<h3 id="没有JSX的React"><a href="#没有JSX的React" class="headerlink" title="没有JSX的React"></a>没有JSX的React</h3><p>如果不打算在 react 中使用 JSX, 在 React中创建元素时需要知道以下三点:</p>
+<ol>
+<li>定义组件类.</li>
+<li>创建一个为组件类产生实例的工厂.</li>
+<li>使用工厂来创建 ReactElement实例.<h4 id="创建-React-元素"><a href="#创建-React-元素" class="headerlink" title="创建 React 元素"></a>创建 React 元素</h4>对于普通的 HTML 元素, react 在 React.DOM.* 命名空间下提供了一系列的工厂.这些预定义的工厂都是 React.createElement 的简写,只是帮你预置了第一个参数而已.下面两行语句会得到同样的结果.</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">React.createElement(<span class="string">'div'</span>);</div><div class="line">React.DOM.div();</div></pre></td></tr></table></figure>
+<p>然而,对于自定义组件来说,你必须为组件类创建一个工厂.<br>回想之前我们定义的一个 Divider组件类.<br>下面将它重命名为 DividerClass, 以此来明确它的目的.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> DividerClass = React.createClass(&#123;</div><div class="line">	<span class="attr">displayName</span>:<span class="string">'Divider'</span>,</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> (</div><div class="line">			React.createE;e,emt(<span class="string">"div"</span>,&#123;<span class="attr">className</span>:<span class="string">'divider'</span>&#125;,</div><div class="line">			React.)</div><div class="line">		)</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h4><h2 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h2><h3 id="生命周期方法"><a href="#生命周期方法" class="headerlink" title="生命周期方法"></a>生命周期方法</h3><h3 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h3><h3 id="存在期"><a href="#存在期" class="headerlink" title="存在期"></a>存在期</h3><h3 id="销毁-amp-清理期"><a href="#销毁-amp-清理期" class="headerlink" title="销毁&amp;清理期"></a>销毁&amp;清理期</h3><h3 id="反模式-把计算后的赋值给-state"><a href="#反模式-把计算后的赋值给-state" class="headerlink" title="反模式:把计算后的赋值给 state"></a>反模式:把计算后的赋值给 state</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h2 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h2><h3 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h3><h3 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a>PropTypes</h3><h3 id="getDefaultProps"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps"></a>getDefaultProps</h3><h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><h3 id="放在-state-和-props-的各是哪些部分"><a href="#放在-state-和-props-的各是哪些部分" class="headerlink" title="放在 state 和 props 的各是哪些部分"></a>放在 state 和 props 的各是哪些部分</h3><h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><h3 id="绑定事件处理器"><a href="#绑定事件处理器" class="headerlink" title="绑定事件处理器"></a>绑定事件处理器</h3><h3 id="事件和状态"><a href="#事件和状态" class="headerlink" title="事件和状态"></a>事件和状态</h3><h3 id="根据状态进行渲染"><a href="#根据状态进行渲染" class="headerlink" title="根据状态进行渲染"></a>根据状态进行渲染</h3><h3 id="更新状态"><a href="#更新状态" class="headerlink" title="更新状态"></a>更新状态</h3><h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><h2 id="组件的复合"><a href="#组件的复合" class="headerlink" title="组件的复合"></a>组件的复合</h2><h3 id="扩展-HTML"><a href="#扩展-HTML" class="headerlink" title="扩展 HTML"></a>扩展 HTML</h3><h3 id="组件符合的例子"><a href="#组件符合的例子" class="headerlink" title="组件符合的例子"></a>组件符合的例子</h3><h3 id="组装-HTML"><a href="#组装-HTML" class="headerlink" title="组装 HTML"></a>组装 HTML</h3><h3 id="追踪状态"><a href="#追踪状态" class="headerlink" title="追踪状态"></a>追踪状态</h3><h3 id="整合到父组件当中"><a href="#整合到父组件当中" class="headerlink" title="整合到父组件当中"></a>整合到父组件当中</h3><h3 id="父组件-子组件关系"><a href="#父组件-子组件关系" class="headerlink" title="父组件,子组件关系"></a>父组件,子组件关系</h3><h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><h2 id="mixing"><a href="#mixing" class="headerlink" title="mixing"></a>mixing</h2><h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h2><h3 id="DOM-操作-1"><a href="#DOM-操作-1" class="headerlink" title="DOM 操作"></a>DOM 操作</h3><h3 id="整合非-React类库"><a href="#整合非-React类库" class="headerlink" title="整合非 React类库"></a>整合非 React类库</h3><h3 id="侵入式插件"><a href="#侵入式插件" class="headerlink" title="侵入式插件"></a>侵入式插件</h3><h3 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h3><h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><h2 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h2><h2 id="周边类库"><a href="#周边类库" class="headerlink" title="周边类库"></a>周边类库</h2><h1 id="React-工具"><a href="#React-工具" class="headerlink" title="React 工具"></a>React 工具</h1><h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h1 id="React-实践"><a href="#React-实践" class="headerlink" title="React 实践"></a>React 实践</h1><h2 id="架构模式"><a href="#架构模式" class="headerlink" title="架构模式"></a>架构模式</h2><h2 id="其他使用场景"><a href="#其他使用场景" class="headerlink" title="其他使用场景"></a>其他使用场景</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag">#react</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/12/D3-js学习笔记/" rel="next" title="D3.js学习笔记">
+                <i class="fa fa-chevron-left"></i> D3.js学习笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/20/Redux学习笔记/" rel="prev" title="Redux学习笔记">
+                Redux学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zoey" />
+          <p class="site-author-name" itemprop="name">Zoey</p>
+          <p class="site-description motion-element" itemprop="description"><人生永远没有太晚的开始><br>对于一个真正有所追求的人来来说,生命的每个时期都是年轻和及时的.<br>-摩西奶奶</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zy380196088" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/Joy380196088" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Component-的创建和复合"><span class="nav-number">1.</span> <span class="nav-text">Component 的创建和复合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#React简介"><span class="nav-number">1.1.</span> <span class="nav-text">React简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对-React-JS-的认识-及其优点"><span class="nav-number">1.1.1.</span> <span class="nav-text">对 React.JS 的认识 及其优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX"><span class="nav-number">1.2.</span> <span class="nav-text">JSX</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-React-中使用-JSX-的好处"><span class="nav-number">1.2.1.</span> <span class="nav-text">在 React 中使用 JSX 的好处:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复合组件"><span class="nav-number">1.2.2.</span> <span class="nav-text">复合组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Questions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX与-HTML-有何不同"><span class="nav-number">1.3.1.</span> <span class="nav-text">JSX与 HTML 有何不同</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件判断"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">条件判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非-DOM-属性"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">非 DOM 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊属性"><span class="nav-number">1.3.1.6.</span> <span class="nav-text">特殊属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样式"><span class="nav-number">1.3.1.7.</span> <span class="nav-text">样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#没有JSX的React"><span class="nav-number">1.3.2.</span> <span class="nav-text">没有JSX的React</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建-React-元素"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">创建 React 元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简写"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">简写</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件的生命周期"><span class="nav-number">1.4.</span> <span class="nav-text">组件的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期方法"><span class="nav-number">1.4.1.</span> <span class="nav-text">生命周期方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例化"><span class="nav-number">1.4.2.</span> <span class="nav-text">实例化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存在期"><span class="nav-number">1.4.3.</span> <span class="nav-text">存在期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销毁-amp-清理期"><span class="nav-number">1.4.4.</span> <span class="nav-text">销毁&清理期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反模式-把计算后的赋值给-state"><span class="nav-number">1.4.5.</span> <span class="nav-text">反模式:把计算后的赋值给 state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.4.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据流"><span class="nav-number">1.5.</span> <span class="nav-text">数据流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Props"><span class="nav-number">1.5.1.</span> <span class="nav-text">Props</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PropTypes"><span class="nav-number">1.5.2.</span> <span class="nav-text">PropTypes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getDefaultProps"><span class="nav-number">1.5.3.</span> <span class="nav-text">getDefaultProps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#State"><span class="nav-number">1.5.4.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#放在-state-和-props-的各是哪些部分"><span class="nav-number">1.5.5.</span> <span class="nav-text">放在 state 和 props 的各是哪些部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-1"><span class="nav-number">1.5.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理"><span class="nav-number">1.6.</span> <span class="nav-text">事件处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定事件处理器"><span class="nav-number">1.6.1.</span> <span class="nav-text">绑定事件处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件和状态"><span class="nav-number">1.6.2.</span> <span class="nav-text">事件和状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据状态进行渲染"><span class="nav-number">1.6.3.</span> <span class="nav-text">根据状态进行渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新状态"><span class="nav-number">1.6.4.</span> <span class="nav-text">更新状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件对象"><span class="nav-number">1.6.5.</span> <span class="nav-text">事件对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件的复合"><span class="nav-number">1.7.</span> <span class="nav-text">组件的复合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展-HTML"><span class="nav-number">1.7.1.</span> <span class="nav-text">扩展 HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件符合的例子"><span class="nav-number">1.7.2.</span> <span class="nav-text">组件符合的例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组装-HTML"><span class="nav-number">1.7.3.</span> <span class="nav-text">组装 HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#追踪状态"><span class="nav-number">1.7.4.</span> <span class="nav-text">追踪状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整合到父组件当中"><span class="nav-number">1.7.5.</span> <span class="nav-text">整合到父组件当中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#父组件-子组件关系"><span class="nav-number">1.7.6.</span> <span class="nav-text">父组件,子组件关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-2"><span class="nav-number">1.7.7.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mixing"><span class="nav-number">1.8.</span> <span class="nav-text">mixing</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶"><span class="nav-number">2.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-操作"><span class="nav-number">2.1.</span> <span class="nav-text">DOM 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-操作-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">DOM 操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整合非-React类库"><span class="nav-number">2.1.2.</span> <span class="nav-text">整合非 React类库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#侵入式插件"><span class="nav-number">2.1.3.</span> <span class="nav-text">侵入式插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-3"><span class="nav-number">2.1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单"><span class="nav-number">2.2.</span> <span class="nav-text">表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">2.3.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化"><span class="nav-number">2.4.</span> <span class="nav-text">性能优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端渲染"><span class="nav-number">2.5.</span> <span class="nav-text">服务端渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#周边类库"><span class="nav-number">2.6.</span> <span class="nav-text">周边类库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-工具"><span class="nav-number">3.</span> <span class="nav-text">React 工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发工具"><span class="nav-number">3.1.</span> <span class="nav-text">开发工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">3.2.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-实践"><span class="nav-number">4.</span> <span class="nav-text">React 实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#架构模式"><span class="nav-number">4.1.</span> <span class="nav-text">架构模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他使用场景"><span class="nav-number">4.2.</span> <span class="nav-text">其他使用场景</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zoey</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
