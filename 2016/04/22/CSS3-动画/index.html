@@ -92,7 +92,7 @@
 <meta property="og:description" content="CSS3动画的属性主要分为三类：transform,transition,animation.">
 <meta property="og:image" content="http://zy380196088.github.io./images/css3-transition-timing-function.gif">
 <meta property="og:image" content="http://zy380196088.github.io./images/css3-transition-delay.png">
-<meta property="og:updated_time" content="2016-05-05T10:06:07.000Z">
+<meta property="og:updated_time" content="2016-12-06T08:35:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3动画">
 <meta name="twitter:description" content="CSS3动画的属性主要分为三类：transform,transition,animation.">
@@ -333,7 +333,7 @@
 <h3 id="transition-duration"><a href="#transition-duration" class="headerlink" title="transition-duration"></a>transition-duration</h3><p>动画效果持续的时间，值为以s结尾的秒数</p>
 <h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h3><p>指定元素状态的变化速率函数，取值基于贝赛尔曲线函数：<br><img src="/images/css3-transition-timing-function.gif" alt=""></p>
 <h3 id="transition-delay"><a href="#transition-delay" class="headerlink" title="transition-delay"></a>transition-delay</h3><p>动画效果推迟开始执行的时间，其值为以s结尾的秒数。<br>CSS3动画的生命周期如下图所示，从中可以清楚的看出duration和delay之间的关系：<br><img src="/images/css3-transition-delay.png" alt=""></p>
-<h2 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h2><p>CSS3中真正的动画属性是animation，而前面的transform和transition都只是对DOM元素的变形或者是状态的过渡。实际上，CSS3所支持的动画效果只是填充动画，也就是说先设定整个动画生命周期中的几个关键状态（key  frame，关键帧），然后动画将自行计算并模拟关键帧之间的过渡。那么在设置animation的属性之前就必须先设定好关键帧了。<br>关键帧@keyframes的语法结构如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">keyframesNAME</span> &#123;</div><div class="line">         <span class="selector-tag">a</span>% &#123;</div><div class="line">         <span class="comment">/*CSS属性*/</span></div><div class="line">         &#125;</div><div class="line">         <span class="selector-tag">b</span>% &#123;</div><div class="line">                  <span class="comment">/*CSS属性*/</span></div><div class="line">         &#125;</div><div class="line">         ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h2><p>CSS3中真正的动画属性是animation，而前面的transform和transition都只是对DOM元素的变形或者是状态的过渡。实际上，CSS3所支持的动画效果只是填充动画，也就是说先设定整个动画生命周期中的几个关键状态（key  frame，关键帧），然后动画将自行计算并模拟关键帧之间的过渡。那么在设置animation的属性之前就必须先设定好关键帧了。<br>关键帧@keyframes的语法结构如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">keyframesNAME</span> &#123;</div><div class="line">         <span class="selector-tag">a</span>% &#123;</div><div class="line">         <span class="comment">/*CSS属性*/</span></div><div class="line">         &#125;</div><div class="line">         <span class="selector-tag">b</span>% &#123;</div><div class="line">        <span class="comment">/*CSS属性*/</span></div><div class="line">         &#125;</div><div class="line">         ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>NAME表示动画的名字；a%、b%表示以百分号结尾的百分数，用于设定该关键帧在动画生命周期中的位置；百分数后面的{ } 中则需要写成该关键帧状态下CSS属性的值。另外，如果同一个百分数值在@keyframes中出现多次，那么后出现的将覆盖先出现的；并且关键帧在@keyframes中时无序的。<br>设置完关键帧后就可以继续设定animation了。</p>
 <h3 id="animation-name"><a href="#animation-name" class="headerlink" title="animation-name"></a>animation-name</h3><h3 id="animation-duration"><a href="#animation-duration" class="headerlink" title="animation-duration"></a>animation-duration</h3><h3 id="animation-timing-function"><a href="#animation-timing-function" class="headerlink" title="animation-timing-function"></a>animation-timing-function</h3><h3 id="animation-delay"><a href="#animation-delay" class="headerlink" title="animation-delay"></a>animation-delay</h3><h3 id="animation-iteration-count"><a href="#animation-iteration-count" class="headerlink" title="animation-iteration-count"></a>animation-iteration-count</h3><p>设定动画执行的次数，其值可以是数字也可以是infinite（循环执行）。</p>
 <h3 id="animation-direction"><a href="#animation-direction" class="headerlink" title="animation-direction"></a>animation-direction</h3><p>设定动画执行的方向，其值可以是normal（正常顺序播放）或alternate（反向播放）。</p>
@@ -469,11 +469,18 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
           
 
           
