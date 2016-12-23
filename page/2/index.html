@@ -281,113 +281,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/05/jQuery插件学习/" itemprop="url">
-                  jQuery插件学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T21:12:15+08:00" content="2016-09-05">
-              2016-09-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>写 jQuery 插件最核心的有如下两种放方法:</p>
-<h3 id="extend-object"><a href="#extend-object" class="headerlink" title="$.extend(object)"></a>$.extend(object)</h3><p>可以理解为 jQuery 添加一个静态方法</p>
-<h3 id="fn-extend-object"><a href="#fn-extend-object" class="headerlink" title="$.fn.extend(object)"></a>$.fn.extend(object)</h3><p>可以理解为 jQuery 实例添加一个方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//$.extend 定义与调用</span></div><div class="line">$.extend(&#123; <span class="attr">fun1</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"执行方法一"</span>); &#125; &#125;);</div><div class="line">$.fun1();</div><div class="line"><span class="comment">//$.fn.extend 定义与调用</span></div><div class="line">$.fn.extend(&#123; <span class="attr">fun2</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"执行方法2"</span>); &#125; &#125;);</div><div class="line">$(<span class="keyword">this</span>).fun2();</div><div class="line"><span class="comment">//等同于</span></div><div class="line">$.fn.fun3 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"执行方法三"</span>); &#125;</div><div class="line">$(<span class="keyword">this</span>).fun3();</div></pre></td></tr></table></figure>
-<h3 id="jQuery-function-与-function-jQuery-的区别"><a href="#jQuery-function-与-function-jQuery-的区别" class="headerlink" title="jQuery(function(){}); 与(function(){})(jQuery);的区别"></a>jQuery(function(){}); 与(function(){})(jQuery);的区别</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">jQuery(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div><div class="line"><span class="comment">//相当于</span></div><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);<span class="comment">//是某个DOM元素加载完毕后执行方法里的代码。</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)();</div><div class="line"><span class="comment">//相当于</span></div><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;&#125;;</div><div class="line">fn(jQuery);</div><div class="line"><span class="comment">//定义了一个匿名函数，其中jQuery代表这个匿名函数的实参。通常用在JQuery插件开发中，起到了定义插件的私有域的作用</span></div></pre></td></tr></table></figure>
-<h3 id="开发-jQuery-插件标准结构"><a href="#开发-jQuery-插件标准结构" class="headerlink" title="开发 jQuery 插件标准结构"></a>开发 jQuery 插件标准结构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//step01 定义JQuery的作用域,防止$符号污染的 jQuery 插件</span></div><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</div><div class="line">    <span class="comment">//step03-a 插件的默认值属性</span></div><div class="line">    <span class="keyword">var</span> defaults = &#123;</div><div class="line">        <span class="attr">prevId</span>: <span class="string">'prevBtn'</span>,</div><div class="line">        <span class="attr">prevText</span>: <span class="string">'Previous'</span>,</div><div class="line">        <span class="attr">nextId</span>: <span class="string">'nextBtn'</span>,</div><div class="line">        <span class="attr">nextText</span>: <span class="string">'Next'</span></div><div class="line">        <span class="comment">//……</span></div><div class="line">    &#125;;</div><div class="line">    <span class="comment">//step02 插件的扩展方法名称</span></div><div class="line">    $.fn.easySlider = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</div><div class="line">        <span class="comment">//step03-b 合并用户自定义属性，默认属性</span></div><div class="line">        <span class="keyword">var</span> options = $.extend(defaults, options);</div><div class="line">        <span class="comment">//step4 支持JQuery选择器</span></div><div class="line">        <span class="comment">//step5 支持链式调用</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
-<ol>
-<li>定义作用域;</li>
-<li>为 jQuery 扩展一个插件;</li>
-<li>设置默认值;</li>
-<li>支持jQuery 选择器</li>
-<li>支持JQuery的链接调用</li>
-<li>插件里的方法</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/08/26/Echarts.js学习/" itemprop="url">
                   Echarts.js 学习
                 </a>
@@ -813,6 +706,102 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/09/Sass学习笔记/" itemprop="url">
+                  Sass学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-09T23:00:04+08:00" content="2016-05-09">
+              2016-05-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Sass语法格式"><a href="#Sass语法格式" class="headerlink" title="Sass语法格式"></a>Sass语法格式</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>SASS允许使用变量，所有变量以$开头。<br>如果变量需要镶嵌在字符串之中，就必须需要写在#{}之中。<br>例如:<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$side</span> : left;</div><div class="line"><span class="selector-class">.rounded</span> &#123;</div><div class="line">	<span class="attribute">border</span>-#&#123;<span class="variable">$side</span>&#125;-radius: <span class="number">5px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/09/Sass学习笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -858,7 +847,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
