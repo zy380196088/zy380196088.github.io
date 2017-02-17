@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="杂谈,生活," />
+  <meta name="keywords" content="Redux," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="2016年,本命年,各种酸甜苦辣…但我相信,跟着心走,一切都将朝着好的方向发展…">
+<meta name="description" content="ReduxRedux 主要分为三部分: Action , Reducer , Store .
+ActionAction 主要用于传递造作 State 的信息,例如:1234&amp;#123;    type:&apos;ADD_FILM&apos;,    name:&apos;极限特工&apos;&amp;#125;
+type属性是必要的,一般用来表达处理 state 数据的方式.但是当增加的电影越来越多时,这种直接声明的 Object就会越来越">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2016年度总结">
-<meta property="og:url" content="http://zy380196088.github.io./2016/12/31/2016年度总结/index.html">
+<meta property="og:title" content="Redux学习总结">
+<meta property="og:url" content="http://zy380196088.github.io./2017/02/17/Redux学习总结/index.html">
 <meta property="og:site_name" content="Zoey's Garden">
-<meta property="og:description" content="2016年,本命年,各种酸甜苦辣…但我相信,跟着心走,一切都将朝着好的方向发展…">
-<meta property="og:updated_time" content="2017-01-14T09:07:50.000Z">
+<meta property="og:description" content="ReduxRedux 主要分为三部分: Action , Reducer , Store .
+ActionAction 主要用于传递造作 State 的信息,例如:1234&amp;#123;    type:&apos;ADD_FILM&apos;,    name:&apos;极限特工&apos;&amp;#125;
+type属性是必要的,一般用来表达处理 state 数据的方式.但是当增加的电影越来越多时,这种直接声明的 Object就会越来越">
+<meta property="og:updated_time" content="2017-02-17T08:18:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2016年度总结">
-<meta name="twitter:description" content="2016年,本命年,各种酸甜苦辣…但我相信,跟着心走,一切都将朝着好的方向发展…">
+<meta name="twitter:title" content="Redux学习总结">
+<meta name="twitter:description" content="ReduxRedux 主要分为三部分: Action , Reducer , Store .
+ActionAction 主要用于传递造作 State 的信息,例如:1234&amp;#123;    type:&apos;ADD_FILM&apos;,    name:&apos;极限特工&apos;&amp;#125;
+type属性是必要的,一般用来表达处理 state 数据的方式.但是当增加的电影越来越多时,这种直接声明的 Object就会越来越">
 
 
 
@@ -114,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://zy380196088.github.io./2016/12/31/2016年度总结/"/>
+  <link rel="canonical" href="http://zy380196088.github.io./2017/02/17/Redux学习总结/"/>
 
-  <title> 2016年度总结 | Zoey's Garden </title>
+  <title> Redux学习总结 | Zoey's Garden </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +285,7 @@
             
             
               
-                2016年度总结
+                Redux学习总结
               
             
           </h1>
@@ -291,8 +297,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-31T16:05:42+08:00" content="2016-12-31">
-              2016-12-31
+            <time itemprop="dateCreated" datetime="2017-02-17T14:25:03+08:00" content="2017-02-17">
+              2017-02-17
             </time>
           </span>
 
@@ -338,19 +344,22 @@
       
 
       
-        <p>2016年,本命年,各种酸甜苦辣…<br>但我相信,跟着心走,一切都将朝着好的方向发展…</p>
-<a id="more"></a>
-<h2 id="2016年-Goodbye"><a href="#2016年-Goodbye" class="headerlink" title="2016年,Goodbye"></a>2016年,Goodbye</h2><p>2016年,也算是我人生的一个里程碑.<br>我终于结束了毕业后过的那种自由散漫的生活状态,想来想去还是不能把大学的专业扔了,决心踏入前端开发这个IT猿的分支,终于体会到了上班族朝9晚6的生活.</p>
-<p>总的来说2016年是个忙碌的一年,有时候会感觉到很累.<br>虽然标题是2016年的年度总结,但我想回忆一下2014年毕业前后我的生活.</p>
-<p>2013年大概是3月份,在全寝室加入考研大军的氛围下,决定跟随大流一起考研.当时也没特别大的抱负,就是12年末去上海耍了一趟,特别喜欢繁华现代的魔都,就一心想考到上海去,PASS了各种不现实的学习(我是学渣),最终选择报考华东师范大学的软件工程硕士.<br>2013年暑假我没有回家,选择了在校复习,然而就在暑假过后,我突然觉得我坚持不下去了…数学总是复习不进去,对照答案感觉懂了,一到自己做题就懵逼…<br>2014年考研成绩出来后一点也不诧异,数学差老大一截,完全没戏,然后就默默的毕业了…<br>毕业后回家两次都是为了考驾照,也没心思去找工作,平时就靠violin赚点生活费,好歹自己不至于落魄到向家里要钱.<br>9月份开始对股票萌发出浓厚的兴趣,当然不敢马上入市场,一是自己没啥钱,二是对股票一无所知.国庆节过了,活动多了收入也还不错,也不着急找工作了,平时没事就自己研究研究下股票,然后给老爸老妈交流交流(他俩老股民了,汗),记得当时还给他们推荐了不少好股票,什么中国一重,海南航空,中国铁建,万达信息等等.没想到就在这个金秋,股市爆发出一波行情,我推荐的哪些涨老多了…心里当时那个后悔呀,没在国庆节随便挑一只买点试试.<br>12月份终于驾照拿到手了,我决定真枪实弹的入股市了,给我爸打了一万的存款,让他把借个证券账户借我玩玩.我还记得当时买的西山煤电…没想到这么幸运,中午买入,下午收盘就拉升了4个点,短短几天赚了1500.过完年,大家都知道2015年3月到5月股市那”牛”的一个疯狂,都在说扫地大妈一买一个涨停板…谁知,这就是最后的疯狂.2015年6月的某天,千股跌停…然后就是无止尽的跌…很多刚入市的小散搞都被搞高高挂在了山顶和半山腰,我也不例外,之前赚的小几万一下子就所剩不多了…现在想起来都是泪.</p>
-<p>2015年夏天那阵,让我感到从所未有的黑暗…我开始对未来开始感到惶恐,我突然醒悟,我已经毕业一年了,我这一年究竟都干了些什么.答案是Nothing!我开始反思,我不能再这样下去了…我必须拜托这堕落的生活!<br>告诫自己:<strong>别在最能拼的年纪整天无所事事!</strong></p>
-<p>于是,我决定必须找份正儿八经的工作了.<br>虽然大学是读的计算机相关的专业,但是当时选择了嵌入式方向,主要偏向C和C++的学习开发,并没有让我产生什么兴趣,很多专业课就那么得过且过了.又过了这么久没怎么接触编程,C++什么的早还给老师了,惭愧…<br>有一天偶然看到一个很有意思的网站,<a href="http://species-in-pieces.com" target="_blank" rel="external">species-in-spieces</a><br>就是这个网站让我对WEB前端产生了兴趣,大学的时候也偶尔听过几节另外一个云计算方向的课程,大概知道网页三剑客 “HTML+CSS+JS”,然后就开始我的漫漫前端自学之路了.断断续续大概学了两个月左右,感觉基础掌握的差不多了,就是有实际完整的项目来实践.朋友正好开了婚庆需要做一个宣传网站,然后我就主动提出免费帮她做个静态的宣传页…她给我提供了很多素材(很多系列的婚礼现场图),我的想法是首页有个大轮播区.点击导航跳转到页面对应的区域.这个轮播功能做出来后,我发现很多问题,图片加载特别慢,但是我也不知道有什么好的解决方案.我意识到是时候该找个工作来提升自己了.</p>
-<p>后来我才知道’懒加载’这个方法可以优化这个问题.</p>
-<p>大概面试了几家,最后入职MCJ,当时公司的前端主要都在负责UBER抢卷H5活动页的开发,人手不够.虽然我没有实际工作经验,可能面试的时候感觉CSS基础还行,就把我收下了.(PS.当时JS很弱,连AJAX都不懂).<br>在MCJ的第一天,我花了将近一天的实际配置开发环境,之前就只用Sublime Text写些静态的页面.连WebStorm都没听说,在同事的帮助下我熟悉了WebStorm,SVN还有公司uber项目的大致结构.<br>第二天,头儿就分配任务给我做了,顿时觉得压力好大.UBER活动页主要是一些10页以内的移动端H5,逻辑都比较简单,使用淘宝的flexible自适应常见的手机屏幕尺寸.<br>一时半会儿感觉来不及仔细研究flexible.js其中的原理,用rem来布局,之前听说过,也没实际使用过.最开始每个尺寸都人工换算成rem,后来发现效率太低了.一搜索才发现Sublime Text 有个专门写 rem的插件<strong>cssrem</strong>,使用了这个插件后效率立马飞跃了…<br>刚入职的第一周,每天下班回家都在家默默加班到深夜,因为是做活动页,一般任务下来之后,需要几天内 能够上线,我第一个活动页还稍微有点复杂,属于分销卷的.(据说单卷是最简单的).<br>好在经过几个晚上的加班,最终赶在deadline之前上线了,为此我应该牺牲了不少脑细胞和睡眠.<br>第一个case搞定了后,之后都是类似的了,再做起来比之前效率搞了不少.</p>
-<p>在MCJ的工作与生活还是挺愉快的,中午吃完饭一群就开始整三国杀,哈哈,作为一名三国杀的忠实粉丝,我也心甘情愿的贡献出我的午休时间了.下午4点,行政MM会给我们准备好下午茶一些小糕点和水果之类的,如果当天有公司员工生日就升级为生日蛋糕,所以福利还是不错的.<br>本来还打算在公司好好学习的,可是好景不长,7月底UBER被滴滴收购了…SO,公司UBER的业务就全部取消了,理所当然我们大批前端都成了公司裁员的对象.8月初公司就虽然有点伤心,但是公司这样我也很理解,毕竟公司肯定从公司利益出发,作为补偿多发了一个月的工资.</p>
-<p>离职正值夏末,天气特别热,歇了大半月,8月底准备找工作了.<br>在8月底入职HYDATA,公司主要业务是做数据可视化,接触了些新知识:<strong>CANVAS,SVG,Echarts</strong>和<strong>D3</strong>等 还有<strong>React,Vue</strong>(虽然项目还没用上),但是使我对前端的另一领域有了一定了解.入职5个多月以来参与了三个项目,主要都是公安项目的数据可视化.<br>配置Echarts就是个从熟能生巧的过程,没多大难度,毕竟别人写好了你只用配置…有些复杂个性化的图还是得用D3来画,以后多研究下D3.争取年前结合React,Webpack和D3,写几个效果的组件模块.(向小乔-我司D3大神看齐^ ^)</p>
-<p>关于我的2016本命年就总结到这好了,这篇总结拖拖拉拉,挤牙膏般挤出来的…(年底最近确实各种忙)<br>2016年我依然还在重庆坚守着…<br>体重也依然坚守着…减肥年年都在我的来年计划在,似乎也永远只能是计划(鄙视下自己)相信如果你也是个标准的吃货,就会懂我的幸福和痛苦,哈哈<br>想买房可是拖了大半年也没落实行动…一个人在重庆确实感觉有点力不从心,买房的流程啥也不懂.<br>2016年末,重庆这个房价低洼感觉也有上扬的趋势了…有点焦虑…也许明年买又要多花几万了= =</p>
-<h2 id="2017年-Better"><a href="#2017年-Better" class="headerlink" title="2017年, Better ~"></a>2017年, Better ~</h2><p>也许我会离开重庆.慢慢将工作中心从Violin撤离…在前端继续前行…<br>明年至少要出去旅游一次,2016年没有做到,太忙了 <del>T T</del><br>如果我决定留在重庆,就买个自己的小房子.<br>万年不变计划-减肥 …<br>如果有好的机会我会去上海/杭州(不考虑北京,我还想多活几年Orz)…加油,相信2017会更好 ^ ^</p>
+        <a id="more"></a>
+<h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><p>Redux 主要分为三部分: Action , Reducer , Store .</p>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Action 主要用于传递造作 State 的信息,例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">type</span>:<span class="string">'ADD_FILM'</span>,</div><div class="line">    <span class="attr">name</span>:<span class="string">'极限特工'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>type属性是必要的,一般用来表达处理 state 数据的方式.<br>但是当增加的电影越来越多时,这种直接声明的 Object就会越来越多.<br>我们可以通过函数来生产 action ,如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addFile</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">type</span>:<span class="string">'ADD_FILM'</span>,<span class="attr">name</span>:name&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><p>Reducer 一般为简单地处理函数,通过传入旧的 state 和指示操作的 action 来更新 state,如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">films</span> (<span class="params"> state = initialState, action</span>)</span>&#123;</div><div class="line">    <span class="keyword">switch</span> (action.type)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'ADD_FILM'</span>:</div><div class="line">        <span class="comment">// 更新 state 中的 films 字段</span></div><div class="line">        <span class="keyword">return</span>[&#123;</div><div class="line">            <span class="attr">id</span>:state.films.reduce(<span class="function">(<span class="params">maxId,film</span>)=&gt;</span><span class="built_in">Math</span>.max(film.id,maxId),<span class="number">-1</span>)+<span class="number">1</span>,</div><div class="line">            <span class="attr">name</span>:action.name</div><div class="line">            &#125;,...state];</div><div class="line">        <span class="keyword">case</span> <span class="string">'DELETE_FILM'</span>:</div><div class="line">        <span class="keyword">return</span> state.films.filter(<span class="function"><span class="params">film</span>=&gt;</span> film.id !==action.id);</div><div class="line">        <span class="keyword">case</span> <span class="string">'SHOW_ALL_FILM'</span>:</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;,state,&#123;</div><div class="line">            <span class="attr">visibilityFiter</span>:action.filter</div><div class="line">            &#125;);</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">return</span> state;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面代码展示了 Reducer 根据传入的 action.type 来匹配 case 进行不同的 state 更新.<br>在上面的代码中，我们可以把 ‘ADD_FILM’ 和 ‘DELETE_FILM’ 归为操作 state.films 的类，而 ‘SHOW_ALL_FILM’ 为过滤显示类，所以可以把大的 filmReducer 拆分成 filmReducer 和 filterReducer.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">filmReducer</span>(<span class="params">state =[],action</span>)</span>&#123;</div><div class="line">    <span class="keyword">switch</span>(action.type)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'ADD_FILM'</span>:</div><div class="line">        <span class="comment">//更新 state 中的 films 字段</span></div><div class="line">        eturn[&#123;</div><div class="line">            <span class="attr">id</span>:state.films.reduce(<span class="function">(<span class="params">maxId,film</span>)=&gt;</span><span class="built_in">Math</span>.max(film.id,maxId),<span class="number">-1</span>)+<span class="number">1</span>,</div><div class="line">            <span class="attr">name</span>:action.name</div><div class="line">            &#125;,...state];</div><div class="line">        <span class="keyword">case</span> <span class="string">'DELETE_FILM'</span>:</div><div class="line">        <span class="keyword">return</span> state.films.filter(<span class="function"><span class="params">film</span>=&gt;</span> film.id !==action.id);</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">return</span> state;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterReducer</span>(<span class="params">state.action</span>)</span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'SHOW_ALL_FILM'</span>:</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;,state,&#123;</div><div class="line">            <span class="attr">visibilityFiter</span>:action.filter</div><div class="line">            &#125;);</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">return</span> state;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后,通过组合函数将上面两个 reducers 组合起来:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">rootReducer</span>(<span class="params">state=&#123;&#125;,action</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span>&#123;</div><div class="line">        <span class="attr">films</span>:filmReducer(state.films,action),</div><div class="line">        <span class="attr">filter</span>:filterReducer(state.filter,action)</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面的 rootReducer 将不同部分的 state 传给对应的 reducer 处理，最终合并所有 reducer 的返回值，组成整个state。</p>
+<p>Redux提供了 <strong>combineReducers()</strong>方法,用它重构上面的代码:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> rootReducer = combineReducers(&#123;</div><div class="line">    <span class="attr">films</span>:filmReducer,</div><div class="line">    <span class="attr">filter</span>:filterReducer</div><div class="line">    &#125;)</div></pre></td></tr></table></figure></p>
+<p>combineReducers() 将调用一系列 reducer，并根据对应的 key 来筛选出 state 中的一部分数据给相应的 reducer，这样也意味着每一个小的 reducer 将只能处理 state 的一部分数据，如：filterReducer 将只能处理及返回 state.filter 的数据，如果需要使用到其他 state 数据，那还是需要为这类 reducer 传入整个 state。</p>
+<p>在 Redux 中，一个 action 可以触发多个 reducer，一个 reducer 中也可以包含多种 action.type 的处理。属于多对多的关系。</p>
+<h2 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h2><p>Action 用来表达操作消息,Reducer 根据 Action 来更新 State.</p>
+<p>在 Redux 项目中, Store 是单一的.维护着一个全局的 State,并且根据 Action 来进行事件分发处理 State.</p>
+<p>Redux 提供了 createStore() 来生产 Store.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = createStore(rootReducer);</div><div class="line"><span class="comment">//rootReducer 为顶级的 Reducer</span></div></pre></td></tr></table></figure></p>
+<p>store.getState()用来获取 state 数据;<br>store.subscribe(listener)用于注册监听函数.每当 state 数据更新时,将会触发监听函数.<br>store.dispatch(action)用于将一个 action 对象派发给 reducer 进行处理.</p>
+<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p>Redux 并不依赖于 React, 但它更适合 由数据更新 UI 的框架(例如React).<br>React-Redux 主要提供 Connect 和 Provider 两个组件来实现上述功能;</p>
 
       
     </div>
@@ -373,9 +382,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/杂谈/" rel="tag">#杂谈</a>
-          
-            <a href="/tags/生活/" rel="tag">#生活</a>
+            <a href="/tags/Redux/" rel="tag">#Redux</a>
           
         </div>
       
@@ -384,17 +391,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/06/ES6学习笔记/" rel="next" title="ES6学习笔记">
-                <i class="fa fa-chevron-left"></i> ES6学习笔记
+              <a href="/2016/12/31/2016年度总结/" rel="next" title="2016年度总结">
+                <i class="fa fa-chevron-left"></i> 2016年度总结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/17/Redux学习总结/" rel="prev" title="Redux学习总结">
-                Redux学习总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,7 +554,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2016年-Goodbye"><span class="nav-number">1.</span> <span class="nav-text">2016年,Goodbye</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017年-Better"><span class="nav-number">2.</span> <span class="nav-text">2017年, Better ~</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux"><span class="nav-number">1.</span> <span class="nav-text">Redux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Action"><span class="nav-number">1.1.</span> <span class="nav-text">Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducer"><span class="nav-number">1.2.</span> <span class="nav-text">Reducer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Store"><span class="nav-number">1.3.</span> <span class="nav-text">Store</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Redux"><span class="nav-number">2.</span> <span class="nav-text">React-Redux</span></a></li></ol></div>
             
           </div>
         </section>
