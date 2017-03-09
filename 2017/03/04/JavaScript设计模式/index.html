@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="对于一个真正有所追求的人来来说,生命的每个时期都是年轻和及时的.-摩西奶奶">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zoey's Garden">
-<meta property="og:url" content="http://zy380196088.github.io./index.html">
+<meta name="description" content="面向过程与面向对象封装创建一个类首先声明一个函数保存在一个变量里(一般将首字母大写).然后在这个函数(类)内部通过 this 添加属性或者方法来实现对类添加属性活着方法:12345var Book = function(id, bookName, price)&amp;#123;    this.id = id ;    this.bookName = bookName;    this.price =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript设计模式">
+<meta property="og:url" content="http://zy380196088.github.io./2017/03/04/JavaScript设计模式/index.html">
 <meta property="og:site_name" content="Zoey's Garden">
-<meta property="og:description" content="对于一个真正有所追求的人来来说,生命的每个时期都是年轻和及时的.-摩西奶奶">
+<meta property="og:description" content="面向过程与面向对象封装创建一个类首先声明一个函数保存在一个变量里(一般将首字母大写).然后在这个函数(类)内部通过 this 添加属性或者方法来实现对类添加属性活着方法:12345var Book = function(id, bookName, price)&amp;#123;    this.id = id ;    this.bookName = bookName;    this.price =">
+<meta property="og:updated_time" content="2017-03-09T12:06:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zoey's Garden">
-<meta name="twitter:description" content="对于一个真正有所追求的人来来说,生命的每个时期都是年轻和及时的.-摩西奶奶">
+<meta name="twitter:title" content="JavaScript设计模式">
+<meta name="twitter:description" content="面向过程与面向对象封装创建一个类首先声明一个函数保存在一个变量里(一般将首字母大写).然后在这个函数(类)内部通过 this 添加属性或者方法来实现对类添加属性活着方法:12345var Book = function(id, bookName, price)&amp;#123;    this.id = id ;    this.bookName = bookName;    this.price =">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://zy380196088.github.io./"/>
+  <link rel="canonical" href="http://zy380196088.github.io./2017/03/04/JavaScript设计模式/"/>
 
-  <title> Zoey's Garden </title>
+  <title> JavaScript设计模式 | Zoey's Garden </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -258,9 +257,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -280,10 +279,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/04/JavaScript设计模式/" itemprop="url">
-                  JavaScript设计模式
-                </a>
+                JavaScript设计模式
               
             
           </h1>
@@ -342,9 +338,7 @@
       
 
       
-        
-          
-            <a id="more"></a>
+        <a id="more"></a>
 <h1 id="面向过程与面向对象"><a href="#面向过程与面向对象" class="headerlink" title="面向过程与面向对象"></a>面向过程与面向对象</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><h3 id="创建一个类"><a href="#创建一个类" class="headerlink" title="创建一个类"></a>创建一个类</h3><p>首先声明一个函数保存在一个变量里(一般将首字母大写).<br>然后在这个函数(类)内部通过 this 添加属性或者方法来实现对类添加属性活着方法:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">id, bookName, price</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id ;</div><div class="line">    <span class="keyword">this</span>.bookName = bookName;</div><div class="line">    <span class="keyword">this</span>.price = price;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>也可以通过在类的原型上添加属性和方法.有如下两种方式:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法一:为原型对象属性赋值</span></div><div class="line">Book.prototype.display = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//方法二:将一个对象赋值给类的原型对象</span></div><div class="line">Book.prototype = &#123;</div><div class="line">    <span class="attr">display</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><p>constructor 是一个属性,当创建一个函数或者对象时都会为其创建一个原型对象 prototype,<br>在 prototype 对象中又会像函数中创建 this 一样创建一个 constructor 属性,<br>那么constructor 属性指向的就是拥有整个源性对象的函数或对象.</p>
@@ -354,16 +348,20 @@
 <h2 id="传宗接代-继承"><a href="#传宗接代-继承" class="headerlink" title="传宗接代-继承"></a>传宗接代-继承</h2><h3 id="子类的原型对象-类式继承"><a href="#子类的原型对象-类式继承" class="headerlink" title="子类的原型对象 - 类式继承"></a>子类的原型对象 - 类式继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//声明父类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperClass</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.superValue = <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//为父类添加公有方法.</span></div><div class="line">SuperClass.prototype.getSuperValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.superValue;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//申明子类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubClass</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.subValue = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//继承父类</span></div><div class="line">SubClass.prototype = <span class="keyword">new</span> SuperClass();</div><div class="line"><span class="comment">//为子类添加公有方法</span></div><div class="line">SubClass.prototype.getSuperValue = <span class="function"><span class="keyword">function</span></span></div><div class="line">(<span class="params"></span>)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.subValue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我们可以通过 instanceof 来检测某个对象是否是某个类的实例,或者说某个对象是否继承了莫各类.<br>instanceof 通过判断对象的 prototype 链来确定这个对象是否是某个类的实例,而不关心对象与类的自身结构.</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -371,480 +369,55 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/02/17/Redux学习总结/" rel="next" title="Redux学习总结">
+                <i class="fa fa-chevron-left"></i> Redux学习总结
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/02/17/Redux学习总结/" itemprop="url">
-                  Redux学习总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-17T14:25:03+08:00" content="2017-02-17">
-              2017-02-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><p>Redux 主要分为三部分: Action , Reducer , Store .</p>
-<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Action 主要用于传递造作 State 的信息,例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">type</span>:<span class="string">'ADD_FILM'</span>,</div><div class="line">    <span class="attr">name</span>:<span class="string">'极限特工'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>type属性是必要的,一般用来表达处理 state 数据的方式.<br>但是当增加的电影越来越多时,这种直接声明的 Object就会越来越多.<br>我们可以通过函数来生产 action ,如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addFile</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">type</span>:<span class="string">'ADD_FILM'</span>,<span class="attr">name</span>:name&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><p>Reducer 一般为简单地处理函数,通过传入旧的 state 和指示操作的 action 来更新 state,如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">films</span> (<span class="params"> state = initialState, action</span>)</span>&#123;</div><div class="line">    <span class="keyword">switch</span> (action.type)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'ADD_FILM'</span>:</div><div class="line">        <span class="comment">// 更新 state 中的 films 字段</span></div><div class="line">        <span class="keyword">return</span>[&#123;</div><div class="line">            <span class="attr">id</span>:state.films.reduce(<span class="function">(<span class="params">maxId,film</span>)=&gt;</span><span class="built_in">Math</span>.max(film.id,maxId),<span class="number">-1</span>)+<span class="number">1</span>,</div><div class="line">            <span class="attr">name</span>:action.name</div><div class="line">            &#125;,...state];</div><div class="line">        <span class="keyword">case</span> <span class="string">'DELETE_FILM'</span>:</div><div class="line">        <span class="keyword">return</span> state.films.filter(<span class="function"><span class="params">film</span>=&gt;</span> film.id !==action.id);</div><div class="line">        <span class="keyword">case</span> <span class="string">'SHOW_ALL_FILM'</span>:</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;,state,&#123;</div><div class="line">            <span class="attr">visibilityFiter</span>:action.filter</div><div class="line">            &#125;);</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">return</span> state;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面代码展示了 Reducer 根据传入的 action.type 来匹配 case 进行不同的 state 更新.<br>在上面的代码中，我们可以把 ‘ADD_FILM’ 和 ‘DELETE_FILM’ 归为操作 state.films 的类，而 ‘SHOW_ALL_FILM’ 为过滤显示类，所以可以把大的 filmReducer 拆分成 filmReducer 和 filterReducer.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">filmReducer</span>(<span class="params">state =[],action</span>)</span>&#123;</div><div class="line">    <span class="keyword">switch</span>(action.type)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'ADD_FILM'</span>:</div><div class="line">        <span class="comment">//更新 state 中的 films 字段</span></div><div class="line">        eturn[&#123;</div><div class="line">            <span class="attr">id</span>:state.films.reduce(<span class="function">(<span class="params">maxId,film</span>)=&gt;</span><span class="built_in">Math</span>.max(film.id,maxId),<span class="number">-1</span>)+<span class="number">1</span>,</div><div class="line">            <span class="attr">name</span>:action.name</div><div class="line">            &#125;,...state];</div><div class="line">        <span class="keyword">case</span> <span class="string">'DELETE_FILM'</span>:</div><div class="line">        <span class="keyword">return</span> state.films.filter(<span class="function"><span class="params">film</span>=&gt;</span> film.id !==action.id);</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">return</span> state;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterReducer</span>(<span class="params">state.action</span>)</span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'SHOW_ALL_FILM'</span>:</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;,state,&#123;</div><div class="line">            <span class="attr">visibilityFiter</span>:action.filter</div><div class="line">            &#125;);</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">return</span> state;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后,通过组合函数将上面两个 reducers 组合起来:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">rootReducer</span>(<span class="params">state=&#123;&#125;,action</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span>&#123;</div><div class="line">        <span class="attr">films</span>:filmReducer(state.films,action),</div><div class="line">        <span class="attr">filter</span>:filterReducer(state.filter,action)</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面的 rootReducer 将不同部分的 state 传给对应的 reducer 处理，最终合并所有 reducer 的返回值，组成整个state。</p>
-<p>Redux提供了 <strong>combineReducers()</strong>方法,用它重构上面的代码:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> rootReducer = combineReducers(&#123;</div><div class="line">    <span class="attr">films</span>:filmReducer,</div><div class="line">    <span class="attr">filter</span>:filterReducer</div><div class="line">    &#125;)</div></pre></td></tr></table></figure></p>
-<p>combineReducers() 将调用一系列 reducer，并根据对应的 key 来筛选出 state 中的一部分数据给相应的 reducer，这样也意味着每一个小的 reducer 将只能处理 state 的一部分数据，如：filterReducer 将只能处理及返回 state.filter 的数据，如果需要使用到其他 state 数据，那还是需要为这类 reducer 传入整个 state。</p>
-<p>在 Redux 中，一个 action 可以触发多个 reducer，一个 reducer 中也可以包含多种 action.type 的处理。属于多对多的关系。</p>
-<h2 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h2><p>Action 用来表达操作消息,Reducer 根据 Action 来更新 State.</p>
-<p>在 Redux 项目中, Store 是单一的.维护着一个全局的 State,并且根据 Action 来进行事件分发处理 State.</p>
-<p>Redux 提供了 createStore() 来生产 Store.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = createStore(rootReducer);</div><div class="line"><span class="comment">//rootReducer 为顶级的 Reducer</span></div></pre></td></tr></table></figure></p>
-<p>store.getState()用来获取 state 数据;<br>store.subscribe(listener)用于注册监听函数.每当 state 数据更新时,将会触发监听函数.<br>store.dispatch(action)用于将一个 action 对象派发给 reducer 进行处理.</p>
-<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p>Redux 并不依赖于 React, 但它更适合 由数据更新 UI 的框架(例如React).<br>React-Redux 主要提供 Connect 和 Provider 两个组件来实现上述功能;</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/31/2016年度总结/" itemprop="url">
-                  2016年度总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-31T16:05:42+08:00" content="2016-12-31">
-              2016-12-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>2016年,本命年,各种酸甜苦辣…<br>但我相信,跟着心走,一切都将朝着好的方向发展…</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/31/2016年度总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/06/ES6学习笔记/" itemprop="url">
-                  ES6学习笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-06T17:52:31+08:00" content="2016-12-06">
-              2016-12-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/14/React学习/" itemprop="url">
-                  React学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T13:27:46+08:00" content="2016-09-14">
-              2016-09-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Component-的创建和复合"><a href="#Component-的创建和复合" class="headerlink" title="Component 的创建和复合"></a>Component 的创建和复合</h1><h2 id="React简介"><a href="#React简介" class="headerlink" title="React简介"></a>React简介</h2><h3 id="对-React-JS-的认识-及其优点"><a href="#对-React-JS-的认识-及其优点" class="headerlink" title="对 React.JS 的认识 及其优点"></a>对 React.JS 的认识 及其优点</h3><p>React 并不是一个完整的 MVC 框架,最多可以认为是 MVC 中的 V(View);<br>React 不是一个新的模板语言, JSX 只是一个表现,没有 JSX 的 React也能工作.</p>
-<p>React本质上是一个”状态机”,可以帮助开发者管理复杂的随着时间变化的状态.<br>React只关心两件事情:</p>
-<ol>
-<li>更新 DOM</li>
-<li>响应时事件</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/14/React学习/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
+      
+    </div>
+  </div>
 
 
           </div>
@@ -852,6 +425,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -871,8 +448,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -942,6 +528,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面向过程与面向对象"><span class="nav-number">1.</span> <span class="nav-text">面向过程与面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#封装"><span class="nav-number">1.1.</span> <span class="nav-text">封装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个类"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建一个类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#constructor-NaN"><span class="nav-number">1.1.2.</span> <span class="nav-text">constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私有属性-私有方法"><span class="nav-number">1.1.3.</span> <span class="nav-text">私有属性 私有方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.2.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#找位监察-创建对象的安全模式"><span class="nav-number">1.2.1.</span> <span class="nav-text">找位监察 - 创建对象的安全模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传宗接代-继承"><span class="nav-number">1.3.</span> <span class="nav-text">传宗接代-继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子类的原型对象-类式继承"><span class="nav-number">1.3.1.</span> <span class="nav-text">子类的原型对象 - 类式继承</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1045,6 +642,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
