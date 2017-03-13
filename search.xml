@@ -233,7 +233,8 @@
 <td>where likes &lt;= 50</td>
 </tr>
 <tr>
-<td>大于  {<key>:{$gt:<value>}}</value></key></td>
+<td>大于</td>
+<td>{<key>:{$gt:<value>}}</value></key></td>
 <td>db.col.find({“likes”:{$gt:50}}).pretty()</td>
 <td>where likes &gt; 50</td>
 </tr>
