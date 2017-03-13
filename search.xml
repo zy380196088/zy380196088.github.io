@@ -139,8 +139,7 @@
 </tr>
 <tr>
 <td>wtimeoutMS=ms</td>
-<td>驱动添加 { wtimeout : ms } 到 getlasterror 命令. 应用于 safe=true.</td>
-<td>true: 驱动添加 { fsync : true } 到 getlasterror 命令.应用于 safe=true.false: 驱动不会添加到getLastError命令中。</td>
+<td>驱动添加 { wtimeout : ms } 到 getlasterror 命令. 应用于 safe=true. true: 驱动添加 { fsync : true } 到 getlasterror 命令.应用于 safe=true.false: 驱动不会添加到getLastError命令中。</td>
 </tr>
 <tr>
 <td>journal=true/false</td>
