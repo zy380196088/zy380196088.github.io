@@ -131,11 +131,31 @@
 </tr>
 <tr>
 <td>safe=true/false</td>
-<td>true: 在执行更新操作之后，驱动都会发送getLastError命令来确保更新成功。(还要参考 wtimeoutMS).</td>
+<td>true: 在执行更新操作之后，驱动都会发送getLastError命令来确保更新成功。(还要参考 wtimeoutMS).false: 在每次更新之后，驱动不会发送getLastError来确保更新成功。</td>
+</tr>
+<tr>
+<td>w=n</td>
+<td>驱动添加 { w : n } 到getLastError命令. 应用于safe=true。</td>
+</tr>
+<tr>
+<td>wtimeoutMS=ms</td>
+<td>驱动添加 { wtimeout : ms } 到 getlasterror 命令. 应用于 safe=true.</td>
+<td>true: 驱动添加 { fsync : true } 到 getlasterror 命令.应用于 safe=true.false: 驱动不会添加到getLastError命令中。</td>
+</tr>
+<tr>
+<td>journal=true/false</td>
+<td>如果设置为 true, 同步到 journal (在提交到数据库前写入到实体中). 应用于 safe=true</td>
+</tr>
+<tr>
+<td>connectTimeoutMS=ms</td>
+<td>可以打开连接的时间。</td>
+</tr>
+<tr>
+<td>socketTimeoutMS=ms</td>
+<td>发送和接受sockets的时间。</td>
 </tr>
 </tbody>
 </table>
-<p>false: 在每次更新之后，驱动不会发送getLastError来确保更新成功。|<br>| w=n | 驱动添加 { w : n } 到getLastError命令. 应用于safe=true。|<br>| wtimeoutMS=ms | 驱动添加 { wtimeout : ms } 到 getlasterror 命令. 应用于 safe=true.|<br>true: 驱动添加 { fsync : true } 到 getlasterror 命令.应用于 safe=true.<br>false: 驱动不会添加到getLastError命令中。|<br>| journal=true/false | 如果设置为 true, 同步到 journal (在提交到数据库前写入到实体中). 应用于 safe=true |<br>| connectTimeoutMS=ms | 可以打开连接的时间。<br>| socketTimeoutMS=ms | 发送和接受sockets的时间。</p>
 ]]></content>
     </entry>
     
