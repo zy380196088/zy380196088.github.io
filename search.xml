@@ -4,6 +4,26 @@
   
     
     <entry>
+      <title><![CDATA[Learning MongoDB step by step]]></title>
+      <url>http://zy380196088.github.io./2017/03/13/Learning-MongoDB-step-by-step/</url>
+      <content type="html"><![CDATA[<p>MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。</p>
+<p>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。<br><a id="more"></a></p>
+<h1 id="简单了解下-MongoDB"><a href="#简单了解下-MongoDB" class="headerlink" title="简单了解下 MongoDB"></a>简单了解下 MongoDB</h1><p>MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">name</span>:<span class="string">"Zoey"</span>,</div><div class="line">    <span class="attr">age</span>:<span class="string">"24"</span>,</div><div class="line">    <span class="attr">hobby</span>: [<span class="string">"music"</span>,<span class="string">"reading"</span>,<span class="string">"violin"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="MongoDB-的主要特点"><a href="#MongoDB-的主要特点" class="headerlink" title="MongoDB 的主要特点"></a>MongoDB 的主要特点</h2><ol>
+<li>可以在MongoDB记录中设置任何属性的索引 (如：FirstName=”Sameer”,Address=”8 Gandhi Road”)来实现更快的排序。</li>
+<li>可以通过本地或者网络创建数据镜像，这使得MongoDB有更强的扩展性。</li>
+<li>如果负载的增加（需要更多的存储空间和更强的处理能力） ，它可以分布在计算机网络中的其他节点上这就是所谓的分片。</li>
+<li>支持丰富的查询表达式。查询指令使用JSON形式的标记，可轻易查询文档中内嵌的对象及数组。</li>
+<li>使用update()命令可以实现替换完成的文档（数据）或者一些指定的数据字段 。</li>
+<li>Mongodb中的Map/reduce主要是用来对数据进行批量处理和聚合操作。Map函数调用emit(key,value)遍历集合中所有的记录，将key与value传给Reduce函数进行处理.</li>
+<li>GridFS是MongoDB中的一个内置功能，可以用于存放大量小文件。</li>
+<li>MongoDB允许在服务端执行脚本，可以用Javascript编写某个函数，直接在服务端执行，也可以把函数的定义存储在服务端，下次直接调用即可。</li>
+</ol>
+<h1 id="MongoDB-常用的数据类型"><a href="#MongoDB-常用的数据类型" class="headerlink" title="MongoDB 常用的数据类型"></a>MongoDB 常用的数据类型</h1><p>| 数据类型 | 描述 |<br>| Sting  | 字符串。存储数据常用的数据类型。在 MongoDB 中，UTF-8 编码的字符串才是合法的。|</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript设计模式]]></title>
       <url>http://zy380196088.github.io./2017/03/04/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<a id="more"></a>
