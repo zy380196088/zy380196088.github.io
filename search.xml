@@ -126,17 +126,15 @@
 <td>验证replica set的名称。 Impliesconnect=replicaSet.</td>
 </tr>
 <tr>
-<td>slaveOk=true</td>
-<td>false</td>
+<td>slaveOk=true/false</td>
 </tr>
 </tbody>
 </table>
+<p>true:在connect=direct模式下，驱动会连接第一台机器，即使这台服务器不是主。在connect=replicaSet模式下，驱动会发送所有的写请求到主并且把读取操作分布在其他从服务器。<br>false: 在 connect=direct模式下，驱动会自动找寻主服务器. 在connect=replicaSet 模式下，驱动仅仅连接主服务器，并且所有的读写命令都连接到主服务器。|<br>| safe=true/false  |</p>
 <ol>
-<li>true:在connect=direct模式下，驱动会连接第一台机器，即使这台服务器不是主。在connect=replicaSet模式下，驱动会发送所有的写请求到主并且把读取操作分布在其他从服务器。</li>
-<li>false: 在 connect=direct模式下，驱动会自动找寻主服务器. 在connect=replicaSet 模式下，驱动仅仅连接主服务器，并且所有的读写命令都连接到主服务器。|<br>| safe=true|false  |</li>
 <li>true: 在执行更新操作之后，驱动都会发送getLastError命令来确保更新成功。(还要参考 wtimeoutMS).<br>false: 在每次更新之后，驱动不会发送getLastError来确保更新成功。|<br>| w=n | 驱动添加 { w : n } 到getLastError命令. 应用于safe=true。|<br>| wtimeoutMS=ms | 驱动添加 { wtimeout : ms } 到 getlasterror 命令. 应用于 safe=true.|</li>
 <li>true: 驱动添加 { fsync : true } 到 getlasterror 命令.应用于 safe=true.</li>
-<li>false: 驱动不会添加到getLastError命令中。|<br>| journal=true|false | 如果设置为 true, 同步到 journal (在提交到数据库前写入到实体中). 应用于 safe=true |<br>| connectTimeoutMS=ms | 可以打开连接的时间。<br>| socketTimeoutMS=ms | 发送和接受sockets的时间。</li>
+<li>false: 驱动不会添加到getLastError命令中。|<br>| journal=true/false | 如果设置为 true, 同步到 journal (在提交到数据库前写入到实体中). 应用于 safe=true |<br>| connectTimeoutMS=ms | 可以打开连接的时间。<br>| socketTimeoutMS=ms | 发送和接受sockets的时间。</li>
 </ol>
 ]]></content>
     </entry>
