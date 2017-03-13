@@ -190,7 +190,75 @@
 <p>全部添加加进去:<br><code>db.col.update( { &quot;count&quot; : { $gt : 5 } } , { $set : { &quot;test5&quot; : &quot;OK&quot;} },true,true );</code></p>
 <p>全部更新：<br><code>db.col.update( { &quot;count&quot; : { $gt : 15 } } , { $inc : { &quot;count&quot; : 1} },false,true );</code></p>
 <p>只更新第一条记录：<br><code>db.col.update( { &quot;count&quot; : { $gt : 10 } } , { $inc : { &quot;count&quot; : 1} },false,false );</code></p>
-<h1 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h1>]]></content>
+<h1 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h1><h2 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h2><p>remove() 方法的基本语法格式如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.collection.remove(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &lt;justOne&gt;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>如果你的 MongoDB 是 2.6 版本以后的，语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.collection.remove(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &#123;</div><div class="line">     justOne: &lt;boolean&gt;,</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>参数说明：<br>query :（可选）删除的文档的条件。<br>justOne : （可选）如果设为 true 或 1，则只删除一个文档。<br>writeConcern :（可选）抛出异常的级别。</p>
+<h2 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h2><p>以下文档我们执行两次插入操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.insert(&#123;title: &apos;MongoDB 教程&apos;, </div><div class="line">    description: &apos;MongoDB 是一个 Nosql 数据库&apos;,</div><div class="line">    by: &apos;菜鸟教程&apos;,</div><div class="line">    url: &apos;http://www.runoob.com&apos;,</div><div class="line">    tags: [&apos;mongodb&apos;, &apos;database&apos;, &apos;NoSQL&apos;],</div><div class="line">    likes: 100</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>使用 find() 函数查询数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find()</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066169ade2f21f36b03137&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot;, &quot;database&quot;, &quot;NoSQL&quot; ], &quot;likes&quot; : 100 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5606616dade2f21f36b03138&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot;, &quot;database&quot;, &quot;NoSQL&quot; ], &quot;likes&quot; : 100 &#125;</div></pre></td></tr></table></figure></p>
+<p>接下来我们移除 title 为 ‘MongoDB 教程’ 的文档：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.remove(&#123;&apos;title&apos;:&apos;MongoDB 教程&apos;&#125;)</div><div class="line">WriteResult(&#123; &quot;nRemoved&quot; : 2 &#125;)           # 删除了两条数据</div><div class="line">&gt;db.col.find()</div><div class="line">……                                        # 没有数据</div></pre></td></tr></table></figure></p>
+<p>如果你只想删除第一条找到的记录可以设置 justOne 为 1，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.COLLECTION_NAME.remove(DELETION_CRITERIA,1)</div></pre></td></tr></table></figure></p>
+<p>如果你想删除所有数据，可以使用以下方式（类似常规 SQL 的 truncate 命令）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.remove(&#123;&#125;)</div><div class="line">&gt;db.col.find()</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h1><h2 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h2><p>MongoDB 查询数据的语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.COLLECTION_NAME.find()</div></pre></td></tr></table></figure></p>
+<p>find() 方法以非结构化的方式来显示所有文档。<br>如果你需要以易读的方式来读取数据，可以使用 pretty() 方法，语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find().pretty()</div></pre></td></tr></table></figure></p>
+<p>pretty() 方法以格式化的方式来显示所有文档。</p>
+<h2 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h2><p>以下实例我们查询了集合 col 中的数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56063f17ade2f21f36b03133&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB 教程&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>除了 find() 方法之外，还有一个 findOne() 方法，它只返回一个文档。</p>
+<h2 id="MongoDB-与-RDBMS-Where-语句比较"><a href="#MongoDB-与-RDBMS-Where-语句比较" class="headerlink" title="MongoDB 与 RDBMS Where 语句比较"></a>MongoDB 与 RDBMS Where 语句比较</h2><p>如果你熟悉常规的 SQL 数据，通过下表可以更好的理解 MongoDB 的条件语句查询：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>格式</th>
+<th>范例</th>
+<th>RDBMS中的类似语句</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等于</td>
+<td>{<key>:<value>}</value></key></td>
+<td>db.col.find({“by”:”菜鸟教程”}).pretty()</td>
+<td>where by = ‘菜鸟教程’</td>
+</tr>
+<tr>
+<td>小于</td>
+<td>{<key>:{$lt:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$lt:50}}).pretty()</td>
+<td>where likes &lt; 50</td>
+</tr>
+<tr>
+<td>小于或等于</td>
+<td>{<key>:{$lte:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$lte:50}}).pretty()</td>
+<td>where likes &lt;= 50</td>
+</tr>
+<tr>
+<td>大于  {<key>:{$gt:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$gt:50}}).pretty()</td>
+<td>where likes &gt; 50</td>
+</tr>
+<tr>
+<td>大于或等于</td>
+<td>{<key>:{$gte:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$gte:50}}).pretty()</td>
+<td>where likes &gt;= 50</td>
+</tr>
+<tr>
+<td>不等于</td>
+<td>{<key>:{$ne:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$ne:50}}).pretty()</td>
+<td>where likes != 50</td>
+</tr>
+</tbody>
+</table>
+<h2 id="MongoDB-AND-条件"><a href="#MongoDB-AND-条件" class="headerlink" title="MongoDB AND 条件"></a>MongoDB AND 条件</h2><p>MongoDB 的 find() 方法可以传入多个键(key)，每个键(key)以逗号隔开，及常规 SQL 的 AND 条件。</p>
+<p>语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(&#123;key1:value1, key2:value2&#125;).pretty()</div></pre></td></tr></table></figure></p>
+<h2 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h2><p>以下实例通过 by 和 title 键来查询 菜鸟教程 中 MongoDB 教程 的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find(&#123;&quot;by&quot;:&quot;菜鸟教程&quot;, &quot;title&quot;:&quot;MongoDB 教程&quot;&#125;).pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56063f17ade2f21f36b03133&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB 教程&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上实例中类似于 WHERE 语句：WHERE by=’菜鸟教程’ AND title=’MongoDB 教程’</p>
+<h2 id="MongoDB-OR-条件"><a href="#MongoDB-OR-条件" class="headerlink" title="MongoDB OR 条件"></a>MongoDB OR 条件</h2><p>MongoDB OR 条件语句使用了关键字 $or,语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(</div><div class="line">   &#123;</div><div class="line">      $or: [</div><div class="line">         &#123;key1: value1&#125;, &#123;key2:value2&#125;</div><div class="line">      ]</div><div class="line">   &#125;</div><div class="line">).pretty()</div></pre></td></tr></table></figure></p>
+<h2 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h2><p>以下实例中，我们演示了查询键 by 值为 菜鸟教程 或键 title 值为 MongoDB 教程 的文档。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(&#123;$or:[&#123;&quot;by&quot;:&quot;菜鸟教程&quot;&#125;,&#123;&quot;title&quot;: &quot;MongoDB 教程&quot;&#125;]&#125;).pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56063f17ade2f21f36b03133&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB 教程&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="AND-和-OR-联合使用"><a href="#AND-和-OR-联合使用" class="headerlink" title="AND 和 OR 联合使用"></a>AND 和 OR 联合使用</h2><p>以下实例演示了 AND 和 OR 联合使用，类似常规 SQL 语句为： ‘where likes&gt;50 AND (by = ‘菜鸟教程’ OR title = ‘MongoDB 教程’)’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(&#123;&quot;likes&quot;: &#123;$gt:50&#125;, $or: [&#123;&quot;by&quot;: &quot;菜鸟教程&quot;&#125;,&#123;&quot;title&quot;: &quot;MongoDB 教程&quot;&#125;]&#125;).pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56063f17ade2f21f36b03133&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB 教程&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
     </entry>
     
     <entry>
