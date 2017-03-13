@@ -131,7 +131,7 @@
 </tr>
 <tr>
 <td>safe=true/false</td>
-<td>true: 在执行更新操作之后，驱动都会发送getLastError命令来确保更新成功。(还要参考 wtimeoutMS).false: 在每次更新之后，驱动不会发送getLastError来确保更新成功。</td>
+<td>true:在执行更新操作之后，驱动都会发送getLastError命令来确保更新成功。(还要参考 wtimeoutMS).false: 在每次更新之后，驱动不会发送getLastError来确保更新成功。</td>
 </tr>
 <tr>
 <td>w=n</td>
