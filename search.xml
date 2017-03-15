@@ -329,7 +329,7 @@
 <p>主节点记录在其上的所有操作oplog，从节点定期轮询主节点获取这些操作，然后对自己的数据副本执行这些操作，从而保证从节点的数据与主节点一致。</p>
 <p>MongoDB复制结构图：</p>
 <p>以上结构图总，客户端总主节点读取数据，在客户端写入数据到主节点是， 主节点与从节点进行数据交互保障数据的一致性。</p>
-<h2 id="副本集特征："><a href="#副本集特征：" class="headerlink" title="副本集特征："></a>副本集特征：</h2><ol>
+<h2 id="副本集特征"><a href="#副本集特征" class="headerlink" title="副本集特征"></a>副本集特征</h2><ol>
 <li>N 个节点的集群</li>
 <li>任何节点可作为主节点</li>
 <li>所有写入操作都在主节点上</li>
@@ -337,13 +337,13 @@
 <li>自动恢复</li>
 </ol>
 <h2 id="MongoDB副本集设置"><a href="#MongoDB副本集设置" class="headerlink" title="MongoDB副本集设置"></a>MongoDB副本集设置</h2><p>在本教程中我们使用同一个MongoDB来做MongoDB主从的实验， 操作步骤如下：</p>
-<p>1、关闭正在运行的MongoDB服务器。</p>
-<p>现在我们通过指定 –replSet 选项来启动mongoDB。–replSet 基本语法格式如下：</p>
-<p><code>mongod --port &quot;PORT&quot; --dbpath &quot;YOUR_DB_DATA_PATH&quot; --replSet &quot;REPLICA_SET_INSTANCE_NAME&quot;</code></p>
-<h3 id="实例-15"><a href="#实例-15" class="headerlink" title="实例"></a>实例</h3><p><code>mongod --port 27017 --dbpath &quot;D:\set up\mongodb\data&quot; --replSet rs0</code><br>以上实例会启动一个名为rs0的MongoDB实例，其端口号为27017。<br>启动后打开命令提示框并连接上mongoDB服务。<br>在Mongo客户端使用命令rs.initiate()来启动一个新的副本集。<br>我们可以使用rs.conf()来查看副本集的配置<br>查看副本集姿态使用 rs.status() 命令</p>
+<p>1、关闭正在运行的MongoDB服务器。<br>现在我们通过指定 –replSet 选项来启动mongoDB。–replSet 基本语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --port &quot;PORT&quot; --dbpath &quot;YOUR_DB_DATA_PATH&quot; --replSet &quot;REPLICA_SET_INSTANCE_NAME&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="实例-15"><a href="#实例-15" class="headerlink" title="实例"></a>实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --port 27017 --dbpath &quot;D:\set up\mongodb\data&quot; --replSet rs0</div></pre></td></tr></table></figure>
+<p>以上实例会启动一个名为rs0的MongoDB实例，其端口号为27017。<br>启动后打开命令提示框并连接上mongoDB服务。<br>在Mongo客户端使用命令rs.initiate()来启动一个新的副本集。<br>我们可以使用rs.conf()来查看副本集的配置<br>查看副本集姿态使用 rs.status() 命令</p>
 <h2 id="副本集添加成员"><a href="#副本集添加成员" class="headerlink" title="副本集添加成员"></a>副本集添加成员</h2><p>添加副本集的成员，我们需要使用多条服务器来启动mongo服务。进入Mongo客户端，并使用rs.add()方法来添加副本集的成员。</p>
-<h2 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h2><p>rs.add() 命令基本语法格式如下：<br><code>&gt;rs.add(HOST_NAME:PORT)</code></p>
-<h2 id="实例-16"><a href="#实例-16" class="headerlink" title="实例"></a>实例</h2><p>假设你已经启动了一个名为mongod1.net，端口号为27017的Mongo服务。 在客户端命令窗口使用rs.add() 命令将其添加到副本集中，命令如下所示：<br><code>rs.add(&quot;mongod1.net:27017&quot;)</code><br>MongoDB中你只能通过主节点将Mongo服务添加到副本集中， 判断当前运行的Mongo服务是否为主节点可以使用命令db.isMaster() 。</p>
+<h2 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h2><p>rs.add() 命令基本语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;rs.add(HOST_NAME:PORT)</div></pre></td></tr></table></figure></p>
+<h2 id="实例-16"><a href="#实例-16" class="headerlink" title="实例"></a>实例</h2><p>假设你已经启动了一个名为mongod1.net，端口号为27017的Mongo服务。 在客户端命令窗口使用rs.add() 命令将其添加到副本集中，命令如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rs.add(&quot;mongod1.net:27017&quot;)</div></pre></td></tr></table></figure></p>
+<p>MongoDB中你只能通过主节点将Mongo服务添加到副本集中， 判断当前运行的Mongo服务是否为主节点可以使用命令db.isMaster() 。</p>
 <p>MongoDB的副本集与我们常见的主从有所不同，主从在主机宕机后所有服务将停止，而副本集在主机宕机后，副本会接管主节点成为主节点，不会出现宕机的情况。</p>
 <h1 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h1><h1 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a>备份与恢复</h1><h1 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h1>]]></content>
     </entry>
