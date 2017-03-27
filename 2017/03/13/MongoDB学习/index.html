@@ -93,7 +93,7 @@ MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是
 <meta property="og:description" content="MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。
 MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。">
 <meta property="og:image" content="http://zy380196088.github.io./images/MongoDB-sharding.png">
-<meta property="og:updated_time" content="2017-03-27T10:56:01.000Z">
+<meta property="og:updated_time" content="2017-03-27T11:03:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB学习">
 <meta name="twitter:description" content="MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。
@@ -637,7 +637,9 @@ MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是
 <p>MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传递给下一个管道处理。管道操作是可以重复的。</p>
 <p>表达式：处理输入文档并输出。表达式是无状态的，只能用于计算当前聚合管道的文档，不能处理其它的文档。</p>
 <p>这里我们介绍一下聚合框架中常用的几个操作：</p>
+<blockquote>
 <p>$project：修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。<br>$match：用于过滤数据，只输出符合条件的文档。$match使用MongoDB的标准查询操作。<br>$limit：用来限制MongoDB聚合管道返回的文档数。<br>$skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。<br>$unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。<br>$group：将集合中的文档分组，可用于统计结果。<br>$sort：将输入文档排序后输出。<br>$geoNear：输出接近某一地理位置的有序文档。</p>
+</blockquote>
 <h3 id="管道操作符实例"><a href="#管道操作符实例" class="headerlink" title="管道操作符实例"></a>管道操作符实例</h3><p>1、$project实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.article.aggregate(</div><div class="line">    &#123; $project : &#123;</div><div class="line">        title : 1 ,</div><div class="line">        author : 1 ,</div><div class="line">    &#125;&#125;</div><div class="line"> );</div></pre></td></tr></table></figure></p>
 <p>这样的话结果中就只还有_id,tilte和author三个字段了，默认情况下_id字段是被包含的，如果要想不包含_id话可以这样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.article.aggregate(</div><div class="line">    &#123; $project : &#123;</div><div class="line">        _id : 0 ,</div><div class="line">        title : 1 ,</div><div class="line">        author : 1</div><div class="line">    &#125;&#125;);</div></pre></td></tr></table></figure></p>
 <p>2.$match实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.articles.aggregate( [</div><div class="line">                        &#123; $match : &#123; score : &#123; $gt : 70, $lte : 90 &#125; &#125; &#125;,</div><div class="line">                        &#123; $group: &#123; _id: null, count: &#123; $sum: 1 &#125; &#125; &#125;</div><div class="line">                       ] );</div></pre></td></tr></table></figure></p>
