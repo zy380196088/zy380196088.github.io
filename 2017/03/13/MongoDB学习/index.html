@@ -1,0 +1,1141 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MongoDB," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。
+MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB学习">
+<meta property="og:url" content="http://zy380196088.github.io./2017/03/13/MongoDB学习/index.html">
+<meta property="og:site_name" content="Zoey's Garden">
+<meta property="og:description" content="MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。
+MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。">
+<meta property="og:image" content="http://zy380196088.github.io./images/MongoDB-sharding.png">
+<meta property="og:updated_time" content="2017-03-27T05:30:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB学习">
+<meta name="twitter:description" content="MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。
+MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。">
+<meta name="twitter:image" content="http://zy380196088.github.io./images/MongoDB-sharding.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zy380196088.github.io./2017/03/13/MongoDB学习/"/>
+
+  <title> MongoDB学习 | Zoey's Garden </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zoey's Garden</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"><人生永远没有太晚的开始></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MongoDB学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-13T14:11:50+08:00" content="2017-03-13">
+              2017-03-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。</p>
+<p>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。<br><a id="more"></a></p>
+<h1 id="简单了解下-MongoDB"><a href="#简单了解下-MongoDB" class="headerlink" title="简单了解下 MongoDB"></a>简单了解下 MongoDB</h1><p>MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">name</span>:<span class="string">"Zoey"</span>,</div><div class="line">    <span class="attr">age</span>:<span class="string">"24"</span>,</div><div class="line">    <span class="attr">hobby</span>: [<span class="string">"music"</span>,<span class="string">"reading"</span>,<span class="string">"violin"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="MongoDB-的主要特点"><a href="#MongoDB-的主要特点" class="headerlink" title="MongoDB 的主要特点"></a>MongoDB 的主要特点</h2><ol>
+<li>可以在MongoDB记录中设置任何属性的索引 (如：FirstName=”Sameer”,Address=”8 Gandhi Road”)来实现更快的排序。</li>
+<li>可以通过本地或者网络创建数据镜像，这使得MongoDB有更强的扩展性。</li>
+<li>如果负载的增加（需要更多的存储空间和更强的处理能力） ，它可以分布在计算机网络中的其他节点上这就是所谓的分片。</li>
+<li>支持丰富的查询表达式。查询指令使用JSON形式的标记，可轻易查询文档中内嵌的对象及数组。</li>
+<li>使用update()命令可以实现替换完成的文档（数据）或者一些指定的数据字段 。</li>
+<li>Mongodb中的Map/reduce主要是用来对数据进行批量处理和聚合操作。Map函数调用emit(key,value)遍历集合中所有的记录，将key与value传给Reduce函数进行处理.</li>
+<li>GridFS是MongoDB中的一个内置功能，可以用于存放大量小文件。</li>
+<li>MongoDB允许在服务端执行脚本，可以用Javascript编写某个函数，直接在服务端执行，也可以把函数的定义存储在服务端，下次直接调用即可。</li>
+</ol>
+<h1 id="MongoDB-常用的数据类型"><a href="#MongoDB-常用的数据类型" class="headerlink" title="MongoDB 常用的数据类型"></a>MongoDB 常用的数据类型</h1><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td>字符串。存储数据常用的数据类型。在 MongoDB 中，UTF-8 编码的字符串才是合法的。</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>整型数值。用于存储数值。根据你所采用的服务器，可分为 32 位或 64 位。</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔值。用于存储布尔值（真/假）。</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>双精度浮点值。用于存储浮点值。</td>
+</tr>
+<tr>
+<td>Min/Max keys</td>
+<td>将一个值与 BSON（二进制的 JSON）元素的最低值和最高值相对比。</td>
+</tr>
+<tr>
+<td>Arrays</td>
+<td>用于将数组或列表或多个值存储为一个键。</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>时间戳。记录文档修改或添加的具体时间。</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>用于内嵌文档。</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>用于创建空值。</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td>符号。该数据类型基本上等同于字符串类型，但不同的是，它一般用于采用特殊符号类型的语言。</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>日期时间。用 UNIX 时间格式来存储当前日期或时间。你可以指定自己的日期时间：创建 Date 对象，传入年月日信息。</td>
+</tr>
+<tr>
+<td>Object ID</td>
+<td>对象 ID。用于创建文档的 ID。</td>
+</tr>
+<tr>
+<td>Binary Data 二进制数据。用于存储二进制数据。</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>代码类型。用于在文档中存储 JavaScript 代码。</td>
+</tr>
+<tr>
+<td>Regular expression</td>
+<td>正则表达式类型。用于存储正则表达式。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h1><h2 id="启动-MongoDB服务"><a href="#启动-MongoDB服务" class="headerlink" title="启动 MongoDB服务"></a>启动 MongoDB服务</h2><p>在MongoDB安装目录的bin目录下执行’mongod’即可。</p>
+<p>执行启动操作后，mongodb在输出一些必要信息后不会输出任何信息，之后就等待连接的建立，当连接被建立后，就会开始打印日志信息。</p>
+<p>你可以使用 MongoDB shell 来连接 MongoDB 服务器。你也可以使用 PHP 来连接 MongoDB。本教程我们会使用 MongoDB shell 来连接 Mongodb 服务，之后的章节我们将会介绍如何通过php 来连接MongoDB服务。</p>
+<h2 id="通过shell连接MongoDB服务"><a href="#通过shell连接MongoDB服务" class="headerlink" title="通过shell连接MongoDB服务"></a>通过shell连接MongoDB服务</h2><p>你可以通过执行以下命令来连接MongoDB的服务。</p>
+<p>注意：localhost为主机名，这个选项是必须的：<br><code>mongodb://localhost</code><br>当你执行以上命令时，你可以看到以下输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ ./mongo</div><div class="line">MongoDB shell version: 3.0.6</div><div class="line">connecting to: test</div><div class="line">&gt; mongodb://localhostmongodb://localhost</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>这时候你返回查看运行 ./mongod 命令的窗口，可以看到是从哪里连接到MongoDB的服务器，您可以看到如下信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">……省略信息……</div><div class="line">2015-09-25T17:22:27.336+0800 I CONTROL  [initandlisten] allocator: tcmalloc</div><div class="line">2015-09-25T17:22:27.336+0800 I CONTROL  [initandlisten] options: &#123; storage: &#123; dbPath: &quot;/data/db&quot; &#125; &#125;</div><div class="line">2015-09-25T17:22:27.350+0800 I NETWORK  [initandlisten] waiting for connections on port 27017</div><div class="line">2015-09-25T17:22:36.012+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:37310 #1 (1 connection now open)  # 该行表明一个来自本机的连接</div><div class="line">……省略信息……</div></pre></td></tr></table></figure></p>
+<h2 id="MongoDB连接命令格式"><a href="#MongoDB连接命令格式" class="headerlink" title="MongoDB连接命令格式"></a>MongoDB连接命令格式</h2><p>使用用户名和密码连接到MongoDB服务器，你必须使用 ‘username:password@hostname/dbname’ 格式，’username’为用户名，’password’ 为密码。</p>
+<p>使用用户名和密码连接登陆到默认数据库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ./mongo</div><div class="line">MongoDB shell version: 3.0.6</div><div class="line">connecting to: test</div><div class="line">mongodb://admin:123456@localhost/</div></pre></td></tr></table></figure></p>
+<p>以上命令中，用户 admin 使用密码 123456 连接到本地的 MongoDB 服务上。输出结果如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; mongodb://admin:123456@localhost/</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>使用用户名和密码连接登陆到指定数据库：</p>
+<p>连接到指定数据库的格式如下：</p>
+<p>mongodb://admin:123456@localhost/test</p>
+<h2 id="更多连接实例"><a href="#更多连接实例" class="headerlink" title="更多连接实例"></a>更多连接实例</h2><p>连接本地数据库服务器，端口是默认的。</p>
+<p>mongodb://localhost<br>使用用户名fred，密码foobar登录localhost的admin数据库。</p>
+<p>mongodb://fred:foobar@localhost<br>使用用户名fred，密码foobar登录localhost的baz数据库。</p>
+<p>mongodb://fred:foobar@localhost/baz<br>连接 replica pair, 服务器1为example1.com服务器2为example2。</p>
+<p>mongodb://example1.com:27017,example2.com:27017<br>连接 replica set 三台服务器 (端口 27017, 27018, 和27019):</p>
+<p>mongodb://localhost,localhost:27018,localhost:27019<br>连接 replica set 三台服务器, 写入操作应用在主服务器 并且分布查询到从服务器。</p>
+<p>mongodb://host1,host2,host3/?slaveOk=true<br>直接连接第一个服务器，无论是replica set一部分或者主服务器或者从服务器。</p>
+<p>mongodb://host1,host2,host3/?connect=direct;slaveOk=true<br>当你的连接服务器有优先级，还需要列出所有服务器，你可以使用上述连接方式。</p>
+<p>安全模式连接到localhost:</p>
+<p>mongodb://localhost/?safe=true<br>以安全模式连接到replica set，并且等待至少两个复制服务器成功写入，超时时间设置为2秒。</p>
+<p>mongodb://host1,host2,host3/?safe=true;w=2;wtimeoutMS=2000</p>
+<h2 id="参数选项说明"><a href="#参数选项说明" class="headerlink" title="参数选项说明"></a>参数选项说明</h2><p>标准格式：</p>
+<p>mongodb://[username:password@]host1[:port1][,host2[:port2],…[,hostN[:portN]]][/[database][?options]]<br>标准的连接格式包含了多个选项(options)，如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>replicaSet=name</td>
+<td>验证replica set的名称。 Impliesconnect=replicaSet.</td>
+</tr>
+<tr>
+<td>slaveOk=true/false</td>
+<td>true在connect=direct模式下，驱动会连接第一台机器，即使这台服务器不是主。在connect=replicaSet模式下，驱动会发送所有的写请求到主并且把读取操作分布在其他从服务器。false 在 connect=direct模式下，驱动会自动找寻主服务器. 在connect=replicaSet 模式下，驱动仅仅连接主服务器，并且所有的读写命令都连接到主服务器。</td>
+</tr>
+<tr>
+<td>safe=true/false</td>
+<td>true:在执行更新操作之后，驱动都会发送getLastError命令来确保更新成功。(还要参考 wtimeoutMS).false: 在每次更新之后，驱动不会发送getLastError来确保更新成功。</td>
+</tr>
+<tr>
+<td>w=n</td>
+<td>驱动添加 { w : n } 到getLastError命令. 应用于safe=true。</td>
+</tr>
+<tr>
+<td>wtimeoutMS=ms</td>
+<td>驱动添加 { wtimeout : ms } 到 getlasterror 命令. 应用于 safe=true. true: 驱动添加 { fsync : true } 到 getlasterror 命令.应用于 safe=true.false: 驱动不会添加到getLastError命令中。</td>
+</tr>
+<tr>
+<td>journal=true/false</td>
+<td>如果设置为 true, 同步到 journal (在提交到数据库前写入到实体中). 应用于 safe=true</td>
+</tr>
+<tr>
+<td>connectTimeoutMS=ms</td>
+<td>可以打开连接的时间。</td>
+</tr>
+<tr>
+<td>socketTimeoutMS=ms</td>
+<td>发送和接受sockets的时间。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>MongoDB 创建数据库的语法格式如下：<br><code>use DATABASE_NAME</code><br>如果数据库不存在，则创建数据库，否则切换到指定数据库。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>以下实例我们创建了数据库 runoob:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; use runoob</div><div class="line">switched to db runoob</div><div class="line">&gt; db</div><div class="line">runoob</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>如果你想查看所有数据库，可以使用 show dbs 命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">local  0.078GB</div><div class="line">test   0.078GB</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>可以看到，我们刚创建的数据库 runoob 并不在数据库的列表中， 要显示它，我们需要向 runoob 数据库插入一些数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; db.runoob.insert(&#123;&quot;name&quot;:&quot;菜鸟教程&quot;&#125;)</div><div class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</div><div class="line">&gt; show dbs</div><div class="line">local   0.078GB</div><div class="line">runoob  0.078GB</div><div class="line">test    0.078GB</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>MongoDB 中默认的数据库为 test，如果你没有创建新的数据库，集合将存放在 test 数据库中</p>
+<h1 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h1><h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><p>MongoDB 删除数据库的语法格式如下：<br><code>db.dropDatabase()</code><br>删除当前数据库，默认为 test，你可以使用 db 命令查看当前数据库名。</p>
+<h2 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h2><p>以下实例我们删除了数据库 runoob。</p>
+<p>首先，查看所有数据库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">local   0.078GB</div><div class="line">runoob  0.078GB</div><div class="line">test    0.078GB</div></pre></td></tr></table></figure></p>
+<p>接下来我们切换到数据库 runoob：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; use runoob</div><div class="line">switched to db runoob</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>执行删除命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; db.dropDatabase()</div><div class="line">&#123; &quot;dropped&quot; : &quot;runoob&quot;, &quot;ok&quot; : 1 &#125;</div></pre></td></tr></table></figure></p>
+<p>最后，我们再通过 show dbs 命令数据库是否删除成功：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">local  0.078GB</div><div class="line">test   0.078GB</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h1><p>文档的数据结构和JSON基本一样。<br>所有存储在集合中的数据都是BSON格式。</p>
+<p>BSON是一种类json的一种二进制形式的存储格式,简称Binary JSON。</p>
+<h2 id="插入文档-1"><a href="#插入文档-1" class="headerlink" title="插入文档"></a>插入文档</h2><p>MongoDB 使用 insert() 或 save() 方法向集合中插入文档，语法如下：<br><code>db.COLLECTION_NAME.insert(document)</code></p>
+<h2 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h2><p>以下文档可以存储在 MongoDB 的 runoob 数据库 的 col集合中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.insert(&#123;title: &apos;MongoDB 教程&apos;, </div><div class="line">    description: &apos;MongoDB 是一个 Nosql 数据库&apos;,</div><div class="line">    by: &apos;菜鸟教程&apos;,</div><div class="line">    url: &apos;http://www.runoob.com&apos;,</div><div class="line">    tags: [&apos;mongodb&apos;, &apos;database&apos;, &apos;NoSQL&apos;],</div><div class="line">    likes: 100</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>以上实例中 col 是我们的集合名，前一章节我们已经创建过了，如果该集合不在该数据库中， MongoDB 会自动创建该集合比插入文档。</p>
+<p>查看已插入文档：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find()</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56064886ade2f21f36b03134&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot;, &quot;database&quot;, &quot;NoSQL&quot; ], &quot;likes&quot; : 100 &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>我们也可以将数据定义为一个变量，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; document=(&#123;title: &apos;MongoDB 教程&apos;, </div><div class="line">    description: &apos;MongoDB 是一个 Nosql 数据库&apos;,</div><div class="line">    by: &apos;菜鸟教程&apos;,</div><div class="line">    url: &apos;http://www.runoob.com&apos;,</div><div class="line">    tags: [&apos;mongodb&apos;, &apos;database&apos;, &apos;NoSQL&apos;],</div><div class="line">    likes: 100</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>执行后显示结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;title&quot; : &quot;MongoDB 教程&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>执行插入操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.insert(document)</div><div class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>插入文档你也可以使用 db.col.save(document) 命令。如果不指定 _id 字段 save() 方法类似于 insert() 方法。如果指定 _id 字段，则会更新该 _id 的数据。</p>
+<h1 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h1><h2 id="update-方法"><a href="#update-方法" class="headerlink" title="update() 方法"></a>update() 方法</h2><p>update() 方法用于更新已存在的文档。语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">db.collection.update(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &lt;update&gt;,</div><div class="line">   &#123;</div><div class="line">     upsert: &lt;boolean&gt;,</div><div class="line">     multi: &lt;boolean&gt;,</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>参数说明：<br>query : update的查询条件，类似sql update查询内where后面的。<br>update : update的对象和一些更新的操作符（如$,$inc…）等，也可以理解为sql update查询内set后面的<br>upsert : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。<br>multi : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。<br>writeConcern :可选，抛出异常的级别。</p>
+<h2 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h2><p>我们在集合 col 中插入如下数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.insert(&#123;</div><div class="line">    title: &apos;MongoDB 教程&apos;, </div><div class="line">    description: &apos;MongoDB 是一个 Nosql 数据库&apos;,</div><div class="line">    by: &apos;菜鸟教程&apos;,</div><div class="line">    url: &apos;http://www.runoob.com&apos;,</div><div class="line">    tags: [&apos;mongodb&apos;, &apos;database&apos;, &apos;NoSQL&apos;],</div><div class="line">    likes: 100</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>接着我们通过 update() 方法来更新标题(title):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.update(&#123;&apos;title&apos;:&apos;MongoDB 教程&apos;&#125;,&#123;$set:&#123;&apos;title&apos;:&apos;MongoDB&apos;&#125;&#125;)</div><div class="line">WriteResult(&#123; &quot;nMatched&quot; : 1, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 1 &#125;)   # 输出信息</div><div class="line">&gt; db.col.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56064f89ade2f21f36b03136&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>可以看到标题(title)由原来的 “MongoDB 教程” 更新为了 “MongoDB”。<br>以上语句只会修改第一条发现的文档，如果你要修改多条相同的文档，则需要设置 multi 参数为 true。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.update(&#123;&apos;title&apos;:&apos;MongoDB 教程&apos;&#125;,&#123;$set:&#123;&apos;title&apos;:&apos;MongoDB&apos;&#125;&#125;,&#123;multi:true&#125;)</div><div class="line">save() 方法</div><div class="line">save() 方法通过传入的文档来替换已有文档。语法格式如下：</div><div class="line"></div><div class="line">db.collection.save(</div><div class="line">   &lt;document&gt;,</div><div class="line">   &#123;</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>参数说明：<br>document : 文档数据。<br>writeConcern :可选，抛出异常的级别。</p>
+<h2 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h2><p>以下实例中我们替换了 _id 为 56064f89ade2f21f36b03136 的文档数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.save(&#123;</div><div class="line">    &quot;_id&quot; : ObjectId(&quot;56064f89ade2f21f36b03136&quot;),</div><div class="line">    &quot;title&quot; : &quot;MongoDB&quot;,</div><div class="line">    &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">    &quot;by&quot; : &quot;Runoob&quot;,</div><div class="line">    &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">    &quot;tags&quot; : [</div><div class="line">            &quot;mongodb&quot;,</div><div class="line">            &quot;NoSQL&quot;</div><div class="line">    ],</div><div class="line">    &quot;likes&quot; : 110</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>替换成功后，我们可以通过 find() 命令来查看替换后的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56064f89ade2f21f36b03136&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;Runoob&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 110</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="更多实例"><a href="#更多实例" class="headerlink" title="更多实例"></a>更多实例</h2><p>只更新第一条记录：<br><code>db.col.update( { &quot;count&quot; : { $gt : 1 } } , { $set : { &quot;test2&quot; : &quot;OK&quot;} } );</code></p>
+<p>全部更新：<br><code>db.col.update( { &quot;count&quot; : { $gt : 3 } } , { $set : { &quot;test2&quot; : &quot;OK&quot;} },false,true );</code></p>
+<p>只添加第一条：<br><code>db.col.update( { &quot;count&quot; : { $gt : 4 } } , { $set : { &quot;test5&quot; : &quot;OK&quot;} },true,false );</code></p>
+<p>全部添加加进去:<br><code>db.col.update( { &quot;count&quot; : { $gt : 5 } } , { $set : { &quot;test5&quot; : &quot;OK&quot;} },true,true );</code></p>
+<p>全部更新：<br><code>db.col.update( { &quot;count&quot; : { $gt : 15 } } , { $inc : { &quot;count&quot; : 1} },false,true );</code></p>
+<p>只更新第一条记录：<br><code>db.col.update( { &quot;count&quot; : { $gt : 10 } } , { $inc : { &quot;count&quot; : 1} },false,false );</code></p>
+<h1 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h1><h2 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h2><p>remove() 方法的基本语法格式如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.collection.remove(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &lt;justOne&gt;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>如果你的 MongoDB 是 2.6 版本以后的，语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.collection.remove(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &#123;</div><div class="line">     justOne: &lt;boolean&gt;,</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>参数说明：<br>query :（可选）删除的文档的条件。<br>justOne : （可选）如果设为 true 或 1，则只删除一个文档。<br>writeConcern :（可选）抛出异常的级别。</p>
+<h2 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h2><p>以下文档我们执行两次插入操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.insert(&#123;title: &apos;MongoDB 教程&apos;, </div><div class="line">    description: &apos;MongoDB 是一个 Nosql 数据库&apos;,</div><div class="line">    by: &apos;菜鸟教程&apos;,</div><div class="line">    url: &apos;http://www.runoob.com&apos;,</div><div class="line">    tags: [&apos;mongodb&apos;, &apos;database&apos;, &apos;NoSQL&apos;],</div><div class="line">    likes: 100</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>使用 find() 函数查询数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find()</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066169ade2f21f36b03137&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot;, &quot;database&quot;, &quot;NoSQL&quot; ], &quot;likes&quot; : 100 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5606616dade2f21f36b03138&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot;, &quot;database&quot;, &quot;NoSQL&quot; ], &quot;likes&quot; : 100 &#125;</div></pre></td></tr></table></figure></p>
+<p>接下来我们移除 title 为 ‘MongoDB 教程’ 的文档：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.remove(&#123;&apos;title&apos;:&apos;MongoDB 教程&apos;&#125;)</div><div class="line">WriteResult(&#123; &quot;nRemoved&quot; : 2 &#125;)           # 删除了两条数据</div><div class="line">&gt;db.col.find()</div><div class="line">……                                        # 没有数据</div></pre></td></tr></table></figure></p>
+<p>如果你只想删除第一条找到的记录可以设置 justOne 为 1，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.COLLECTION_NAME.remove(DELETION_CRITERIA,1)</div></pre></td></tr></table></figure></p>
+<p>如果你想删除所有数据，可以使用以下方式（类似常规 SQL 的 truncate 命令）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.remove(&#123;&#125;)</div><div class="line">&gt;db.col.find()</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h1><h2 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h2><p>MongoDB 查询数据的语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.COLLECTION_NAME.find()</div></pre></td></tr></table></figure></p>
+<p>find() 方法以非结构化的方式来显示所有文档。<br>如果你需要以易读的方式来读取数据，可以使用 pretty() 方法，语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find().pretty()</div></pre></td></tr></table></figure></p>
+<p>pretty() 方法以格式化的方式来显示所有文档。</p>
+<h2 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h2><p>以下实例我们查询了集合 col 中的数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56063f17ade2f21f36b03133&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB 教程&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>除了 find() 方法之外，还有一个 findOne() 方法，它只返回一个文档。</p>
+<h2 id="MongoDB-与-RDBMS-Where-语句比较"><a href="#MongoDB-与-RDBMS-Where-语句比较" class="headerlink" title="MongoDB 与 RDBMS Where 语句比较"></a>MongoDB 与 RDBMS Where 语句比较</h2><p>如果你熟悉常规的 SQL 数据，通过下表可以更好的理解 MongoDB 的条件语句查询：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>格式</th>
+<th>范例</th>
+<th>RDBMS中的类似语句</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等于</td>
+<td>{<key>:<value>}</value></key></td>
+<td>db.col.find({“by”:”菜鸟教程”}).pretty()</td>
+<td>where by = ‘菜鸟教程’</td>
+</tr>
+<tr>
+<td>小于</td>
+<td>{<key>:{$lt:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$lt:50}}).pretty()</td>
+<td>where likes &lt; 50</td>
+</tr>
+<tr>
+<td>小于或等于</td>
+<td>{<key>:{$lte:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$lte:50}}).pretty()</td>
+<td>where likes &lt;= 50</td>
+</tr>
+<tr>
+<td>大于</td>
+<td>{<key>:{$gt:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$gt:50}}).pretty()</td>
+<td>where likes &gt; 50</td>
+</tr>
+<tr>
+<td>大于或等于</td>
+<td>{<key>:{$gte:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$gte:50}}).pretty()</td>
+<td>where likes &gt;= 50</td>
+</tr>
+<tr>
+<td>不等于</td>
+<td>{<key>:{$ne:<value>}}</value></key></td>
+<td>db.col.find({“likes”:{$ne:50}}).pretty()</td>
+<td>where likes != 50</td>
+</tr>
+</tbody>
+</table>
+<h2 id="MongoDB-AND-条件"><a href="#MongoDB-AND-条件" class="headerlink" title="MongoDB AND 条件"></a>MongoDB AND 条件</h2><p>MongoDB 的 find() 方法可以传入多个键(key)，每个键(key)以逗号隔开，及常规 SQL 的 AND 条件。</p>
+<p>语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(&#123;key1:value1, key2:value2&#125;).pretty()</div></pre></td></tr></table></figure></p>
+<h2 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h2><p>以下实例通过 by 和 title 键来查询 菜鸟教程 中 MongoDB 教程 的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find(&#123;&quot;by&quot;:&quot;菜鸟教程&quot;, &quot;title&quot;:&quot;MongoDB 教程&quot;&#125;).pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56063f17ade2f21f36b03133&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB 教程&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上实例中类似于 WHERE 语句：WHERE by=’菜鸟教程’ AND title=’MongoDB 教程’</p>
+<h2 id="MongoDB-OR-条件"><a href="#MongoDB-OR-条件" class="headerlink" title="MongoDB OR 条件"></a>MongoDB OR 条件</h2><p>MongoDB OR 条件语句使用了关键字 $or,语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(</div><div class="line">   &#123;</div><div class="line">      $or: [</div><div class="line">         &#123;key1: value1&#125;, &#123;key2:value2&#125;</div><div class="line">      ]</div><div class="line">   &#125;</div><div class="line">).pretty()</div></pre></td></tr></table></figure></p>
+<h2 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h2><p>以下实例中，我们演示了查询键 by 值为 菜鸟教程 或键 title 值为 MongoDB 教程 的文档。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(&#123;$or:[&#123;&quot;by&quot;:&quot;菜鸟教程&quot;&#125;,&#123;&quot;title&quot;: &quot;MongoDB 教程&quot;&#125;]&#125;).pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56063f17ade2f21f36b03133&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB 教程&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="AND-和-OR-联合使用"><a href="#AND-和-OR-联合使用" class="headerlink" title="AND 和 OR 联合使用"></a>AND 和 OR 联合使用</h2><p>以下实例演示了 AND 和 OR 联合使用，类似常规 SQL 语句为： ‘where likes&gt;50 AND (by = ‘菜鸟教程’ OR title = ‘MongoDB 教程’)’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(&#123;&quot;likes&quot;: &#123;$gt:50&#125;, $or: [&#123;&quot;by&quot;: &quot;菜鸟教程&quot;&#125;,&#123;&quot;title&quot;: &quot;MongoDB 教程&quot;&#125;]&#125;).pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;56063f17ade2f21f36b03133&quot;),</div><div class="line">        &quot;title&quot; : &quot;MongoDB 教程&quot;,</div><div class="line">        &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">        &quot;by&quot; : &quot;菜鸟教程&quot;,</div><div class="line">        &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">        &quot;tags&quot; : [</div><div class="line">                &quot;mongodb&quot;,</div><div class="line">                &quot;database&quot;,</div><div class="line">                &quot;NoSQL&quot;</div><div class="line">        ],</div><div class="line">        &quot;likes&quot; : 100</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h1><p>条件操作符用于比较两个表达式并从mongoDB集合中获取数据。</p>
+<p>我们使用的数据库名称为”runoob” 我们的集合名称为”col”，以下为我们插入的数据。<br>为了方便测试，我们可以先使用以下命令清空集合 “col” 的数据：</p>
+<p><code>db.col.remove({})db.col.remove({})</code></p>
+<p>插入以下数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.insert(&#123;</div><div class="line">    title: &apos;PHP 教程&apos;, </div><div class="line">    description: &apos;PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。&apos;,</div><div class="line">    by: &apos;菜鸟教程&apos;,</div><div class="line">    url: &apos;http://www.runoob.com&apos;,</div><div class="line">    tags: [&apos;php&apos;],</div><div class="line">    likes: 200</div><div class="line">&#125;)</div><div class="line">&gt;db.col.insert(&#123;title: &apos;Java 教程&apos;, </div><div class="line">    description: &apos;Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。&apos;,</div><div class="line">    by: &apos;菜鸟教程&apos;,</div><div class="line">    url: &apos;http://www.runoob.com&apos;,</div><div class="line">    tags: [&apos;java&apos;],</div><div class="line">    likes: 150</div><div class="line">&#125;)</div><div class="line">db.col.insert(&#123;title: &apos;MongoDB 教程&apos;, </div><div class="line">    description: &apos;MongoDB 是一个 Nosql 数据库&apos;,</div><div class="line">    by: &apos;菜鸟教程&apos;,</div><div class="line">    url: &apos;http://www.runoob.com&apos;,</div><div class="line">    tags: [&apos;mongodb&apos;],</div><div class="line">    likes: 100</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>使用<em>find()*</em>命令查看数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find()</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066542ade2f21f36b0313a&quot;), &quot;title&quot; : &quot;PHP 教程&quot;, &quot;description&quot; : &quot;PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;php&quot; ], &quot;likes&quot; : 200 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066549ade2f21f36b0313b&quot;), &quot;title&quot; : &quot;Java 教程&quot;, &quot;description&quot; : &quot;Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;java&quot; ], &quot;likes&quot; : 150 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5606654fade2f21f36b0313c&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot; ], &quot;likes&quot; : 100 &#125;</div></pre></td></tr></table></figure>
+<h2 id="MongoDB-gt-大于操作符-gt"><a href="#MongoDB-gt-大于操作符-gt" class="headerlink" title="MongoDB (&gt;) 大于操作符 - $gt"></a>MongoDB (&gt;) 大于操作符 - $gt</h2><p>如果你想获取 “col” 集合中 “likes” 大于 100 的数据，你可以使用以下命令：<br><code>db.col.find({&quot;likes&quot; : {$gt : 100}})</code><br>类似于SQL语句：<br><code>Select * from col where likes &gt; 100;</code><br>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find(&#123;&quot;likes&quot; : &#123;$gt : 100&#125;&#125;)</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066542ade2f21f36b0313a&quot;), &quot;title&quot; : &quot;PHP 教程&quot;, &quot;description&quot; : &quot;PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;php&quot; ], &quot;likes&quot; : 200 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066549ade2f21f36b0313b&quot;), &quot;title&quot; : &quot;Java 教程&quot;, &quot;description&quot; : &quot;Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;java&quot; ], &quot;likes&quot; : 150 &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="MongoDB（-gt-）大于等于操作符-gte"><a href="#MongoDB（-gt-）大于等于操作符-gte" class="headerlink" title="MongoDB（&gt;=）大于等于操作符 - $gte"></a>MongoDB（&gt;=）大于等于操作符 - $gte</h2><p>如果你想获取”col”集合中 “likes” 大于等于 100 的数据，你可以使用以下命令：<br><code>db.col.find({likes : {$gte : 100}})</code><br>类似于SQL语句：<br><code>Select * from col where likes &gt;=100;</code><br>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find(&#123;likes : &#123;$gte : 100&#125;&#125;)</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066542ade2f21f36b0313a&quot;), &quot;title&quot; : &quot;PHP 教程&quot;, &quot;description&quot; : &quot;PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;php&quot; ], &quot;likes&quot; : 200 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066549ade2f21f36b0313b&quot;), &quot;title&quot; : &quot;Java 教程&quot;, &quot;description&quot; : &quot;Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;java&quot; ], &quot;likes&quot; : 150 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5606654fade2f21f36b0313c&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot; ], &quot;likes&quot; : 100 &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="MongoDB-lt-小于操作符-lt"><a href="#MongoDB-lt-小于操作符-lt" class="headerlink" title="MongoDB (&lt;) 小于操作符 - $lt"></a>MongoDB (&lt;) 小于操作符 - $lt</h2><p>如果你想获取”col”集合中 “likes” 小于 150 的数据，你可以使用以下命令：<br><code>db.col.find({likes : {$lt : 150}})</code><br>类似于SQL语句：<br><code>Select * from col where likes &lt; 150;</code><br>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find(&#123;likes : &#123;$lt : 150&#125;&#125;)</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5606654fade2f21f36b0313c&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot; ], &quot;likes&quot; : 100 &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="MongoDB-lt-小于操作符-lte"><a href="#MongoDB-lt-小于操作符-lte" class="headerlink" title="MongoDB (&lt;=) 小于操作符 - $lte"></a>MongoDB (&lt;=) 小于操作符 - $lte</h2><p>如果你想获取”col”集合中 “likes” 小于等于 150 的数据，你可以使用以下命令：<br><code>db.col.find({likes : {$lte : 150}})</code><br>类似于SQL语句：<br><code>Select * from col where likes &lt;= 150;</code><br>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find(&#123;likes : &#123;$lte : 150&#125;&#125;)</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066549ade2f21f36b0313b&quot;), &quot;title&quot; : &quot;Java 教程&quot;, &quot;description&quot; : &quot;Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;java&quot; ], &quot;likes&quot; : 150 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5606654fade2f21f36b0313c&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot; ], &quot;likes&quot; : 100 &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="MongoDB-使用-lt-和-gt-查询-lt-和-gt"><a href="#MongoDB-使用-lt-和-gt-查询-lt-和-gt" class="headerlink" title="MongoDB 使用 (&lt;) 和 (&gt;) 查询 - $lt 和 $gt"></a>MongoDB 使用 (&lt;) 和 (&gt;) 查询 - $lt 和 $gt</h2><p>如果你想获取”col”集合中 “likes” 大于100，小于 200 的数据，你可以使用以下命令：<br><code>db.col.find({likes : {$lt :200, $gt : 100}})</code><br>类似于SQL语句:<br><code>Select * from col where likes&gt;100 AND  likes&lt;200;</code><br>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find(&#123;likes : &#123;$lt :200, $gt : 100&#125;&#125;)</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066549ade2f21f36b0313b&quot;), &quot;title&quot; : &quot;Java 教程&quot;, &quot;description&quot; : &quot;Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;java&quot; ], &quot;likes&quot; : 150 &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="type-操作符"><a href="#type-操作符" class="headerlink" title="$type 操作符"></a>$type 操作符</h1><p>$type操作符是基于BSON类型来检索集合中匹配的数据类型，并返回结果。<br>$type操作符是基于BSON类型来检索集合中匹配的数据类型，并返回结果。<br>MongoDB 中可以使用的类型如下表所示：<br>|类型|数字|备注|<br>|—|—|—|<br>| Double | 1 ||<br>| String | 2 |<br>| Object | 3||<br>| Array | 4||<br>| Binary data | 5 ||<br>| Undefined | 6 | 已废弃。|<br>| Object id |  7| |<br>| Boolean | 8 |<br>| Date | 9 | |<br>| Null | 10| |<br>| Regular Expression | 11||<br>| JavaScript | 13 | |<br>| Symbol | 14 | |<br>| JavaScript (with scope) | 15 |<br>| 32-bit integer | 16 ||<br>| Timestamp |  17 ||<br>| 64-bit integer | 18 |<br>| Min key | 255 | Query with -1.|<br>| Max key | 127 |</p>
+<h2 id="实例-9"><a href="#实例-9" class="headerlink" title="实例"></a>实例</h2><p>如果想获取 “col” 集合中 title 为 String 的数据，你可以使用以下命令：<br><code>db.col.find({&quot;title&quot; : {$type : 2}})</code></p>
+<h1 id="MongoDB-Limit与Skip方法"><a href="#MongoDB-Limit与Skip方法" class="headerlink" title="MongoDB Limit与Skip方法"></a>MongoDB Limit与Skip方法</h1><h2 id="MongoDB-Limit-方法"><a href="#MongoDB-Limit-方法" class="headerlink" title="MongoDB Limit() 方法"></a>MongoDB Limit() 方法</h2><p>如果你需要在MongoDB中读取指定数量的数据记录，可以使用MongoDB的Limit方法，limit()方法接受一个数字参数，该参数指定从MongoDB中读取的记录条数。</p>
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><p><code>db.COLLECTION_NAME.find().limit(NUMBER)</code><br>注：如果你们没有指定limit()方法中的参数则显示集合中的所有数据。</p>
+<h3 id="实例-10"><a href="#实例-10" class="headerlink" title="实例"></a>实例</h3><p>集合 col 中的数据如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066542ade2f21f36b0313a&quot;), &quot;title&quot; : &quot;PHP 教程&quot;, &quot;description&quot; : &quot;PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;php&quot; ], &quot;likes&quot; : 200 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066549ade2f21f36b0313b&quot;), &quot;title&quot; : &quot;Java 教程&quot;, &quot;description&quot; : &quot;Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;java&quot; ], &quot;likes&quot; : 150 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5606654fade2f21f36b0313c&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot; ], &quot;likes&quot; : 100 &#125;</div></pre></td></tr></table></figure></p>
+<p>以下实例为显示查询文档中的两条记录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; db.col.find(&#123;&#125;,&#123;&quot;title&quot;:1,_id:0&#125;).limit(2)</div><div class="line">&#123; &quot;title&quot; : &quot;PHP 教程&quot; &#125;</div><div class="line">&#123; &quot;title&quot; : &quot;Java 教程&quot; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="MongoDB-Skip-方法"><a href="#MongoDB-Skip-方法" class="headerlink" title="MongoDB Skip() 方法"></a>MongoDB Skip() 方法</h2><p>我们除了可以使用limit()方法来读取指定数量的数据外，还可以使用skip()方法来跳过指定数量的数据，skip方法同样接受一个数字参数作为跳过的记录条数。</p>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><p><code>db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)</code></p>
+<h3 id="实例-11"><a href="#实例-11" class="headerlink" title="实例"></a>实例</h3><p>以上实例只会显示第二条文档数据:注:skip()方法默认参数为 0 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(&#123;&#125;,&#123;&quot;title&quot;:1,_id:0&#125;).limit(1).skip(1)</div><div class="line">&#123; &quot;title&quot; : &quot;Java 教程&quot; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>注:skip()方法默认参数为 0 。</p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="MongoDB-sort-方法"><a href="#MongoDB-sort-方法" class="headerlink" title="MongoDB sort()方法"></a>MongoDB sort()方法</h2><h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><p><code>db.COLLECTION_NAME.find().sort({KEY:1})</code></p>
+<h3 id="实例-12"><a href="#实例-12" class="headerlink" title="实例"></a>实例</h3><p>col 集合中的数据如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066542ade2f21f36b0313a&quot;), &quot;title&quot; : &quot;PHP 教程&quot;, &quot;description&quot; : &quot;PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;php&quot; ], &quot;likes&quot; : 200 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;56066549ade2f21f36b0313b&quot;), &quot;title&quot; : &quot;Java 教程&quot;, &quot;description&quot; : &quot;Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;java&quot; ], &quot;likes&quot; : 150 &#125;</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5606654fade2f21f36b0313c&quot;), &quot;title&quot; : &quot;MongoDB 教程&quot;, &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;, &quot;by&quot; : &quot;菜鸟教程&quot;, &quot;url&quot; : &quot;http://www.runoob.com&quot;, &quot;tags&quot; : [ &quot;mongodb&quot; ], &quot;likes&quot; : 100 &#125;</div></pre></td></tr></table></figure></p>
+<p>以下实例演示了 col 集合中的数据按字段 likes 的降序排列：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.find(&#123;&#125;,&#123;&quot;title&quot;:1,_id:0&#125;).sort(&#123;&quot;likes&quot;:-1&#125;)</div><div class="line">&#123; &quot;title&quot; : &quot;PHP 教程&quot; &#125;</div><div class="line">&#123; &quot;title&quot; : &quot;Java 教程&quot; &#125;</div><div class="line">&#123; &quot;title&quot; : &quot;MongoDB 教程&quot; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>注： 如果没有指定sort()方法的排序方式，默认按照文档的升序排列。</p>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引通常能够极大的提高查询的效率，如果没有索引，MongoDB在读取数据时必须扫描集合中的每个文件并选取那些符合查询条件的记录。</p>
+<p>这种扫描全集合的查询效率是非常低的，特别在处理大量的数据时，查询可以要花费几十秒甚至几分钟，这对网站的性能是非常致命的。</p>
+<p>索引是特殊的数据结构，索引存储在一个易于遍历读取的数据集合中，索引是对数据库表中一列或多列的值进行排序的一种结构</p>
+<h2 id="ensureIndex-方法"><a href="#ensureIndex-方法" class="headerlink" title="ensureIndex() 方法"></a>ensureIndex() 方法</h2><h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><p><code>db.COLLECTION_NAME.ensureIndex({KEY:1})</code><br>语法中 Key 值为你要创建的索引字段，1为指定按升序创建索引，如果你想按降序来创建索引指定为-1即可。<br>ensureIndex() 方法中你也可以设置使用多个字段创建索引（关系型数据库中称作复合索引）。<br>ensureIndex() 接收可选参数，可选参数列表如下：<br>| Parameter  | Type  |  Description |<br>| ———- |——-| ————-|<br>| background | Boolean | 建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 “background” 可选参数。 “background” 默认值为false。|<br>| unique | Boolean | 建立的索引是否唯一。指定为true创建唯一索引。默认值为false.|<br>| name  | string |索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。|<br>| dropDups  |  Boolean  |在建立唯一索引时是否删除重复记录,指定 true 创建唯一索引。默认值为 false. |<br>| sparse | Boolean | 对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为 false.|<br>| expireAfterSeconds | integer 指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。|<br>| v | index version | 索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。|<br>| weights | document |  索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。|<br>| default_language | string | 对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语 |<br>| language_override | string |对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language. |</p>
+<h3 id="实例-13"><a href="#实例-13" class="headerlink" title="实例"></a>实例</h3><p>在后台创建索引：<br><code>db.values.ensureIndex({open: 1, close: 1}, {background: true})</code><br>通过在创建索引时加background:true 的选项，让创建工作在后台执行</p>
+<h1 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h1><p>MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。有点类似sql语句中的 count(*)。</p>
+<h2 id="aggregate-方法"><a href="#aggregate-方法" class="headerlink" title="aggregate() 方法"></a>aggregate() 方法</h2><h3 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h3><p><code>&gt;db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)</code></p>
+<h3 id="实例-14"><a href="#实例-14" class="headerlink" title="实例"></a>实例</h3><p>集合中的数据如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   _id: ObjectId(7df78ad8902c)</div><div class="line">   title: &apos;MongoDB Overview&apos;, </div><div class="line">   description: &apos;MongoDB is no sql database&apos;,</div><div class="line">   by_user: &apos;w3cschool.cc&apos;,</div><div class="line">   url: &apos;http://www.w3cschool.cc&apos;,</div><div class="line">   tags: [&apos;mongodb&apos;, &apos;database&apos;, &apos;NoSQL&apos;],</div><div class="line">   likes: 100</div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line">   _id: ObjectId(7df78ad8902d)</div><div class="line">   title: &apos;NoSQL Overview&apos;, </div><div class="line">   description: &apos;No sql database is very fast&apos;,</div><div class="line">   by_user: &apos;w3cschool.cc&apos;,</div><div class="line">   url: &apos;http://www.w3cschool.cc&apos;,</div><div class="line">   tags: [&apos;mongodb&apos;, &apos;database&apos;, &apos;NoSQL&apos;],</div><div class="line">   likes: 10</div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line">   _id: ObjectId(7df78ad8902e)</div><div class="line">   title: &apos;Neo4j Overview&apos;, </div><div class="line">   description: &apos;Neo4j is no sql database&apos;,</div><div class="line">   by_user: &apos;Neo4j&apos;,</div><div class="line">   url: &apos;http://www.neo4j.com&apos;,</div><div class="line">   tags: [&apos;neo4j&apos;, &apos;database&apos;, &apos;NoSQL&apos;],</div><div class="line">   likes: 750</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>现在我们通过以上集合计算每个作者所写的文章数，使用aggregate()计算结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt; db.mycol.aggregate([&#123;$group : &#123;_id : &quot;$by_user&quot;, num_tutorial : &#123;$sum : 1&#125;&#125;&#125;])</div><div class="line">&#123;</div><div class="line">   &quot;result&quot; : [</div><div class="line">      &#123;</div><div class="line">         &quot;_id&quot; : &quot;w3cschool.cc&quot;,</div><div class="line">         &quot;num_tutorial&quot; : 2</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">         &quot;_id&quot; : &quot;Neo4j&quot;,</div><div class="line">         &quot;num_tutorial&quot; : 1</div><div class="line">      &#125;</div><div class="line">   ],</div><div class="line">   &quot;ok&quot; : 1</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>以上实例类似sql语句： select by_user, count(*) from mycol group by by_user</p>
+<p>在上面的例子中，我们通过字段by_user字段对数据进行分组，并计算by_user字段相同值的总和。<br>下表展示了一些聚合的表达式:<br>| 表达式 | 描述 | 实例|<br>|—-|—-|—-|<br>| $sum  |  计算总和。| db.mycol.aggregate([{$group : {_id : “$by_user”, num_tutorial : {$sum : “$likes”}}}])|<br>| $avg  |  计算平均值 |  db.mycol.aggregate([{$group : {_id : “$by_user”, num_tutorial : {$avg : “$likes”}}}])|<br>| $min  |  获取集合中所有文档对应值得最小值。| db.mycol.aggregate([{$group : {_id : “$by_user”, num_tutorial : {$min : “$likes”}}}])|<br>| $max  |  获取集合中所有文档对应值得最大值。|db.mycol.aggregate([{$group : {_id : “$by_user”, num_tutorial : {$max : “$likes”}}}]) |<br>| $push |  在结果文档中插入值到一个数组中。| db.mycol.aggregate([{$group : {_id : “$by_user”, url : {$push: “$url”}}}])|<br>| $addToSet  | 在结果文档中插入值到一个数组中，但不创建副本。| db.mycol.aggregate([{$group : {_id : “$by_user”, url : {$addToSet : “$url”}}}])|<br>| $first | 根据资源文档的排序获取第一个文档数据。| db.mycol.aggregate([{$group : {_id : “$by_user”, first_url : {$first : “$url”}}}])|<br>| $last |  根据资源文档的排序获取最后一个文档数据| db.mycol.aggregate([{$group : {_id : “$by_user”, last_url : {$last : “$url”}}}])|</p>
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>管道在Unix和Linux中一般用于将当前命令的输出结果作为下一个命令的参数。</p>
+<p>MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传递给下一个管道处理。管道操作是可以重复的。</p>
+<p>表达式：处理输入文档并输出。表达式是无状态的，只能用于计算当前聚合管道的文档，不能处理其它的文档。</p>
+<p>这里我们介绍一下聚合框架中常用的几个操作：</p>
+<p>$project：修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。<br>$match：用于过滤数据，只输出符合条件的文档。$match使用MongoDB的标准查询操作。<br>$limit：用来限制MongoDB聚合管道返回的文档数。<br>$skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。<br>$unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。<br>$group：将集合中的文档分组，可用于统计结果。<br>$sort：将输入文档排序后输出。<br>$geoNear：输出接近某一地理位置的有序文档。</p>
+<h3 id="管道操作符实例"><a href="#管道操作符实例" class="headerlink" title="管道操作符实例"></a>管道操作符实例</h3><p>1、$project实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.article.aggregate(</div><div class="line">    &#123; $project : &#123;</div><div class="line">        title : 1 ,</div><div class="line">        author : 1 ,</div><div class="line">    &#125;&#125;</div><div class="line"> );</div></pre></td></tr></table></figure></p>
+<p>这样的话结果中就只还有_id,tilte和author三个字段了，默认情况下_id字段是被包含的，如果要想不包含_id话可以这样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.article.aggregate(</div><div class="line">    &#123; $project : &#123;</div><div class="line">        _id : 0 ,</div><div class="line">        title : 1 ,</div><div class="line">        author : 1</div><div class="line">    &#125;&#125;);</div></pre></td></tr></table></figure></p>
+<p>2.$match实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.articles.aggregate( [</div><div class="line">                        &#123; $match : &#123; score : &#123; $gt : 70, $lte : 90 &#125; &#125; &#125;,</div><div class="line">                        &#123; $group: &#123; _id: null, count: &#123; $sum: 1 &#125; &#125; &#125;</div><div class="line">                       ] );</div></pre></td></tr></table></figure></p>
+<p>$match用于获取分数大于70小于或等于90记录，然后将符合条件的记录送到下一阶段$group管道操作符进行处理。</p>
+<p>3.$skip实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.article.aggregate(</div><div class="line">    &#123; $skip : 5 &#125;);</div></pre></td></tr></table></figure></p>
+<p>经过$skip管道操作符处理后，前五个文档被”过滤”掉。</p>
+<h1 id="复制-副本集"><a href="#复制-副本集" class="headerlink" title="复制(副本集)"></a>复制(副本集)</h1><p>MongoDB复制是将数据同步在多个服务器的过程。<br>复制提供了数据的冗余备份，并在多个服务器上存储数据副本，提高了数据的可用性， 并可以保证数据的安全性。<br>复制还允许您从硬件故障和服务中断中恢复数据。</p>
+<h2 id="什么是复制"><a href="#什么是复制" class="headerlink" title="什么是复制?"></a>什么是复制?</h2><p>保障数据的安全性<br>数据高可用性 (24*7)<br>灾难恢复<br>无需停机维护（如备份，重建索引，压缩）<br>分布式读取数据<br>MongoDB复制原理<br>mongodb的复制至少需要两个节点。其中一个是主节点，负责处理客户端请求，其余的都是从节点，负责复制主节点上的数据。</p>
+<p>mongodb各个节点常见的搭配方式为：<strong>一主一从、一主多从。</strong></p>
+<p>主节点记录在其上的所有操作oplog，从节点定期轮询主节点获取这些操作，然后对自己的数据副本执行这些操作，从而保证从节点的数据与主节点一致。</p>
+<p>MongoDB复制结构图：</p>
+<p>以上结构图总，客户端总主节点读取数据，在客户端写入数据到主节点是， 主节点与从节点进行数据交互保障数据的一致性。</p>
+<h2 id="副本集特征"><a href="#副本集特征" class="headerlink" title="副本集特征"></a>副本集特征</h2><ol>
+<li>N 个节点的集群</li>
+<li>任何节点可作为主节点</li>
+<li>所有写入操作都在主节点上</li>
+<li>自动故障转移</li>
+<li>自动恢复</li>
+</ol>
+<h2 id="MongoDB副本集设置"><a href="#MongoDB副本集设置" class="headerlink" title="MongoDB副本集设置"></a>MongoDB副本集设置</h2><p>在本教程中我们使用同一个MongoDB来做MongoDB主从的实验， 操作步骤如下：</p>
+<p>1、关闭正在运行的MongoDB服务器。<br>现在我们通过指定 –replSet 选项来启动mongoDB。–replSet 基本语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --port &quot;PORT&quot; --dbpath &quot;YOUR_DB_DATA_PATH&quot; --replSet &quot;REPLICA_SET_INSTANCE_NAME&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="实例-15"><a href="#实例-15" class="headerlink" title="实例"></a>实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --port 27017 --dbpath &quot;D:\set up\mongodb\data&quot; --replSet rs0</div></pre></td></tr></table></figure>
+<p>以上实例会启动一个名为rs0的MongoDB实例，其端口号为27017。<br>启动后打开命令提示框并连接上mongoDB服务。<br>在Mongo客户端使用命令rs.initiate()来启动一个新的副本集。<br>我们可以使用rs.conf()来查看副本集的配置<br>查看副本集姿态使用 rs.status() 命令</p>
+<h2 id="副本集添加成员"><a href="#副本集添加成员" class="headerlink" title="副本集添加成员"></a>副本集添加成员</h2><p>添加副本集的成员，我们需要使用多条服务器来启动mongo服务。进入Mongo客户端，并使用rs.add()方法来添加副本集的成员。</p>
+<h2 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h2><p>rs.add() 命令基本语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;rs.add(HOST_NAME:PORT)</div></pre></td></tr></table></figure></p>
+<h2 id="实例-16"><a href="#实例-16" class="headerlink" title="实例"></a>实例</h2><p>假设你已经启动了一个名为mongod1.net，端口号为27017的Mongo服务。 在客户端命令窗口使用rs.add() 命令将其添加到副本集中，命令如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rs.add(&quot;mongod1.net:27017&quot;)</div></pre></td></tr></table></figure></p>
+<p>MongoDB中你只能通过主节点将Mongo服务添加到副本集中， 判断当前运行的Mongo服务是否为主节点可以使用命令db.isMaster() 。</p>
+<p>MongoDB的副本集与我们常见的主从有所不同，主从在主机宕机后所有服务将停止，而副本集在主机宕机后，副本会接管主节点成为主节点，不会出现宕机的情况。</p>
+<h1 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h1><p><img src="images/MongoDB-sharding.png" alt="MongoDB分片集群结构分布"></p>
+<p>上图中主要有如下所述的三个主要组件:</p>
+<ol>
+<li><strong>Shard</strong><br>用于存储实际的数据块,实际生产环境中一个 shard server 角色,可由几台机器组合一个 relica set 承担,防止主机单点故障.</li>
+<li><strong>Config Server</strong><br>mongod 实例,存储了整个 ClusterMetadata,其中包括 chunk 信息.</li>
+<li><strong>Query Routers</strong><br>前端路由,客户端由此接入,且让整个集群看上去像单一数据库,前端应用可以透明使用.</li>
+</ol>
+<h1 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a>备份与恢复</h1><h1 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h1>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MongoDB/" rel="tag">#MongoDB</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/04/JavaScript设计模式/" rel="next" title="JavaScript设计模式">
+                <i class="fa fa-chevron-left"></i> JavaScript设计模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/14/面试小记/" rel="prev" title="面试小记">
+                面试小记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zoey" />
+          <p class="site-author-name" itemprop="name">Zoey</p>
+          <p class="site-description motion-element" itemprop="description">对于一个真正有所追求的人来来说,生命的每个时期都是年轻和及时的.<br>-摩西奶奶</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zy380196088" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/Joy380196088" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单了解下-MongoDB"><span class="nav-number">1.</span> <span class="nav-text">简单了解下 MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-的主要特点"><span class="nav-number">1.1.</span> <span class="nav-text">MongoDB 的主要特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB-常用的数据类型"><span class="nav-number">2.</span> <span class="nav-text">MongoDB 常用的数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接"><span class="nav-number">3.</span> <span class="nav-text">连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-MongoDB服务"><span class="nav-number">3.1.</span> <span class="nav-text">启动 MongoDB服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过shell连接MongoDB服务"><span class="nav-number">3.2.</span> <span class="nav-text">通过shell连接MongoDB服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB连接命令格式"><span class="nav-number">3.3.</span> <span class="nav-text">MongoDB连接命令格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多连接实例"><span class="nav-number">3.4.</span> <span class="nav-text">更多连接实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数选项说明"><span class="nav-number">3.5.</span> <span class="nav-text">参数选项说明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建数据库"><span class="nav-number">4.</span> <span class="nav-text">创建数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">4.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">4.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除数据库"><span class="nav-number">5.</span> <span class="nav-text">删除数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-1"><span class="nav-number">5.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-1"><span class="nav-number">5.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插入文档"><span class="nav-number">6.</span> <span class="nav-text">插入文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入文档-1"><span class="nav-number">6.1.</span> <span class="nav-text">插入文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-2"><span class="nav-number">6.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新文档"><span class="nav-number">7.</span> <span class="nav-text">更新文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#update-方法"><span class="nav-number">7.1.</span> <span class="nav-text">update() 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-3"><span class="nav-number">7.2.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-4"><span class="nav-number">7.3.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多实例"><span class="nav-number">7.4.</span> <span class="nav-text">更多实例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除文档"><span class="nav-number">8.</span> <span class="nav-text">删除文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-2"><span class="nav-number">8.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-5"><span class="nav-number">8.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询文档"><span class="nav-number">9.</span> <span class="nav-text">查询文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-3"><span class="nav-number">9.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-6"><span class="nav-number">9.2.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-与-RDBMS-Where-语句比较"><span class="nav-number">9.3.</span> <span class="nav-text">MongoDB 与 RDBMS Where 语句比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-AND-条件"><span class="nav-number">9.4.</span> <span class="nav-text">MongoDB AND 条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-7"><span class="nav-number">9.5.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-OR-条件"><span class="nav-number">9.6.</span> <span class="nav-text">MongoDB OR 条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-8"><span class="nav-number">9.7.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AND-和-OR-联合使用"><span class="nav-number">9.8.</span> <span class="nav-text">AND 和 OR 联合使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件操作符"><span class="nav-number">10.</span> <span class="nav-text">条件操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-gt-大于操作符-gt"><span class="nav-number">10.1.</span> <span class="nav-text">MongoDB (>) 大于操作符 - $gt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB（-gt-）大于等于操作符-gte"><span class="nav-number">10.2.</span> <span class="nav-text">MongoDB（>=）大于等于操作符 - $gte</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-lt-小于操作符-lt"><span class="nav-number">10.3.</span> <span class="nav-text">MongoDB (<) 小于操作符 - $lt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-lt-小于操作符-lte"><span class="nav-number">10.4.</span> <span class="nav-text">MongoDB (<=) 小于操作符 - $lte</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-使用-lt-和-gt-查询-lt-和-gt"><span class="nav-number">10.5.</span> <span class="nav-text">MongoDB 使用 (<) 和 (>) 查询 - $lt 和 $gt</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#type-操作符"><span class="nav-number">11.</span> <span class="nav-text">$type 操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-9"><span class="nav-number">11.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB-Limit与Skip方法"><span class="nav-number">12.</span> <span class="nav-text">MongoDB Limit与Skip方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-Limit-方法"><span class="nav-number">12.1.</span> <span class="nav-text">MongoDB Limit() 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-4"><span class="nav-number">12.1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-10"><span class="nav-number">12.1.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-Skip-方法"><span class="nav-number">12.2.</span> <span class="nav-text">MongoDB Skip() 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-5"><span class="nav-number">12.2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-11"><span class="nav-number">12.2.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">13.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-sort-方法"><span class="nav-number">13.1.</span> <span class="nav-text">MongoDB sort()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-6"><span class="nav-number">13.1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-12"><span class="nav-number">13.1.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number">14.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ensureIndex-方法"><span class="nav-number">14.1.</span> <span class="nav-text">ensureIndex() 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-7"><span class="nav-number">14.1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-13"><span class="nav-number">14.1.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#聚合"><span class="nav-number">15.</span> <span class="nav-text">聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#aggregate-方法"><span class="nav-number">15.1.</span> <span class="nav-text">aggregate() 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-8"><span class="nav-number">15.1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-14"><span class="nav-number">15.1.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道"><span class="nav-number">15.2.</span> <span class="nav-text">管道</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#管道操作符实例"><span class="nav-number">15.2.1.</span> <span class="nav-text">管道操作符实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复制-副本集"><span class="nav-number">16.</span> <span class="nav-text">复制(副本集)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是复制"><span class="nav-number">16.1.</span> <span class="nav-text">什么是复制?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#副本集特征"><span class="nav-number">16.2.</span> <span class="nav-text">副本集特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB副本集设置"><span class="nav-number">16.3.</span> <span class="nav-text">MongoDB副本集设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-15"><span class="nav-number">16.3.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#副本集添加成员"><span class="nav-number">16.4.</span> <span class="nav-text">副本集添加成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-9"><span class="nav-number">16.5.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例-16"><span class="nav-number">16.6.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分片"><span class="nav-number">17.</span> <span class="nav-text">分片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备份与恢复"><span class="nav-number">18.</span> <span class="nav-text">备份与恢复</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#监控"><span class="nav-number">19.</span> <span class="nav-text">监控</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zoey</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
