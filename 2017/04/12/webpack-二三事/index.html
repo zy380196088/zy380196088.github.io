@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="webpack," />
 
 
 
@@ -84,13 +84,28 @@
 
 
 
+<meta name="description" content="webpack 命令行须知:
+
+webpack : 构建文件webpack -p : 发布webpack –watch : 监听项目webpack -d : 包含 source maps 方便调试 webpack –colors : 让打包界面更好看
+
+构建项目时,可以按需求写进 package.json123456789//package.json&amp;#123;    //...    &quot;scr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6学习笔记">
-<meta property="og:url" content="http://zy380196088.github.io./2016/12/06/ES6学习笔记/index.html">
+<meta property="og:title" content="webpack 二三十">
+<meta property="og:url" content="http://zy380196088.github.io./2017/04/12/webpack-二三事/index.html">
 <meta property="og:site_name" content="Zoey's Garden">
-<meta property="og:updated_time" content="2016-12-20T02:52:33.000Z">
+<meta property="og:description" content="webpack 命令行须知:
+
+webpack : 构建文件webpack -p : 发布webpack –watch : 监听项目webpack -d : 包含 source maps 方便调试 webpack –colors : 让打包界面更好看
+
+构建项目时,可以按需求写进 package.json123456789//package.json&amp;#123;    //...    &quot;scr">
+<meta property="og:updated_time" content="2017-04-13T12:32:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6学习笔记">
+<meta name="twitter:title" content="webpack 二三十">
+<meta name="twitter:description" content="webpack 命令行须知:
+
+webpack : 构建文件webpack -p : 发布webpack –watch : 监听项目webpack -d : 包含 source maps 方便调试 webpack –colors : 让打包界面更好看
+
+构建项目时,可以按需求写进 package.json123456789//package.json&amp;#123;    //...    &quot;scr">
 
 
 
@@ -111,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://zy380196088.github.io./2016/12/06/ES6学习笔记/"/>
+  <link rel="canonical" href="http://zy380196088.github.io./2017/04/12/webpack-二三事/"/>
 
-  <title> ES6学习笔记 | Zoey's Garden </title>
+  <title> webpack 二三十 | Zoey's Garden </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +291,7 @@
             
             
               
-                ES6学习笔记
+                webpack 二三十
               
             
           </h1>
@@ -288,8 +303,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-06T17:52:31+08:00" content="2016-12-06">
-              2016-12-06
+            <time itemprop="dateCreated" datetime="2017-04-12T19:29:44+08:00" content="2017-04-12">
+              2017-04-12
             </time>
           </span>
 
@@ -336,6 +351,11 @@
 
       
         <a id="more"></a>
+<p>webpack 命令行须知:</p>
+<blockquote>
+<p>webpack : 构建文件<br>webpack -p : 发布<br>webpack –watch : 监听项目<br>webpack -d : 包含 source maps 方便调试<br> webpack –colors : 让打包界面更好看</p>
+</blockquote>
+<p>构建项目时,可以按需求写进 package.json<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//package.json</div><div class="line">&#123;</div><div class="line">    //...</div><div class="line">    "script":&#123;</div><div class="line">        "dev":"webpack-dev-server --devtoll eval --progress --colors",</div><div class="line">        "deploy":"NODE_ENV=production webpack -p"</div><div class="line">    &#125;,</div><div class="line">    //...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -356,21 +376,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag">#webpack</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/14/React学习/" rel="next" title="React学习">
-                <i class="fa fa-chevron-left"></i> React学习
+              <a href="/2017/03/14/Python学习/" rel="next" title="Python学习">
+                <i class="fa fa-chevron-left"></i> Python学习
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/31/2016年度总结/" rel="prev" title="2016年度总结">
-                2016年度总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/13/Node.js入门小记/" rel="prev" title="Node.js入门小记">
+                Node.js入门小记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
