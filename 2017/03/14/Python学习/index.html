@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://zy380196088.github.io./2017/03/14/Python学习/index.html">
 <meta property="og:site_name" content="Zoey's Garden">
 <meta property="og:description" content="先开个坑,记录 Python的学习, 因为我作为一枚小散股民有个量化投资梦…">
-<meta property="og:updated_time" content="2017-03-14T10:10:55.000Z">
+<meta property="og:updated_time" content="2017-04-13T15:45:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习">
 <meta name="twitter:description" content="先开个坑,记录 Python的学习, 因为我作为一枚小散股民有个量化投资梦…">
@@ -340,7 +340,13 @@
       
         <p>先开个坑,记录 Python的学习, 因为我作为一枚小散股民有个量化投资梦…</p>
 <a id="more"></a>
-<h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><h1 id="Python-数据分析"><a href="#Python-数据分析" class="headerlink" title="Python 数据分析"></a>Python 数据分析</h1>
+<h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><h2 id="print"><a href="#print" class="headerlink" title="print()"></a>print()</h2><p>打印是 Python 中最常用的功能.</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>“双引号中的字符串”,<br>‘单引号和双引号一样’,<br>‘’’三个引号被用于过于长段的文字或者是说明,只要三个引号不完就可以随意换行写下文字’’’</p>
+<h3 id="字符串的分片与索引-string-x"><a href="#字符串的分片与索引-string-x" class="headerlink" title="字符串的分片与索引 string[x]"></a>字符串的分片与索引 string[x]</h3><p>字符串的分片是实际上就是从字符串中找出来你要截取的东西,复制出来一小段你要的长度,储存在另一个地方,而不会对原字符串改动.<br>看完下面的代码,你会对此有进一步的了解:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">name = <span class="string">'My name is Zoey'</span></div><div class="line">print(name[<span class="number">0</span>])</div><div class="line"><span class="string">'M'</span></div><div class="line">print(name[<span class="number">-4</span>])</div><div class="line"><span class="string">'Z'</span></div><div class="line">print(name[<span class="number">11</span>:<span class="number">14</span>])</div><div class="line"><span class="string">'Zoe'</span></div><div class="line">print(name[<span class="number">11</span>:<span class="number">15</span>])</div><div class="line"><span class="string">'Zoey'</span></div><div class="line">print(name[<span class="number">5</span>:])</div><div class="line"><span class="string">'me is Zoey'</span></div><div class="line">print(name[:<span class="number">5</span>])</div><div class="line"><span class="string">'My na'</span></div></pre></td></tr></table></figure></p>
+<p><strong>“:”号</strong>两边分别代表字符串的分割从哪里开始哪里结束.<br><strong><em>正数从0开始,表示从前到后;</em></strong><br><strong><em>负数从-1开始,表示从后到前;</em></strong><br><strong>注意,结束的位置,是不截取它本身的(不知道这么说懂不懂,不懂就多看几遍上面的代码吧^-^)</strong></p>
+<p>下面看段有意思的:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//找出你朋友中的魔鬼</div><div class="line">word = <span class="string">'friend'</span></div><div class="line">find_the_evil = word[<span class="number">0</span>] + word[<span class="number">2</span>:<span class="number">4</span>]+word[<span class="number">-3</span>:<span class="number">-1</span>]</div><div class="line">print(find_the_evil)</div><div class="line">//fiend</div></pre></td></tr></table></figure></p>
+<h2 id="type"><a href="#type" class="headerlink" title="type()"></a>type()</h2><p>通过 type()函数来查看类型.例如:<code>print(type(word))</code></p>
+<h1 id="Python-数据分析"><a href="#Python-数据分析" class="headerlink" title="Python 数据分析"></a>Python 数据分析</h1>
       
     </div>
 
@@ -532,7 +538,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-基础"><span class="nav-number">1.</span> <span class="nav-text">Python 基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-数据分析"><span class="nav-number">2.</span> <span class="nav-text">Python 数据分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-基础"><span class="nav-number">1.</span> <span class="nav-text">Python 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#print"><span class="nav-number">1.1.</span> <span class="nav-text">print()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.2.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串的分片与索引-string-x"><span class="nav-number">1.2.1.</span> <span class="nav-text">字符串的分片与索引 string[x]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type"><span class="nav-number">1.3.</span> <span class="nav-text">type()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-数据分析"><span class="nav-number">2.</span> <span class="nav-text">Python 数据分析</span></a></li></ol></div>
             
           </div>
         </section>
