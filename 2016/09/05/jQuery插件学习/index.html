@@ -87,7 +87,7 @@
 <meta name="description" content="写 jQuery 插件最核心的有如下两种放方法:
 $.extend(object)可以理解为 jQuery 添加一个静态方法
 $.fn.extend(object)可以理解为 jQuery 实例添加一个方法
-123456789//$.extend 定义与调用$.extend(&amp;#123; fun1: function () &amp;#123; alert(&quot;执行方法一&quot;); &amp;#125; &amp;#125;)">
+123456789//$.extend 定义与调用$.extend(&amp;#123; fun1: function () &amp;#123; alert(&quot;执行方法一&quot;); &amp;#125; &amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery插件学习">
 <meta property="og:url" content="http://zy380196088.github.io./2016/09/05/jQuery插件学习/index.html">
@@ -95,14 +95,14 @@ $.fn.extend(object)可以理解为 jQuery 实例添加一个方法
 <meta property="og:description" content="写 jQuery 插件最核心的有如下两种放方法:
 $.extend(object)可以理解为 jQuery 添加一个静态方法
 $.fn.extend(object)可以理解为 jQuery 实例添加一个方法
-123456789//$.extend 定义与调用$.extend(&amp;#123; fun1: function () &amp;#123; alert(&quot;执行方法一&quot;); &amp;#125; &amp;#125;)">
+123456789//$.extend 定义与调用$.extend(&amp;#123; fun1: function () &amp;#123; alert(&quot;执行方法一&quot;); &amp;#125; &amp;#125;">
 <meta property="og:updated_time" content="2016-09-18T08:07:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery插件学习">
 <meta name="twitter:description" content="写 jQuery 插件最核心的有如下两种放方法:
 $.extend(object)可以理解为 jQuery 添加一个静态方法
 $.fn.extend(object)可以理解为 jQuery 实例添加一个方法
-123456789//$.extend 定义与调用$.extend(&amp;#123; fun1: function () &amp;#123; alert(&quot;执行方法一&quot;); &amp;#125; &amp;#125;)">
+123456789//$.extend 定义与调用$.extend(&amp;#123; fun1: function () &amp;#123; alert(&quot;执行方法一&quot;); &amp;#125; &amp;#125;">
 
 
 
@@ -328,7 +328,7 @@ $.fn.extend(object)可以理解为 jQuery 实例添加一个方法
       
 
       
-        <p>写 jQuery 插件最核心的有如下两种放方法:</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>写 jQuery 插件最核心的有如下两种放方法:</p>
 <h3 id="extend-object"><a href="#extend-object" class="headerlink" title="$.extend(object)"></a>$.extend(object)</h3><p>可以理解为 jQuery 添加一个静态方法</p>
 <h3 id="fn-extend-object"><a href="#fn-extend-object" class="headerlink" title="$.fn.extend(object)"></a>$.fn.extend(object)</h3><p>可以理解为 jQuery 实例添加一个方法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//$.extend 定义与调用</span></div><div class="line">$.extend(&#123; <span class="attr">fun1</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"执行方法一"</span>); &#125; &#125;);</div><div class="line">$.fun1();</div><div class="line"><span class="comment">//$.fn.extend 定义与调用</span></div><div class="line">$.fn.extend(&#123; <span class="attr">fun2</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"执行方法2"</span>); &#125; &#125;);</div><div class="line">$(<span class="keyword">this</span>).fun2();</div><div class="line"><span class="comment">//等同于</span></div><div class="line">$.fn.fun3 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"执行方法三"</span>); &#125;</div><div class="line">$(<span class="keyword">this</span>).fun3();</div></pre></td></tr></table></figure>

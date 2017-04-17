@@ -344,7 +344,7 @@
       
         
           
-            <a id="more"></a>
+            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
 <h1 id="面向过程与面向对象"><a href="#面向过程与面向对象" class="headerlink" title="面向过程与面向对象"></a>面向过程与面向对象</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><h3 id="创建一个类"><a href="#创建一个类" class="headerlink" title="创建一个类"></a>创建一个类</h3><p>首先声明一个函数保存在一个变量里(一般将首字母大写).<br>然后在这个函数(类)内部通过 this 添加属性或者方法来实现对类添加属性活着方法:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">id, bookName, price</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id ;</div><div class="line">    <span class="keyword">this</span>.bookName = bookName;</div><div class="line">    <span class="keyword">this</span>.price = price;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>也可以通过在类的原型上添加属性和方法.有如下两种方式:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法一:为原型对象属性赋值</span></div><div class="line">Book.prototype.display = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//方法二:将一个对象赋值给类的原型对象</span></div><div class="line">Book.prototype = &#123;</div><div class="line">    <span class="attr">display</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><p>constructor 是一个属性,当创建一个函数或者对象时都会为其创建一个原型对象 prototype,<br>在 prototype 对象中又会像函数中创建 this 一样创建一个 constructor 属性,<br>那么constructor 属性指向的就是拥有整个源性对象的函数或对象.</p>
@@ -466,7 +466,7 @@
       
         
           
-            <a id="more"></a>
+            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
 <h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><p>Redux 主要分为三部分: Action , Reducer , Store .</p>
 <h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Action 主要用于传递造作 State 的信息,例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">type</span>:<span class="string">'ADD_FILM'</span>,</div><div class="line">    <span class="attr">name</span>:<span class="string">'极限特工'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>type属性是必要的,一般用来表达处理 state 数据的方式.<br>但是当增加的电影越来越多时,这种直接声明的 Object就会越来越多.<br>我们可以通过函数来生产 action ,如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addFile</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">type</span>:<span class="string">'ADD_FILM'</span>,<span class="attr">name</span>:name&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -709,7 +709,7 @@
       
         
           
-            <a id="more"></a>
+            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
 
           
         

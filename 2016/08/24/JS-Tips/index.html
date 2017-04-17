@@ -86,20 +86,20 @@
 
 <meta name="description" content="检查某对象是否具有某属性当你需要检查某属性是否存在于一个对象,你可能会这样做:1234var myObject = &amp;#123;    name: &apos;tips&apos;&amp;#125;;if(myObject.name)&amp;#123;...&amp;#125;
 这是可行的,但是需要知道还有两种原生方法可以解决该问题: in操作符 和 hasOwnProperty,任何继承自Object的对象都可以使用这两种方法.
-但是">
+但">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS Tips">
 <meta property="og:url" content="http://zy380196088.github.io./2016/08/24/JS-Tips/index.html">
 <meta property="og:site_name" content="Zoey's Garden">
 <meta property="og:description" content="检查某对象是否具有某属性当你需要检查某属性是否存在于一个对象,你可能会这样做:1234var myObject = &amp;#123;    name: &apos;tips&apos;&amp;#125;;if(myObject.name)&amp;#123;...&amp;#125;
 这是可行的,但是需要知道还有两种原生方法可以解决该问题: in操作符 和 hasOwnProperty,任何继承自Object的对象都可以使用这两种方法.
-但是">
+但">
 <meta property="og:updated_time" content="2017-02-20T09:17:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS Tips">
 <meta name="twitter:description" content="检查某对象是否具有某属性当你需要检查某属性是否存在于一个对象,你可能会这样做:1234var myObject = &amp;#123;    name: &apos;tips&apos;&amp;#125;;if(myObject.name)&amp;#123;...&amp;#125;
 这是可行的,但是需要知道还有两种原生方法可以解决该问题: in操作符 和 hasOwnProperty,任何继承自Object的对象都可以使用这两种方法.
-但是">
+但">
 
 
 
@@ -325,7 +325,7 @@
       
 
       
-        <h2 id="检查某对象是否具有某属性"><a href="#检查某对象是否具有某属性" class="headerlink" title="检查某对象是否具有某属性"></a>检查某对象是否具有某属性</h2><p>当你需要检查某属性是否存在于一个对象,你可能会这样做:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObject = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'tips'</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">if</span>(myObject.name)&#123;...&#125;</div></pre></td></tr></table></figure></p>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="检查某对象是否具有某属性"><a href="#检查某对象是否具有某属性" class="headerlink" title="检查某对象是否具有某属性"></a>检查某对象是否具有某属性</h2><p>当你需要检查某属性是否存在于一个对象,你可能会这样做:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObject = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'tips'</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">if</span>(myObject.name)&#123;...&#125;</div></pre></td></tr></table></figure></p>
 <p>这是可行的,但是需要知道还有两种原生方法可以解决该问题: in操作符 和 hasOwnProperty,任何继承自Object的对象都可以使用这两种方法.</p>
 <p>但是这两种方法也有区别:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = <span class="string">'tips'</span>;</div><div class="line">&#125;;</div><div class="line">myFunc.prototype.age = <span class="string">'10 days'</span>;</div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> myFunc();</div><div class="line">user.hasOwnProperty(<span class="string">'name'</span>); <span class="comment">// true</span></div><div class="line">user.hasOwnProperty(<span class="string">'age'</span>); <span class="comment">// false, 因为age来自于原型链</span></div></pre></td></tr></table></figure>
