@@ -1186,17 +1186,17 @@ pre .javascript .function {
 }
 .posts-collapse .post-meta {
   position: absolute;
-  font-size: 12px;
+  font-size: 16px;
   left: 20px;
-  top: 5px;
+  top: 0px;
 }
 .posts-collapse .post-comments-count {
   display: none;
 }
 .posts-collapse .post-title {
-  margin-left: 60px;
+  margin-left: 80px;
   font-size: 16px;
-  font-weight: normal;
+  font-weight: bold;
   line-height: inherit;
 }
 .posts-collapse .post-title::after {
@@ -1204,7 +1204,6 @@ pre .javascript .function {
   opacity: 0.6;
 }
 .posts-collapse .post-title a {
-  margin-left: 20px;
   color: #666;
   border-bottom: none;
 }
@@ -1550,7 +1549,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff904d;
+  background: #c486a2;
 }
 .links-of-blogroll {
   font-size: 13px;
