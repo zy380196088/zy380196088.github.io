@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Node.js," />
 
 
 
@@ -84,13 +84,19 @@
 
 
 
+<meta name="description" content="require 和 moduleNode提供了两个核心模块require,module来管理模块依赖. 他们在全局范围内可以用.不需要用 require(‘require’)和 require(‘module’)医用.
+pathpath.dirname(filepath) 获取路径path.basename(filepath) 获取文件名path.extname(filepath) 获取扩展名">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js入门小记">
 <meta property="og:url" content="http://zy380196088.github.io./2017/04/13/Node.js入门小记/index.html">
 <meta property="og:site_name" content="Zoey's Garden">
-<meta property="og:updated_time" content="2017-04-14T11:36:40.000Z">
+<meta property="og:description" content="require 和 moduleNode提供了两个核心模块require,module来管理模块依赖. 他们在全局范围内可以用.不需要用 require(‘require’)和 require(‘module’)医用.
+pathpath.dirname(filepath) 获取路径path.basename(filepath) 获取文件名path.extname(filepath) 获取扩展名">
+<meta property="og:updated_time" content="2017-04-18T07:02:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js入门小记">
+<meta name="twitter:description" content="require 和 moduleNode提供了两个核心模块require,module来管理模块依赖. 他们在全局范围内可以用.不需要用 require(‘require’)和 require(‘module’)医用.
+pathpath.dirname(filepath) 获取路径path.basename(filepath) 获取文件名path.extname(filepath) 获取扩展名">
 
 
 
@@ -336,6 +342,9 @@
 
       
         <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<h1 id="require-和-module"><a href="#require-和-module" class="headerlink" title="require 和 module"></a>require 和 module</h1><p>Node提供了两个核心模块require,module来管理模块依赖. 他们在全局范围内可以用.不需要用 require(‘require’)和 require(‘module’)医用.</p>
+<h1 id="path"><a href="#path" class="headerlink" title="path"></a>path</h1><h2 id="path-dirname-filepath-获取路径"><a href="#path-dirname-filepath-获取路径" class="headerlink" title="path.dirname(filepath) 获取路径"></a>path.dirname(filepath) 获取路径</h2><h2 id="path-basename-filepath-获取文件名"><a href="#path-basename-filepath-获取文件名" class="headerlink" title="path.basename(filepath) 获取文件名"></a>path.basename(filepath) 获取文件名</h2><h2 id="path-extname-filepath-获取扩展名"><a href="#path-extname-filepath-获取扩展名" class="headerlink" title="path.extname(filepath) 获取扩展名"></a>path.extname(filepath) 获取扩展名</h2><h2 id="path-join-…paths"><a href="#path-join-…paths" class="headerlink" title="path.join([…paths])"></a>path.join([…paths])</h2><h2 id="path-resolve-…paths"><a href="#path-resolve-…paths" class="headerlink" title="path.resolve([…paths])"></a>path.resolve([…paths])</h2><h2 id="path-normalize-filepath"><a href="#path-normalize-filepath" class="headerlink" title="path.normalize(filepath)"></a>path.normalize(filepath)</h2><h2 id="path-format-pathObject-文件路径分解"><a href="#path-format-pathObject-文件路径分解" class="headerlink" title="path.format(pathObject) 文件路径分解"></a>path.format(pathObject) 文件路径分解</h2><p>将pathObject 的 root ,dir , base , name , ext属性按照一定的规则,组合成一个文件路径.</p>
+<h2 id="path-parse-filepath-文件路径解析"><a href="#path-parse-filepath-文件路径解析" class="headerlink" title="path.parse(filepath) 文件路径解析"></a>path.parse(filepath) 文件路径解析</h2><h2 id="path-relative-from-to-获取相对路径"><a href="#path-relative-from-to-获取相对路径" class="headerlink" title="path.relative(from,to) 获取相对路径"></a>path.relative(from,to) 获取相对路径</h2><h2 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a>path.delimiter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//Linux</div><div class="line">console.log(process.env.PATH)</div><div class="line">// &apos;/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin&apos;</div><div class="line"></div><div class="line">process.env.PATH.split(path.delimiter)</div><div class="line">// returns [&apos;/usr/bin&apos;, &apos;/bin&apos;, &apos;/usr/sbin&apos;, &apos;/sbin&apos;, &apos;/usr/local/bin&apos;]</div><div class="line"></div><div class="line">//Windows</div><div class="line">console.log(process.env.PATH)</div><div class="line">// &apos;C:\Windows\system32;C:\Windows;C:\Program Files\node\&apos;</div><div class="line"></div><div class="line">process.env.PATH.split(path.delimiter)</div><div class="line">// returns [&apos;C:\\Windows\\system32&apos;, &apos;C:\\Windows&apos;, &apos;C:\\Program Files\\node\\&apos;]</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -355,6 +364,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node-js/" rel="tag">#Node.js</a>
+          
+        </div>
       
 
       
@@ -475,7 +490,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -524,7 +539,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#require-和-module"><span class="nav-number">1.</span> <span class="nav-text">require 和 module</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#path"><span class="nav-number">2.</span> <span class="nav-text">path</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#path-dirname-filepath-获取路径"><span class="nav-number">2.1.</span> <span class="nav-text">path.dirname(filepath) 获取路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-basename-filepath-获取文件名"><span class="nav-number">2.2.</span> <span class="nav-text">path.basename(filepath) 获取文件名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-extname-filepath-获取扩展名"><span class="nav-number">2.3.</span> <span class="nav-text">path.extname(filepath) 获取扩展名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-join-…paths"><span class="nav-number">2.4.</span> <span class="nav-text">path.join([…paths])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-resolve-…paths"><span class="nav-number">2.5.</span> <span class="nav-text">path.resolve([…paths])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-normalize-filepath"><span class="nav-number">2.6.</span> <span class="nav-text">path.normalize(filepath)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-format-pathObject-文件路径分解"><span class="nav-number">2.7.</span> <span class="nav-text">path.format(pathObject) 文件路径分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-parse-filepath-文件路径解析"><span class="nav-number">2.8.</span> <span class="nav-text">path.parse(filepath) 文件路径解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-relative-from-to-获取相对路径"><span class="nav-number">2.9.</span> <span class="nav-text">path.relative(from,to) 获取相对路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-delimiter"><span class="nav-number">2.10.</span> <span class="nav-text">path.delimiter</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
