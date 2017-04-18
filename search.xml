@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title><![CDATA[Mac 下换 oh my zsh 排坑]]></title>
+      <url>http://zy380196088.github.io./2017/04/19/Mac-%E4%B8%8B%E6%8D%A2-oh-my-zsh-%E6%8E%92%E5%9D%91/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Mac下默认的终端使用的是bash,有没有更好的? 是zsh.</p>
+<a id="more"></a>
+<p>Linux / Unix 提供了很多种 Shell , 例如 sh , bash , csh等;<br>可以通过命令行查看:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/shells</div></pre></td></tr></table></figure></p>
+<h1 id="设置当前用户使用-zsh"><a href="#设置当前用户使用-zsh" class="headerlink" title="设置当前用户使用 zsh"></a>设置当前用户使用 zsh</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chsh -s /bin/zsh</div></pre></td></tr></table></figure>
+<p>输入当前用户密码即可;</p>
+<h1 id="安装-oh-my-zsh"><a href="#安装-oh-my-zsh" class="headerlink" title="安装 oh my zsh"></a>安装 oh my zsh</h1><p>[oh-my-zsh] : <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</div></pre></td></tr></table></figure></p>
+<h1 id="创建一个zsh的配置文件"><a href="#创建一个zsh的配置文件" class="headerlink" title="创建一个zsh的配置文件"></a>创建一个zsh的配置文件</h1><p>注意:如果你已经有一个~/.zshrc文件的话，建议先做备份。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</div></pre></td></tr></table></figure></p>
+<h1 id="重启终端"><a href="#重启终端" class="headerlink" title="重启终端"></a>重启终端</h1><h1 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h1><p>如果你是个外貌协会的主题控,可以编辑 ~/.zshrc来修改主题:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi ~/.zshrc</div></pre></td></tr></table></figure></p>
+<p>主题文件在 ~/.oh-my-zsh/themes 目录,选个自己喜欢的,并修改双引号里的主题名字, 例如:ZSH_THEME = “ys”</p>
+<h1 id="出现的问题-坑"><a href="#出现的问题-坑" class="headerlink" title="出现的问题(坑)"></a>出现的问题(坑)</h1><p><code>source ~/.bash_profile</code><br>但是每次关闭终端重新打开都要source才能重新生效,难道每次打开终端都要重新 source 一下吗!<br>我拒绝!</p>
+<blockquote>
+<p>terminal init的时候并不会执行~/.bash_profile、~/.bashrc等脚本了<br>这是因为其默认启动执行脚本变为了～/.zshrc<br>解决办法就是修改～/.zshrc文件，其中添加:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ～/.bash_profile、～/.bashrc</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Node.js入门小记]]></title>
       <url>http://zy380196088.github.io./2017/04/13/Node.js%E5%85%A5%E9%97%A8%E5%B0%8F%E8%AE%B0/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
@@ -586,9 +607,9 @@
 <h3 id="复合组件"><a href="#复合组件" class="headerlink" title="复合组件"></a>复合组件</h3><ol>
 <li>定义一个自定义组件<br>假设我们想写一个分页组件,希望输出如下 HTML:</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div className = <span class="string">"divider"</span>&gt;</div><div class="line">	<span class="xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Questions<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span> &lt;hr /&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div className = <span class="string">"divider"</span>&gt;</div><div class="line">	&lt;h2&gt;Questions&lt;/h2&gt; &lt;hr /&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>想要将 HTML 片段表示为 React Component , 只需要像下面这样包装起来,然后再 render 方法中返回这些标签.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Divider = React.createClass(&#123;</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> (</div><div class="line">		<span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span> =<span class="string">"divider"</span>&gt;</span></span></div><div class="line">			<span class="tag">&lt;<span class="name">h2</span>&gt;</span>Questions<span class="tag">&lt;/<span class="name">h2</span>&gt;</span> <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Divider = React.createClass(&#123;</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> (</div><div class="line">		&lt;div className ="divider"&gt;</div><div class="line">			&lt;h2&gt;Questions&lt;/h2&gt; &lt;hr /&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>目前这还是个一次性的组件,想要让这个组件变得实用,还需要一种将 h2标签中的文本表示出来的动态方法.</p>
 <ol>
 <li>使用动态值<br>JSX 将两个花括号之间的内容{…}渲染为动态值.花括号指明了一个 JavaScript 上下文环境–你在花括号中放入的任何东西都会被进行求值,得到的结果被渲染为标签中的若干节点.</li>

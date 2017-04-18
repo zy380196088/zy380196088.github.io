@@ -351,9 +351,9 @@ React本质上是一个”状态机”,可以帮助开发者管理复杂的随�
 <h3 id="复合组件"><a href="#复合组件" class="headerlink" title="复合组件"></a>复合组件</h3><ol>
 <li>定义一个自定义组件<br>假设我们想写一个分页组件,希望输出如下 HTML:</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div className = <span class="string">"divider"</span>&gt;</div><div class="line">	<span class="xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Questions<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span> &lt;hr /&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div className = <span class="string">"divider"</span>&gt;</div><div class="line">	&lt;h2&gt;Questions&lt;/h2&gt; &lt;hr /&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>想要将 HTML 片段表示为 React Component , 只需要像下面这样包装起来,然后再 render 方法中返回这些标签.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Divider = React.createClass(&#123;</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> (</div><div class="line">		<span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span> =<span class="string">"divider"</span>&gt;</span></span></div><div class="line">			<span class="tag">&lt;<span class="name">h2</span>&gt;</span>Questions<span class="tag">&lt;/<span class="name">h2</span>&gt;</span> <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Divider = React.createClass(&#123;</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> (</div><div class="line">		&lt;div className ="divider"&gt;</div><div class="line">			&lt;h2&gt;Questions&lt;/h2&gt; &lt;hr /&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>目前这还是个一次性的组件,想要让这个组件变得实用,还需要一种将 h2标签中的文本表示出来的动态方法.</p>
 <ol>
 <li>使用动态值<br>JSX 将两个花括号之间的内容{…}渲染为动态值.花括号指明了一个 JavaScript 上下文环境–你在花括号中放入的任何东西都会被进行求值,得到的结果被渲染为标签中的若干节点.</li>
@@ -622,7 +622,7 @@ React本质上是一个”状态机”,可以帮助开发者管理复杂的随�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -630,7 +630,7 @@ React本质上是一个”状态机”,可以帮助开发者管理复杂的随�
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -639,7 +639,7 @@ React本质上是一个”状态机”,可以帮助开发者管理复杂的随�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
