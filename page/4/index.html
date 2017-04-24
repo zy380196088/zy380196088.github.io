@@ -181,7 +181,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -191,7 +191,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -201,7 +201,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -211,7 +211,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -281,8 +281,251 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/24/JS-Tips/" itemprop="url">
+                  JS Tips
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-24T12:26:52+08:00" content="2016-08-24">
+              2016-08-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><h2 id="检查某对象是否具有某属性"><a href="#检查某对象是否具有某属性" class="headerlink" title="检查某对象是否具有某属性"></a>检查某对象是否具有某属性</h2><p>当你需要检查某属性是否存在于一个对象,你可能会这样做:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObject = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'tips'</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">if</span>(myObject.name)&#123;...&#125;</div></pre></td></tr></table></figure></p>
+<p>这是可行的,但是需要知道还有两种原生方法可以解决该问题: in操作符 和 hasOwnProperty,任何继承自Object的对象都可以使用这两种方法.</p>
+<p>但是这两种方法也有区别:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = <span class="string">'tips'</span>;</div><div class="line">&#125;;</div><div class="line">myFunc.prototype.age = <span class="string">'10 days'</span>;</div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> myFunc();</div><div class="line">user.hasOwnProperty(<span class="string">'name'</span>); <span class="comment">// true</span></div><div class="line">user.hasOwnProperty(<span class="string">'age'</span>); <span class="comment">// false, 因为age来自于原型链</span></div></pre></td></tr></table></figure>
+<p>两者检查属性的深度不同，换言之hasOwnProperty只在本身有此属性时返回true,而in操作符不区分属性来自于本身或继承自原型链。</p>
+<h2 id="将Node-List转换为数组-Array"><a href="#将Node-List转换为数组-Array" class="headerlink" title="将Node List转换为数组(Array)"></a>将Node List转换为数组(Array)</h2><p>querySelectorAll 方法返回一个”类数组”对象为node list.看似数组却没有类似map,foreach这样的数组方法.<br>我们需要将其转换为DOM元素的数组:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> nodelist = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</div><div class="line"><span class="keyword">var</span> nodelistToArray = <span class="built_in">Array</span>.apply(<span class="literal">null</span> , nodelist);</div><div class="line"><span class="comment">//这样就可以进行map ,foreach等操作了</span></div><div class="line">nodelistToArray.forEach(...);</div><div class="line">nodelistToArray.map(...);</div><div class="line">nodelistToArray.slice(...);</div></pre></td></tr></table></figure>
+<h2 id="“快速排序”"><a href="#“快速排序”" class="headerlink" title="“快速排序”"></a>“快速排序”</h2><p>“快速排序”的思想步骤:<br>1.在数组中,找一个基点<br>2.建立两个数组,分别存储左边和右边的数组<br>3.利用递归进行下次比较</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(arr.length &lt;=<span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> arr;<span class="comment">//如果数组只有一个数则直接返回</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> num =  <span class="built_in">Math</span>.floor(arr.length/<span class="number">2</span>);<span class="comment">//找到中间数的索引值</span></div><div class="line">    <span class="keyword">var</span> numValue = arr.splice(num,<span class="number">1</span>);<span class="comment">//取中间数的值</span></div><div class="line">    <span class="keyword">var</span> left = [];</div><div class="line">    <span class="keyword">var</span> right = [];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ,i &lt; arr.length; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(arr[i]&lt;numValue)&#123;</div><div class="line">            left.push(arr[i]);<span class="comment">//小于基准数则添加到左边数组中</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            right.pusth(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//递归</span></div><div class="line">    <span class="keyword">return</span> quickSort(left).concat([numValue],quickSort(right));</div><div class="line">&#125;</div><div class="line"><span class="comment">//调用</span></div><div class="line"> alert(quickSort([<span class="number">2</span>,<span class="number">35</span>,<span class="number">15</span>,<span class="number">44</span>,<span class="number">8</span>]));<span class="comment">//弹出"2 8 15 35 44"</span></div></pre></td></tr></table></figure>
+<h2 id="返回对象-使方法可以链式调用"><a href="#返回对象-使方法可以链式调用" class="headerlink" title="返回对象,使方法可以链式调用"></a>返回对象,使方法可以链式调用</h2><p>在面向对象的Javascript中为对象建立一个方法时，返回当前对象可以让你在一条链上调用方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Hello my name is: "</span>, <span class="keyword">this</span>.name);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;;</div><div class="line">  <span class="keyword">this</span>.changeName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">	<span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">"John"</span>);</div><div class="line">	person.sayName().changeName(<span class="string">"Timmy"</span>).sayName();</div></pre></td></tr></table></figure>
+<h2 id="JavaScript-中-的作用"><a href="#JavaScript-中-的作用" class="headerlink" title="JavaScript 中 !! 的作用"></a>JavaScript 中 !! 的作用</h2><p>经常看到这样的例子：﻿﻿<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a；</div><div class="line"><span class="keyword">var</span> b=!!a;</div></pre></td></tr></table></figure></p>
+<p>a默认是undefined。!a是true，!!a则是false，所以b的值是false，而不再是undefined，也非其它值，主要是为后续判断提供便利。</p>
+<p>!!一般用来将后面的表达式强制转换为布尔类型的数据（boolean），也就是只能是true或者false;<br>因为javascript是弱类型的语言（变量没有固定的数据类型）所以有时需要强制转换为相应的类型，类似的如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a=<span class="built_in">parseInt</span>(“<span class="number">1234</span>″)</div><div class="line">a=”<span class="number">1234</span>″<span class="number">-0</span> <span class="comment">//转换为数字</span></div><div class="line">b=<span class="number">1234</span>+”” <span class="comment">//转换为字符串</span></div><div class="line">c=someObject.toString() <span class="comment">//将对象转换为字符串</span></div></pre></td></tr></table></figure></p>
+<p>其中第1种、第4种为显式转换，2、3为隐式转换</p>
+<p>布尔型的转换，javascript约定规则为:<br><strong>false、undefinded、null、0、”” 为 false</strong><br><strong>true、1、”somestring”、[Object] 为 true</strong></p>
+<p>对null与undefined等其他用隐式转换的值，用!操作符时都会产生true的结果，所以用两个感叹号的作用就在于将这些值转换为“等价”的布尔值；<br>再来看看：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo;</div><div class="line">alert(!foo);<span class="comment">//undifined情况下，一个感叹号返回的是true;</span></div><div class="line">alert(!goo);<span class="comment">//null情况下，一个感叹号返回的也是true;</span></div><div class="line"><span class="keyword">var</span> o=&#123;<span class="attr">flag</span>:<span class="literal">true</span>&#125;;</div><div class="line"><span class="keyword">var</span> test=!!o.flag;<span class="comment">//等效于var test=o.flag||false;</span></div><div class="line">alert(test);</div></pre></td></tr></table></figure></p>
+<p>这段例子，演示了在undifined和null时，用一个感叹号返回的都是true,用两个感叹号返回的就是false,所以两个感叹号的作用就在于，如果明确设置了变量的值(非null/undifined/0/”“等值),结果就会根据变量的实际值来返回，如果没有设置，结果就会返回false。</p>
+<h2 id="对象转换为数组"><a href="#对象转换为数组" class="headerlink" title="对象转换为数组"></a>对象转换为数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注意对象必须是以下格式的才可以通过此方式转化为数组</span></div><div class="line"><span class="comment">//获取的DOM集合，以及函数的arguments也可以通过此方式转化为数组</span></div><div class="line"><span class="keyword">var</span> obj=&#123;</div><div class="line">	<span class="number">0</span>:<span class="string">'qian'</span>,</div><div class="line">	<span class="number">1</span>:<span class="string">'long'</span>,</div><div class="line">	<span class="number">2</span>:<span class="string">'chu'</span>,</div><div class="line">	<span class="number">3</span>:<span class="string">'tian'</span>,</div><div class="line">	<span class="attr">length</span>:<span class="number">4</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> _slice=[].slice;</div><div class="line"><span class="keyword">var</span> objArr=_slice.call(obj);</div></pre></td></tr></table></figure>
+<h2 id="验证是否为数组"><a href="#验证是否为数组" class="headerlink" title="验证是否为数组"></a>验证是否为数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span>  <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span> ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="清空数组"><a href="#清空数组" class="headerlink" title="清空数组"></a>清空数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方式一 通过将长度设置为0</span></div><div class="line"><span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.length=<span class="number">0</span>;</div><div class="line"><span class="comment">//方式二 通过splice方法</span></div><div class="line"> <span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.splice(<span class="number">0</span>,arr.length);</div><div class="line"><span class="comment">//方式三 通过将空数组 [] 赋值给数组(严格意义来说这只是将ary重新赋值为空数组，之前的数组如果没有引用在指向它将等待垃圾回收。)</span></div><div class="line"><span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr=[];</div></pre></td></tr></table></figure>
+<h2 id="保留指定小数位"><a href="#保留指定小数位" class="headerlink" title="保留指定小数位"></a>保留指定小数位</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num =<span class="number">4.345678</span>;</div><div class="line">num = num.toFixed(<span class="number">4</span>);  <span class="comment">// 4.3457 第四位小数位以四舍五入计算</span></div></pre></td></tr></table></figure>
+<h2 id="生成指定长度的随机字母数字字符串"><a href="#生成指定长度的随机字母数字字符串" class="headerlink" title="生成指定长度的随机字母数字字符串"></a>生成指定长度的随机字母数字字符串</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomStr</span>(<span class="params">len</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span>( ; str.length &lt; len; str  += <span class="built_in">Math</span>.random().toString(<span class="number">36</span>).substr(<span class="number">2</span>));</div><div class="line">    <span class="keyword">return</span>  str.substr(<span class="number">0</span>, len);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="找出数组中出现次数最的元素，并给出其出现过的位置"><a href="#找出数组中出现次数最的元素，并给出其出现过的位置" class="headerlink" title="找出数组中出现次数最的元素，并给出其出现过的位置"></a>找出数组中出现次数最的元素，并给出其出现过的位置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMaxAndIndex</span>(<span class="params"> arr </span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">        arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,index</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span>(!obj[item])&#123;</div><div class="line">                obj[item]= &#123;<span class="attr">indexs</span>: [index]&#125;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                obj[item][<span class="string">'indexs'</span>].push(index);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">var</span> num=<span class="number">0</span>;<span class="comment">//记录出现次数最大值</span></div><div class="line">        <span class="keyword">var</span> str=<span class="string">''</span>;<span class="comment">//记录出现次数最多的字符</span></div><div class="line">        <span class="keyword">var</span> reArr;<span class="comment">//返回最大值的位置数组</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> attr <span class="keyword">in</span> obj)&#123;</div><div class="line">            <span class="keyword">var</span> temp=obj[attr][<span class="string">'indexs'</span>];</div><div class="line">            <span class="keyword">if</span>(temp.length&gt;num)&#123;</div><div class="line">                num=temp.length;</div><div class="line">                str=attr;</div><div class="line">                reArr=temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">maxStr</span>:str,</div><div class="line">            <span class="attr">indexs</span>:reArr</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="字符串的split函数的特殊值情况"><a href="#字符串的split函数的特殊值情况" class="headerlink" title="字符串的split函数的特殊值情况"></a>字符串的split函数的特殊值情况</h2><ol>
+<li><p>参数不传，返回包含原字符串对象，长度为1的数组.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">""</span>.split()<span class="comment">//[""]</span></div><div class="line"><span class="string">"xxcanghai"</span>.split()<span class="comment">//["xxcanghai"]</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>参数传空字符串，返回将原字符串每个字符分隔的数组,若原字符串为空字符串则返回空数组.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">""</span>.split(<span class="string">""</span>)<span class="comment">//[]</span></div><div class="line"><span class="string">"xxcanghai"</span>.split(<span class="string">""</span>)<span class="comment">//["x", "x", "c", "a", "n", "g", "h", "a", "i"]</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>原字符串为空字符串，参数不为空时，会返回包含一个空字符串的数组.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">""</span>.split(<span class="string">","</span>)<span class="comment">//[""]，错误，应为[]</span></div><div class="line"><span class="string">""</span>.split(<span class="string">"xxcanghai"</span>)<span class="comment">//[""]，错误，应为[]</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断:"></a>类型判断:</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//判断undefined</span></div><div class="line"><span class="keyword">var</span> tmp = undifined;</div><div class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> (tmp) == <span class="string">"undifined"</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"undefined"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//判断null</span></div><div class="line"><span class="keyword">var</span> tmp = <span class="literal">null</span>;</div><div class="line"><span class="keyword">if</span>(!tmp &amp;&amp; <span class="keyword">typeof</span>(tmp)!== <span class="string">"undifined"</span> &amp;&amp; tmp!= <span class="number">0</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"null"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//判断NaN</span></div><div class="line"><span class="keyword">var</span> tmp = <span class="number">0</span>/<span class="number">0</span>;</div><div class="line"><span class="keyword">if</span>(isNan(tmp))&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"NaN"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//判断undefined和null</span></div><div class="line"><span class="keyword">var</span> tmp = <span class="literal">undefined</span>;</div><div class="line"><span class="keyword">if</span>(tmp == <span class="literal">undefined</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"null or undifined"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> tmp = <span class="literal">undefined</span>;</div><div class="line"><span class="keyword">if</span>(tmp == <span class="literal">null</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"null or undifined"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> tmp =<span class="literal">null</span>;</div><div class="line"><span class="keyword">if</span>(!tmp)&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"null or undefined or NaN"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="jsonp方式跨域"><a href="#jsonp方式跨域" class="headerlink" title="jsonp方式跨域"></a>jsonp方式跨域</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonp</span>(<span class="params">config</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> options = config || &#123;&#125;; <span class="comment">// 需要配置url, success, time, fail四个属性.</span></div><div class="line">    <span class="keyword">var</span> callbackName = (<span class="string">'jsonp_'</span>+ <span class="built_in">Math</span>.random()).replace(<span class="string">"."</span>,<span class="string">""</span>);</div><div class="line">    <span class="keyword">var</span> oHead = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];</div><div class="line">    <span class="keyword">var</span> oScript = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'script'</span>);</div><div class="line"></div><div class="line">    oHead.appendChild(oScript);</div><div class="line">    <span class="built_in">window</span>[callbackName] = <span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</div><div class="line">        <span class="comment">//创建jsonp回调函数</span></div><div class="line">        <span class="comment">//先删除script标签，实际上执行的是success函数</span></div><div class="line">        oHead.removeChild(oScript);</div><div class="line">        clearTimeout(oScript.timer);</div><div class="line">        <span class="built_in">window</span>[callbackName]=<span class="literal">null</span>;</div><div class="line">        options.success &amp;&amp; options.success(json);</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    oScripts.src = options.url + <span class="string">'?'</span> + callbackName;<span class="comment">//发送请求</span></div><div class="line">    <span class="keyword">if</span>(options.time)&#123;</div><div class="line">        oScripts.timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">window</span>[callbackName]=<span class="literal">null</span>;</div><div class="line">            oHead.removeChild(oScript);</div><div class="line">            options.fail &amp;&amp; options.fail(&#123;<span class="attr">message</span>:<span class="string">"错误:超时;"</span>&#125;);</div><div class="line">        &#125;,options.time);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//使用方法:</span></div><div class="line">jsonp(&#123;</div><div class="line">    <span class="attr">url</span>:<span class="string">'b.com/b.json'</span>,</div><div class="line">    <span class="attr">success</span>:<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123;</div><div class="line">        <span class="comment">//数据处理</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">time</span>:<span class="number">5000</span>,</div><div class="line">    <span class="attr">fail</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">//错误处理</span></div><div class="line">    &#125;</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+<h2 id="JS生成随机字符串"><a href="#JS生成随机字符串" class="headerlink" title="JS生成随机字符串"></a>JS生成随机字符串</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这样生成一个32位的随机字符串，相同的概率很低。</span></div><div class="line"><span class="keyword">var</span> random_str = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> len = <span class="number">32</span>;</div><div class="line">    <span class="keyword">var</span> chars = <span class="string">'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'</span>;</div><div class="line">    <span class="keyword">var</span> max = charts.length;</div><div class="line">    <span class="keyword">var</span> str = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>; i&lt;len;i++)&#123;</div><div class="line">        str += charts.chartAt(<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*max));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> str;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h2><h3 id="JavaScript过滤Emoji表情"><a href="#JavaScript过滤Emoji表情" class="headerlink" title="JavaScript过滤Emoji表情:"></a>JavaScript过滤Emoji表情:</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">name = name.replace(<span class="regexp">/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g</span>, <span class="string">""</span>);</div></pre></td></tr></table></figure>
+<h3 id="手机号验证"><a href="#手机号验证" class="headerlink" title="手机号验证:"></a>手机号验证:</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> validate_phoneNumber =<span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> reg = <span class="regexp">/^1[3-9]\d&#123;9&#125;$/</span>;</div><div class="line">    <span class="keyword">return</span> reg.test(num);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="身份证号码验证"><a href="#身份证号码验证" class="headerlink" title="身份证号码验证:"></a>身份证号码验证:</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/^[1-9]&#123;1&#125;[0-9]&#123;14&#125;$|^[1-9]&#123;1&#125;[0-9]&#123;16&#125;([0-9]|[xX])$/</span>;</div></pre></td></tr></table></figure>
+<h3 id="ip验证"><a href="#ip验证" class="headerlink" title="ip验证:"></a>ip验证:</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/^(\d&#123;1,2&#125;|1\d\d|2[0-4]\d|25[0-5])(\.(\d&#123;1,2&#125;|1\d\d|2[0-4]\d|25[0-5]))&#123;3&#125;$/</span>;</div></pre></td></tr></table></figure>
+<h3 id="判断是否有中文："><a href="#判断是否有中文：" class="headerlink" title="判断是否有中文："></a>判断是否有中文：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/.*[\u4e00-\u9fa5]+.*$/</span>;</div><div class="line">reg.test(<span class="string">'123792739测试'</span>)  <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<h2 id="常用的JS函数"><a href="#常用的JS函数" class="headerlink" title="常用的JS函数"></a>常用的JS函数</h2><h3 id="获取浏览器url中的参数值："><a href="#获取浏览器url中的参数值：" class="headerlink" title="获取浏览器url中的参数值："></a>获取浏览器url中的参数值：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> getURLParam = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>((<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'[?|&amp;]'</span> + name + <span class="string">'='</span> + <span class="string">'([^&amp;;]+?)(&amp;|#|;|$)'</span>, <span class="string">"ig"</span>).exec(location.search) || [, <span class="string">""</span>])[<span class="number">1</span>].replace(<span class="regexp">/\+/g</span>, <span class="string">'%20'</span>)) || <span class="literal">null</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="操作cookie："><a href="#操作cookie：" class="headerlink" title="操作cookie："></a>操作cookie：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">own.setCookie = <span class="function"><span class="keyword">function</span>(<span class="params">cname, cvalue, exdays</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">    d.setTime(d.getTime() + (exdays*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>));</div><div class="line">    <span class="keyword">var</span> expires = <span class="string">'expires='</span>+d.toUTCString();</div><div class="line">    <span class="built_in">document</span>.cookie = cname + <span class="string">'='</span> + cvalue + <span class="string">'; '</span> + expires;</div><div class="line">&#125;;</div><div class="line">own.getCookie = <span class="function"><span class="keyword">function</span>(<span class="params">cname</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> name = cname + <span class="string">'='</span>;</div><div class="line">    <span class="keyword">var</span> ca = <span class="built_in">document</span>.cookie.split(<span class="string">';'</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; ca.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> c = ca[i];</div><div class="line">        <span class="keyword">while</span> (c.charAt(<span class="number">0</span>) == <span class="string">' '</span>) c = c.substring(<span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span> (c.indexOf(name) != <span class="number">-1</span>) <span class="keyword">return</span> c.substring(name.length, c.length);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="数组排序sort函数："><a href="#数组排序sort函数：" class="headerlink" title="数组排序sort函数："></a>数组排序sort函数：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">11</span>,<span class="number">36</span>,<span class="number">6</span>,<span class="number">27</span>,<span class="number">80</span>,<span class="number">32</span>];</div><div class="line">arr.srot(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a-b;                 <span class="comment">//从小到大排序</span></div><div class="line">    <span class="keyword">return</span> b-a;                 <span class="comment">//从大到小排序</span></div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.random() - <span class="number">0.5</span>; <span class="comment">//随机排序(数组洗牌)</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = [&#123;   <span class="comment">//对象数组</span></div><div class="line">    num: <span class="number">1</span>,</div><div class="line">    <span class="attr">text</span>: <span class="string">'num1'</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">num</span>: <span class="number">5</span>,</div><div class="line">    <span class="attr">text</span>: <span class="string">'num2'</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">num</span>: <span class="number">6</span>,</div><div class="line">    <span class="attr">text</span>: <span class="string">'num3'</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">num</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">text</span>: <span class="string">'num4'</span></div><div class="line">&#125;];</div><div class="line">arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a.num - b.num;   <span class="comment">//从小到大排</span></div><div class="line">    <span class="keyword">return</span> b.num - a.num;   <span class="comment">//从大到小排</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="判断是对象还是数组："><a href="#判断是对象还是数组：" class="headerlink" title="判断是对象还是数组："></a>判断是对象还是数组：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span> = <span class="title">function</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> toString.apply(o) === <span class="string">'[object Array]'</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span> = <span class="title">function</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> toString.apply(o) === <span class="string">'[object Object]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="浅拷贝-和-深拷贝"><a href="#浅拷贝-和-深拷贝" class="headerlink" title="浅拷贝 和 深拷贝"></a>浅拷贝 和 深拷贝</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//浅拷贝</span></div><div class="line">  <span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'name'</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> a = obj;</div><div class="line">  a.name = <span class="string">'new name'</span>;</div><div class="line">  <span class="built_in">console</span>.log(a.name); <span class="comment">// 'new name'</span></div><div class="line">  <span class="built_in">console</span>.log(obj.name); <span class="comment">// 'new name'</span></div><div class="line">  <span class="comment">//a只是通过赋值符号得到了obj的引用。</span></div><div class="line"></div><div class="line"><span class="comment">//深拷贝</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">parent, child</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> i,</div><div class="line">        tostring = <span class="built_in">Object</span>.prototype.toString,</div><div class="line">        aStr = <span class="string">"[object Array]"</span>;</div><div class="line">    child = child || &#123;&#125;;</div><div class="line">    <span class="keyword">for</span>(i <span class="keyword">in</span> parent) &#123;</div><div class="line">      <span class="keyword">if</span>(parent.hasOwnProperty(i)) &#123;</div><div class="line">        <span class="comment">//这时候还要判断它的值是不是对象</span></div><div class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> parent[i] === <span class="string">'object'</span>) &#123;</div><div class="line">          child[i] = tostring.call(parent[i]) === aStr ? [] : &#123;&#125;;</div><div class="line">          object(parent[i], child[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">          child[i] = parent[i];</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> child;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">tags</span>: [<span class="string">'js'</span>,<span class="string">'css'</span>],</div><div class="line">    <span class="attr">s1</span>: &#123;</div><div class="line">      <span class="attr">name</span>: <span class="string">'dai'</span>,</div><div class="line">      <span class="attr">age</span>: <span class="number">21</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">flag</span>: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> some = object(obj);</div><div class="line">  some.tags = [<span class="number">1</span>,<span class="number">2</span>];</div><div class="line">  <span class="built_in">console</span>.log(some.tags); <span class="comment">//[1, 2]</span></div><div class="line">  <span class="built_in">console</span>.log(obj.tags); <span class="comment">//['js', 'css']</span></div><div class="line"></div><div class="line">  <span class="comment">//深度拷贝对象</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">cloneObj</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> o = obj.constructor == <span class="built_in">Object</span> ? <span class="keyword">new</span> obj.constructor() : <span class="keyword">new</span> obj.constructor(obj.valueOf());</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> obj)&#123;</div><div class="line">        <span class="keyword">if</span>(o[key] != obj[key] )&#123;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span>(obj[key]) == <span class="string">'object'</span> )&#123;</div><div class="line">                o[key] = mods.cloneObj(obj[key]);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                o[key] = obj[key];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="原生JS实现千位分隔符"><a href="#原生JS实现千位分隔符" class="headerlink" title="原生JS实现千位分隔符"></a>原生JS实现千位分隔符</h2><p>目的:每隔3位数字,加一个’,’<br>思考:实现的方法有哪些? (字符串数组分割,正则表达式等)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//正则表达式实现</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">thousandBitSeparator</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> num &amp;&amp; (num</div><div class="line">    .toString().indexOf(<span class="string">'.'</span>) != <span class="number">-1</span> ? num.toString().replace(<span class="regexp">/(\d)(?=(\d&#123;3&#125;)+\.)/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$<span class="number">0</span>, $<span class="number">1</span></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> $<span class="number">1</span> + <span class="string">","</span>;</div><div class="line">    &#125;) : num.toString().replace(<span class="regexp">/(\d)(?=(\d&#123;3&#125;))/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$<span class="number">0</span>, $<span class="number">1</span></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> $<span class="number">1</span> + <span class="string">","</span>;</div><div class="line">    &#125;));</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(thousandBitSeparator(<span class="number">1000</span>));</div><div class="line"><span class="comment">//1,000</span></div></pre></td></tr></table></figure></p>
+<h2 id="银行卡号每隔4位插入空格-只支持-IE9"><a href="#银行卡号每隔4位插入空格-只支持-IE9" class="headerlink" title="银行卡号每隔4位插入空格(只支持 IE9+)"></a>银行卡号每隔4位插入空格(只支持 IE9+)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    $(<span class="string">'#kahao'</span>).on(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="comment">//只对输入数字时进行处理</span></div><div class="line">       <span class="keyword">if</span>((e.which &gt;= <span class="number">48</span> &amp;&amp; e.which &lt;= <span class="number">57</span>) ||(e.which &gt;= <span class="number">96</span> &amp;&amp; e.which &lt;= <span class="number">105</span> ))&#123;</div><div class="line">            <span class="comment">//获取当前光标的位置</span></div><div class="line">            <span class="keyword">var</span> caret = <span class="keyword">this</span>.selectionStart</div><div class="line">            <span class="comment">//获取当前的value</span></div><div class="line">            <span class="keyword">var</span> value = <span class="keyword">this</span>.value</div><div class="line">            <span class="comment">//从左边沿到坐标之间的空格数</span></div><div class="line">            <span class="keyword">var</span> sp =  (value.slice(<span class="number">0</span>, caret).match(<span class="regexp">/\s/g</span>) || []).length</div><div class="line">            <span class="comment">//去掉所有空格</span></div><div class="line">            <span class="keyword">var</span> nospace = value.replace(<span class="regexp">/\s/g</span>, <span class="string">''</span>)</div><div class="line">            <span class="comment">//重新插入空格</span></div><div class="line">            <span class="keyword">var</span> curVal = <span class="keyword">this</span>.value = nospace.replace(<span class="regexp">/(\d&#123;4&#125;)/g</span>, <span class="string">"$1 "</span>).trim()</div><div class="line">            <span class="comment">//从左边沿到原坐标之间的空格数</span></div><div class="line">            <span class="keyword">var</span> curSp = (curVal.slice(<span class="number">0</span>, caret).match(<span class="regexp">/\s/g</span>) || []).length</div><div class="line">            <span class="comment">//修正光标位置</span></div><div class="line">            <span class="keyword">this</span>.selectionEnd = <span class="keyword">this</span>.selectionStart = caret + curSp - sp</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/27/移动端web开发/" itemprop="url">
+                  移动端web开发Meta标签
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-27T20:11:33+08:00" content="2016-06-27">
+              2016-06-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><h2 id="关闭自动识别数字串为电话链接"><a href="#关闭自动识别数字串为电话链接" class="headerlink" title="关闭自动识别数字串为电话链接"></a>关闭自动识别数字串为电话链接</h2><p>关闭iPhone上Safari(一些其他基于webkit Android手机浏览器)自动将数字串识别为电话链接.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"telephone=no"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如果关闭自动识别后,又希望某些电话能够被识别,可以通过如下声明<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"tel:18500888800"</span>&gt;</span>18500888800<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="关闭邮箱识别"><a href="#关闭邮箱识别" class="headerlink" title="关闭邮箱识别"></a>关闭邮箱识别</h2><p>加上下面代码将不识别邮箱<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"email=no"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="删除默认的苹果工具栏和菜单"><a href="#删除默认的苹果工具栏和菜单" class="headerlink" title="删除默认的苹果工具栏和菜单"></a>删除默认的苹果工具栏和菜单</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-capable"</span> <span class="attr">content</span>=<span class="string">"yes"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>如果需要显示时,不加上条meta即可,默认为显示.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">”apple-mobile-web-app-status-bar-style”</span> <span class="attr">content</span>=<span class="string">black”</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明）。<br>注意： 若值为“black-translucent”将会占据页面px位置，浮在页面上方（会覆盖页面20px高度–iphone4和itouch4的Retina屏幕为40px)。</p>
+<h2 id="在手机HOME界面创建应用程序样式的图标"><a href="#在手机HOME界面创建应用程序样式的图标" class="headerlink" title="在手机HOME界面创建应用程序样式的图标"></a>在手机HOME界面创建应用程序样式的图标</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- for IOS--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon"</span> <span class="attr">href</span>=<span class="string">"/static/images/xxx.png"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- for Android--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon-precomposed"</span> <span class="attr">href</span>=<span class="string">"/static/images/xxx.png"</span>&gt;</span></div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/19/CSS小技巧/" itemprop="url">
-                  CSS小技巧
+                  CSS常用的
                 </a>
               
             
@@ -325,7 +568,10 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><h2 id="CSS背景图拉伸自适应尺寸，全浏览器兼容"><a href="#CSS背景图拉伸自适应尺寸，全浏览器兼容" class="headerlink" title="CSS背景图拉伸自适应尺寸，全浏览器兼容"></a>CSS背景图拉伸自适应尺寸，全浏览器兼容</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.bg</span>&#123;</div><div class="line">	<span class="attribute">background</span>:<span class="built_in">url</span>(http://wyz.67ge.com/wp-content/uploads/qzlogo.jpg);</div><div class="line">	<span class="attribute">filter</span>:<span class="string">"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')"</span>;</div><div class="line">	<span class="attribute">-moz-background-size</span>:<span class="number">100%</span> <span class="number">100%</span>;</div><div class="line">	<span class="attribute">background-size</span>:<span class="number">100%</span> <span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <script src="/assets/js/APlayer.min.js"> </script><h2 id="经典中的经典-垂直居中的方法"><a href="#经典中的经典-垂直居中的方法" class="headerlink" title="经典中的经典 : 垂直居中的方法"></a>经典中的经典 : 垂直居中的方法</h2><h3 id="弹性盒子布局flex"><a href="#弹性盒子布局flex" class="headerlink" title="弹性盒子布局flex"></a>弹性盒子布局flex</h3><p>给父容器设置:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:flex</span>;</div><div class="line"><span class="selector-tag">justify-content</span><span class="selector-pseudo">:center</span>;</div><div class="line"><span class="selector-tag">align-items</span><span class="selector-pseudo">:center</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="绝对定位居中"><a href="#绝对定位居中" class="headerlink" title="绝对定位居中"></a>绝对定位居中</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span>&#123;</div><div class="line">  <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.children</span>&#123;</div><div class="line">  <span class="attribute">margin</span>:auto;</div><div class="line">  <span class="attribute">position</span>:absolute;</div><div class="line">  <span class="attribute">top</span>:<span class="number">0</span>;</div><div class="line">  <span class="attribute">right</span>:<span class="number">0</span>;</div><div class="line">  <span class="attribute">bottom</span>:<span class="number">0</span>;</div><div class="line">  <span class="attribute">left</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="负边距-变形"><a href="#负边距-变形" class="headerlink" title="负边距,变形"></a>负边距,变形</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span>&#123;</div><div class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">  <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.chiildren</span>&#123;</div><div class="line">  <span class="attribute">width</span>:<span class="number">50px</span>;</div><div class="line">  <span class="attribute">height</span>:<span class="number">50px</span>;</div><div class="line">  <span class="attribute">position</span>:absolute;</div><div class="line">  <span class="attribute">top</span>:<span class="number">50%</span>;</div><div class="line">  <span class="attribute">left</span>:<span class="number">50%</span>;</div><div class="line">  <span class="attribute">transform</span>:<span class="built_in">translate</span>(-50%,-50%)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="CSS背景图拉伸自适应尺寸，全浏览器兼容"><a href="#CSS背景图拉伸自适应尺寸，全浏览器兼容" class="headerlink" title="CSS背景图拉伸自适应尺寸，全浏览器兼容"></a>CSS背景图拉伸自适应尺寸，全浏览器兼容</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.bg</span>&#123;</div><div class="line">	<span class="attribute">background</span>:<span class="built_in">url</span>(http://wyz.67ge.com/wp-content/uploads/qzlogo.jpg);</div><div class="line">	<span class="attribute">filter</span>:<span class="string">"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')"</span>;</div><div class="line">	<span class="attribute">-moz-background-size</span>:<span class="number">100%</span> <span class="number">100%</span>;</div><div class="line">	<span class="attribute">background-size</span>:<span class="number">100%</span> <span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="CSS模拟-placeholder"><a href="#CSS模拟-placeholder" class="headerlink" title="CSS模拟 placeholder"></a>CSS模拟 placeholder</h2><p>给元素设置contenteditable和data-placeholder，再利用:empty:before和:focus:before就可以模拟input placeholder了，focus时placeholder就消失，效果感人。</p>
 <h2 id="更改浏览器的滚动条样式"><a href="#更改浏览器的滚动条样式" class="headerlink" title="更改浏览器的滚动条样式"></a>更改浏览器的滚动条样式</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">		scrollbar-arrow-color: red; /*上下按钮上三角箭头的颜色*/</div><div class="line">		scrollbar-face-color: #CBCBCB; /*滚动条凸出部分的颜色*/</div><div class="line">		scrollbar-3dlight-color: blue; /*滚动条亮边的颜色*/</div><div class="line">		scrollbar-highlight-color: #333; /*滚动条空白部分的颜色*/</div><div class="line">		scrollbar-shadow-color: yellow; /*滚动条阴影的颜色*/</div><div class="line">		scrollbar-darkshadow-color: green; /*滚动条强阴影的颜色*/</div><div class="line">		scrollbar-track-color: #eee; /*滚动条背景颜色*/</div><div class="line">		scrollbar-base-color: black; /*滚动条的基本颜色*/</div><div class="line">		Cursor:url(mouse.cur); /*自定义个性鼠标*/</div><div class="line">		/*以上2项适用与：body、div、textarea、iframe*/</div><div class="line">  &#125;</div><div class="line">      ::-webkit-scrollbar &#123;  /*滚动条整体部分 */</div><div class="line">          width:10px;</div><div class="line">          margin-right:2px</div><div class="line">      &#125;</div><div class="line">      ::-webkit-scrollbar-button &#123; /*滚动条两端的按钮 */</div><div class="line">          width:10px;</div><div class="line">          background-color: yellow;</div><div class="line">      &#125;</div><div class="line">      ::-webkit-scrollbar:horizontal &#123;</div><div class="line">          height:10px;</div><div class="line">          margin-bottom:2px</div><div class="line">      &#125;</div><div class="line">      ::-webkit-scrollbar-track &#123;  /*外层轨道*/</div><div class="line">          border-radius: 10px;</div><div class="line">      &#125;</div><div class="line">      ::-webkit-scrollbar-track-piece &#123;  /*内层轨道，滚动条中间部分*/</div><div class="line">          background-color: #333333;</div><div class="line">          border-radius: 10px;</div><div class="line">      &#125;</div><div class="line">      ::-webkit-scrollbar-thumb &#123;  /* 滑块 */</div><div class="line">          width:10px;</div><div class="line">          border-radius: 5px;</div><div class="line">          background: #CBCBCB;</div><div class="line">      &#125;</div><div class="line">      ::-webkit-scrollbar-corner &#123; /* 边角 */</div><div class="line">          width: 10px;</div><div class="line">          background-color: red;</div><div class="line">      &#125;</div><div class="line">      ::-webkit-scrollbar-thumb:hover &#123; /* 鼠标移入滑块 */</div><div class="line">          background: #909090;</div><div class="line">      &#125;</div><div class="line">      .demo &#123;</div><div class="line">          width: 400px;</div><div class="line">          height: 200px;</div><div class="line">          overflow: auto;</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
 <h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><ol>
@@ -607,213 +853,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/08/JavaScript-面向对象编程/" itemprop="url">
-                  JavaScript - 面向对象编程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-08T16:50:10+08:00" content="2016-05-08">
-              2016-05-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		alert(<span class="string">'hello,'</span>+ <span class="keyword">this</span>.name + <span class="string">'!'</span>);</div><div class="line">	&#125;	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> xiaoming = <span class="keyword">new</span> Student(<span class="string">'小明'</span>);</div><div class="line"><span class="keyword">var</span> xiaohong = <span class="keyword">new</span> Student(<span class="string">'小红'</span>);</div></pre></td></tr></table></figure>
-<p>让创建的对象共享一个hello函数，这样可以节省内存<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">&#125; </div><div class="line"></div><div class="line">Student.rototype.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	alert(<span class="string">'hello,'</span>+ <span class="keyword">this</span>.name + <span class="string">'!'</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>还可以写一个createStudent()函数，在内部封装所有的new操作。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">props</span>)</span>&#123;</div><div class="line">	thi.name = props.name || <span class="string">'匿名'</span>; <span class="comment">//默认值为'匿名'</span></div><div class="line">	<span class="keyword">this</span>.grade = props.grade || <span class="number">1</span>;  <span class="comment">// 默认值为1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">Student.prototype.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	alert(<span class="string">'Hello, '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createStudent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Student(props || &#123;&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h2><p>请参考<a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014344997013405abfb7f0e1904a04ba6898a384b1e925000" target="_blank" rel="external">原型继承－廖雪峰</a></p>
-<h2 id="class继承"><a href="#class继承" class="headerlink" title="class继承"></a>class继承</h2><p>新的关键字class从ES6开始正式被引入到JavaScript中。class的目的就是让定义类更简单。<br>如果用新的class关键字来编写Student，可以这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name) &#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    hello() &#123;</div><div class="line">        alert(<span class="string">'Hello, '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>用class定义对象的另一个巨大的好处是继承更方便了。想一想我们从Student派生一个PrimaryStudent需要编写的代码量。现在，原型继承的中间对象，原型对象的构造函数等等都不需要考虑了，直接通过extends来实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrimaryStudent</span> <span class="keyword">extends</span> <span class="title">Student</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name, grade) &#123;</div><div class="line">        <span class="keyword">super</span>(name); <span class="comment">// 记得用super调用父类的构造方法!</span></div><div class="line">        <span class="keyword">this</span>.grade = grade;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    myGrade() &#123;</div><div class="line">        alert(<span class="string">'I am at grade '</span> + <span class="keyword">this</span>.grade);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>ES6引入的class和原有的JavaScript原型继承有什么区别呢？实际上它们没有任何区别，class的作用就是让JavaScript引擎去实现原来需要我们自己编写的原型链代码。简而言之，用class的好处就是极大地简化了原型链代码。</p>
-<h2 id="公有属性和公有方法"><a href="#公有属性和公有方法" class="headerlink" title="公有属性和公有方法"></a>公有属性和公有方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;<span class="comment">//公有属性</span></div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">User.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//公有方法</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(<span class="string">'zoey'</span>,<span class="number">24</span>);</div><div class="line"><span class="built_in">console</span>.log(user.getName());<span class="comment">//zoey</span></div></pre></td></tr></table></figure>
-<h2 id="私有属性和方法"><a href="#私有属性和方法" class="headerlink" title="私有属性和方法"></a>私有属性和方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">    <span class="comment">//私有属性</span></div><div class="line">    <span class="keyword">var</span> name = name;</div><div class="line">    <span class="keyword">var</span> age = age;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">alertAge</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">//私有方法</span></div><div class="line">        alert(age)</div><div class="line">    &#125;</div><div class="line">    alertAge(age)<span class="comment">//弹出24</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(<span class="string">'zoey'</span>,<span class="number">24</span>);</div></pre></td></tr></table></figure>
-<h2 id="静态属性和方法"><a href="#静态属性和方法" class="headerlink" title="静态属性和方法"></a>静态属性和方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">User.age = <span class="number">24</span>;</div><div class="line">User.myname = <span class="string">'zoey'</span>;</div><div class="line">User.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//静态方法</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.myname;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(User.getName())<span class="comment">//zoey</span></div></pre></td></tr></table></figure>
-<h2 id="特权方法"><a href="#特权方法" class="headerlink" title="特权方法"></a>特权方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> name = name;</div><div class="line">    <span class="keyword">var</span> age = age;</div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">//特权方法</span></div><div class="line">        <span class="keyword">return</span> name;<span class="comment">//私有属性和方法不能使用this调用</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(<span class="string">'zoey'</span>,<span class="number">24</span>);</div><div class="line"><span class="built_in">console</span>.log(user.getName());<span class="comment">//zoey</span></div></pre></td></tr></table></figure>
-<h2 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> user = &#123;</div><div class="line">    <span class="attr">init</span> : <span class="function"><span class="keyword">function</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.age = age;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">getName</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">user.init(<span class="string">'zoey'</span>,<span class="number">24</span>);</div><div class="line"><span class="built_in">console</span>.log(user.getName());<span class="comment">//zoey</span></div></pre></td></tr></table></figure>
-<h2 id="公有方法调用规则"><a href="#公有方法调用规则" class="headerlink" title="公有方法调用规则"></a>公有方法调用规则</h2><p>调用共有方法必须先实例化对象.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.myname = <span class="string">'zoey'</span>;<span class="comment">//公有属性</span></div><div class="line">    <span class="keyword">this</span>.age = <span class="number">24</span>;</div><div class="line">    <span class="keyword">this</span>.do = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">//特权方法</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.myname + <span class="string">'学习JavaScript'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">User.eat = <span class="function"><span class="keyword">function</span>(<span class="params">food</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'吃了'</span>+food;</div><div class="line">&#125;</div><div class="line"></div><div class="line">User.prototype.alertAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="keyword">this</span>.age)</div><div class="line">&#125;</div><div class="line">User.prototype.alertDo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="keyword">this</span>.do());<span class="comment">//调用特权方法</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">User.prototype.elartEat = <span class="function"><span class="keyword">function</span>(<span class="params">food</span>)</span>&#123;</div><div class="line">    alert(User.eat(food));<span class="comment">//只能通过对象本身调用静态方法</span></div><div class="line">    alert(<span class="keyword">this</span>.eat(food));<span class="comment">//报错</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User();</div><div class="line">user.alertAge();<span class="comment">//24</span></div><div class="line">user.alertDo();<span class="comment">//zoey学习JavaScript</span></div><div class="line">user.alertEat(<span class="string">'方便面'</span>)<span class="comment">//吃了方便面</span></div></pre></td></tr></table></figure></p>
-<h2 id="静态方法的调用规则"><a href="#静态方法的调用规则" class="headerlink" title="静态方法的调用规则"></a>静态方法的调用规则</h2><p>使用静态方法时，无需实例化对象，便可以调用，对象实例不能调用对象的静态方法，只能调用实例自身的静态属性和方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">User.age = <span class="number">26</span>; <span class="comment">//静态属性</span></div><div class="line">User.myname = <span class="string">'fire子海'</span>;</div><div class="line">User.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//静态方法</span></div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.myname;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User();</div><div class="line"><span class="built_in">console</span>.log(user.getName); <span class="comment">//TypeError: user.getName is not a function</span></div><div class="line">user.supper = <span class="string">'方便面'</span>;</div><div class="line">user.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'晚餐只有'</span> + <span class="keyword">this</span>.supper;</div><div class="line">&#125;</div><div class="line">user.eat(); <span class="comment">//晚餐只有方便面</span></div></pre></td></tr></table></figure></p>
-<p>静态方法无法调用公有属性、公有方法、私有方法、私有属性、特权方法和原型属性.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.myname = <span class="string">'fire子海'</span>; <span class="comment">//公有属性</span></div><div class="line">  <span class="keyword">this</span>.age = <span class="number">26</span>;</div><div class="line">  <span class="keyword">this</span>.do = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//特权方法</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.myname + <span class="string">'学习js'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">User.prototype.alertAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//公共方法，也叫原型方法</span></div><div class="line">  alert(<span class="keyword">this</span>.age);</div><div class="line">&#125;</div><div class="line">User.prototype.sex = <span class="string">'男'</span>; <span class="comment">//原型属性</span></div><div class="line">User.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//静态方法</span></div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.myname;</div><div class="line">&#125;</div><div class="line">User.getAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.alertAge();</div><div class="line">&#125;</div><div class="line">User.getDo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.do();</div><div class="line">  &#125;</div><div class="line"><span class="comment">//console.log(User.getName())//undefined</span></div><div class="line"><span class="comment">//console.log(User.getDo());//TypeError: this.do is not a function</span></div><div class="line"><span class="comment">//console.log(User.getAge())//TypeError: this.alertAge is not a function</span></div></pre></td></tr></table></figure></p>
-<h2 id="特权方法的调用规则"><a href="#特权方法的调用规则" class="headerlink" title="特权方法的调用规则"></a>特权方法的调用规则</h2><p>特权方法通过this调用公有方法、公有属性，通过对象本身调用静态方法和属性，在方法体内直接调用私有属性和私有方法.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">girlfriend</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> girlfriend = girlfriend;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getGirlFriend</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'我女朋友'</span> + girlfriend + <span class="string">'是美女！'</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.myname = <span class="string">'fire子海'</span>; <span class="comment">//公有属性</span></div><div class="line">  <span class="keyword">this</span>.age = <span class="number">26</span>;</div><div class="line">  <span class="keyword">this</span>.do = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//特权方法</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.myname + <span class="string">'学习js'</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.alertAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.changeAge(); <span class="comment">//特权方法调用公有方法</span></div><div class="line">    alert(<span class="keyword">this</span>.age);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.alertGirlFriend = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert(getGirlFriend()); <span class="comment">//调用私有方法</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">User.prototype.changeAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.age = <span class="number">29</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(<span class="string">'某某'</span>);</div><div class="line">user.alertAge(); <span class="comment">//alert:29</span></div><div class="line">user.alertGirlFriend(); <span class="comment">//alert:我的女朋友某某是美女！</span></div></pre></td></tr></table></figure></p>
-<h2 id="私有方法"><a href="#私有方法" class="headerlink" title="私有方法"></a>私有方法</h2><p>对象的私有方法和属性,外部是不可以访问的,在方法的内部不是能this调用对象的公有方法、公有属性、特权方法的.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">girlfriend</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> girlfriend = girlfriend;</div><div class="line">  <span class="keyword">this</span>.myname = <span class="string">'fire子海'</span>; <span class="comment">//公有属性</span></div><div class="line">  <span class="keyword">this</span>.age = <span class="number">26</span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getGirlFriend</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//this.myname ;//此时的this指向的window对象，并非User对象，</span></div><div class="line">    <span class="comment">// this.myname = 'fire子海',此时的this指向的是getGirFriend对象了。</span></div><div class="line">    <span class="comment">//如果通过this调用了getGirFriend中不存在的方法呀属性，this便会指向window 对象，只有this调用了getGirlFriend存在的方法和属性，this才会指定getGirlFriend;</span></div><div class="line">    alert(User.eat(<span class="string">'泡面'</span>)); <span class="comment">//alert：晚餐只有方便面</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.do = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//特权方法</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.myname + <span class="string">'学习js'</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.alertAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.changeAge(); <span class="comment">//特权方法调用公有方法</span></div><div class="line">    alert(<span class="keyword">this</span>.age);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.alertGirlFriend = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    getGirlFriend(); <span class="comment">//调用私有方法</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">User.eat = <span class="function"><span class="keyword">function</span>(<span class="params">supper</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'晚餐只有'</span> + supper;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(<span class="string">'某某'</span>);</div><div class="line">user.alertGirlFriend();</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/06/mysql入门学习/" itemprop="url">
-                  mysql入门学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-06T10:33:48+08:00" content="2016-05-06">
-              2016-05-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><h2 id="php常用的mysql函数："><a href="#php常用的mysql函数：" class="headerlink" title="php常用的mysql函数："></a>php常用的mysql函数：</h2><h3 id="mysql-connect-“主机名称-ip”-”用户名”-”密码”"><a href="#mysql-connect-“主机名称-ip”-”用户名”-”密码”" class="headerlink" title="mysql_connect(“主机名称/ip”,”用户名”,”密码”)"></a>mysql_connect(“主机名称/ip”,”用户名”,”密码”)</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$link = @mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"root"</span>)<span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"数据库连接错误"</span>).mysql_error();</div></pre></td></tr></table></figure>
-<h3 id="mysql-error"><a href="#mysql-error" class="headerlink" title="mysql_error()"></a>mysql_error()</h3><p>返回上一个mysql操作的文本错误信息；@错误抑制符号</p>
-<h3 id="mysql-select-db-“数据库名称”-link"><a href="#mysql-select-db-“数据库名称”-link" class="headerlink" title="mysql_select_db(“数据库名称”,$link)"></a>mysql_select_db(“数据库名称”,$link)</h3><h3 id="mysql-query"><a href="#mysql-query" class="headerlink" title="mysql_query()"></a>mysql_query()</h3><p>向数据库发送一条sql命令</p>
-<h3 id="mysql-affected-rows"><a href="#mysql-affected-rows" class="headerlink" title="mysql_affected_rows()"></a>mysql_affected_rows()</h3><p>取的前一条sql语句，返回受影响的行数</p>
-<h3 id="mysql-cloes"><a href="#mysql-cloes" class="headerlink" title="mysql_cloes()"></a>mysql_cloes()</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -858,15 +897,15 @@
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">28</span>
+            <a href="/archives/">
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/">
                 <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -875,7 +914,7 @@
 
           
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/">
                 <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>

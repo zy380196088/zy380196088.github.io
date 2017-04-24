@@ -84,15 +84,22 @@
 
 
 
-<meta name="description" content="对于一个真正有所追求的人来来说,生命的每个时期都是年轻和及时的. -摩西奶奶">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zoey's Garden">
-<meta property="og:url" content="http://zy380196088.github.io./tags/CSS3/index.html">
+<meta name="description" content="命名组件为zRefresh.组件化思想分析:
+绑定传参1234$(&quot;.zRefreshDemo&quot;).zRefresh(&amp;#123;    threshold:150,//阈值    animHTML:&quot;&quot;//盒子动画 HTML 内容&amp;#125;)
+回调传参回调12345678$(&quot;.zRefreshDemo&quot;).zRefresh(&amp;#123;    threshold:150,//阈值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="触发加载及刷新">
+<meta property="og:url" content="http://zy380196088.github.io./2017/04/21/触发加载及刷新/index.html">
 <meta property="og:site_name" content="Zoey's Garden">
-<meta property="og:description" content="对于一个真正有所追求的人来来说,生命的每个时期都是年轻和及时的. -摩西奶奶">
+<meta property="og:description" content="命名组件为zRefresh.组件化思想分析:
+绑定传参1234$(&quot;.zRefreshDemo&quot;).zRefresh(&amp;#123;    threshold:150,//阈值    animHTML:&quot;&quot;//盒子动画 HTML 内容&amp;#125;)
+回调传参回调12345678$(&quot;.zRefreshDemo&quot;).zRefresh(&amp;#123;    threshold:150,//阈值">
+<meta property="og:updated_time" content="2017-04-21T12:44:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zoey's Garden">
-<meta name="twitter:description" content="对于一个真正有所追求的人来来说,生命的每个时期都是年轻和及时的. -摩西奶奶">
+<meta name="twitter:title" content="触发加载及刷新">
+<meta name="twitter:description" content="命名组件为zRefresh.组件化思想分析:
+绑定传参1234$(&quot;.zRefreshDemo&quot;).zRefresh(&amp;#123;    threshold:150,//阈值    animHTML:&quot;&quot;//盒子动画 HTML 内容&amp;#125;)
+回调传参回调12345678$(&quot;.zRefreshDemo&quot;).zRefresh(&amp;#123;    threshold:150,//阈值">
 
 
 
@@ -113,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://zy380196088.github.io./tags/CSS3/"/>
+  <link rel="canonical" href="http://zy380196088.github.io./2017/04/21/触发加载及刷新/"/>
 
-  <title> 标签: CSS3 | Zoey's Garden </title>
+  <title> 触发加载及刷新 | Zoey's Garden </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +143,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,46 +264,161 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        CSS3
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                触发加载及刷新
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-21T19:27:10+08:00" content="2017-04-21">
+              2017-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<p>命名组件为zRefresh.<br>组件化思想分析:</p>
+<h2 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h2><h2 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">".zRefreshDemo"</span>).zRefresh(&#123;</div><div class="line">    <span class="attr">threshold</span>:<span class="number">150</span>,<span class="comment">//阈值</span></div><div class="line">    animHTML:<span class="string">""</span><span class="comment">//盒子动画 HTML 内容</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2><h3 id="传参回调"><a href="#传参回调" class="headerlink" title="传参回调"></a>传参回调</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">".zRefreshDemo"</span>).zRefresh(&#123;</div><div class="line">    <span class="attr">threshold</span>:<span class="number">150</span>,<span class="comment">//阈值</span></div><div class="line">    animHTML:<span class="string">""</span><span class="comment">//盒子动画 HTML 内容</span></div><div class="line">    onInit:<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;&#125;,<span class="comment">//已经准备</span></div><div class="line">    onRrop:<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;&#125;,<span class="comment">//拖拽过程</span></div><div class="line">    onStart:<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;&#125;,<span class="comment">//超过阈值时松开</span></div><div class="line">    onFinish:<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;&#125;<span class="comment">//超过阈值时松开触发回弹动画</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h3>
+      
+    </div>
 
-      <h1 class="post-title">
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/05/19/CSS小技巧/" itemprop="url">
-              
-                <span itemprop="name">CSS常用的</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-05-19T08:41:27+08:00"
-              content="2016-05-19" >
-          05-19
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/19/Flex-布局/" rel="next" title="Flex 布局">
+                <i class="fa fa-chevron-left"></i> Flex 布局
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -304,6 +426,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -323,8 +449,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -396,6 +531,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定"><span class="nav-number">1.</span> <span class="nav-text">绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传参"><span class="nav-number">2.</span> <span class="nav-text">传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回调"><span class="nav-number">3.</span> <span class="nav-text">回调</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传参回调"><span class="nav-number">3.1.</span> <span class="nav-text">传参回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件监听"><span class="nav-number">3.2.</span> <span class="nav-text">事件监听</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -499,6 +645,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
