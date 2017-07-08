@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[共勉]]></title>
+      <url>http://zy380196088.github.io./2017/07/08/%E5%85%B1%E5%8B%89/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>莫语常言道知足,万事至终总是空.<br>理想现实一线隔,心无旁骛脚踏实.<br>谁无暴风劲雨时,守得云开见月明.<br>花开复见却飘零,残憾莫使今生留.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[移动端之坑]]></title>
       <url>http://zy380196088.github.io./2017/07/05/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B9%8B%E5%9D%91/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
@@ -1239,7 +1246,8 @@
 <p>如果需要显示时,不加上条meta即可,默认为显示.</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">”apple-mobile-web-app-status-bar-style”</span> <span class="attr">content</span>=<span class="string">black”</span> /&gt;</span></div></pre></td></tr></table></figure>
 <p>默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明）。<br>注意： 若值为“black-translucent”将会占据页面px位置，浮在页面上方（会覆盖页面20px高度–iphone4和itouch4的Retina屏幕为40px)。</p>
-<h2 id="在手机HOME界面创建应用程序样式的图标"><a href="#在手机HOME界面创建应用程序样式的图标" class="headerlink" title="在手机HOME界面创建应用程序样式的图标"></a>在手机HOME界面创建应用程序样式的图标</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- for IOS--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon"</span> <span class="attr">href</span>=<span class="string">"/static/images/xxx.png"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- for Android--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon-precomposed"</span> <span class="attr">href</span>=<span class="string">"/static/images/xxx.png"</span>&gt;</span></div></pre></td></tr></table></figure>]]></content>
+<h2 id="在手机HOME界面创建应用程序样式的图标"><a href="#在手机HOME界面创建应用程序样式的图标" class="headerlink" title="在手机HOME界面创建应用程序样式的图标"></a>在手机HOME界面创建应用程序样式的图标</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- for IOS--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon"</span> <span class="attr">href</span>=<span class="string">"/static/images/xxx.png"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- for Android--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon-precomposed"</span> <span class="attr">href</span>=<span class="string">"/static/images/xxx.png"</span>&gt;</span></div></pre></td></tr></table></figure>
+]]></content>
     </entry>
     
     <entry>
