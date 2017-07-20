@@ -281,6 +281,113 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/05/jQuery插件学习/" itemprop="url">
+                  jQuery插件学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T21:12:15+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>写 jQuery 插件最核心的有如下两种放方法:</p>
+<h3 id="extend-object"><a href="#extend-object" class="headerlink" title="$.extend(object)"></a>$.extend(object)</h3><p>可以理解为 jQuery 添加一个静态方法</p>
+<h3 id="fn-extend-object"><a href="#fn-extend-object" class="headerlink" title="$.fn.extend(object)"></a>$.fn.extend(object)</h3><p>可以理解为 jQuery 实例添加一个方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//$.extend 定义与调用</span></div><div class="line">$.extend(&#123; <span class="attr">fun1</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"执行方法一"</span>); &#125; &#125;);</div><div class="line">$.fun1();</div><div class="line"><span class="comment">//$.fn.extend 定义与调用</span></div><div class="line">$.fn.extend(&#123; <span class="attr">fun2</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"执行方法2"</span>); &#125; &#125;);</div><div class="line">$(<span class="keyword">this</span>).fun2();</div><div class="line"><span class="comment">//等同于</span></div><div class="line">$.fn.fun3 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"执行方法三"</span>); &#125;</div><div class="line">$(<span class="keyword">this</span>).fun3();</div></pre></td></tr></table></figure>
+<h3 id="jQuery-function-与-function-jQuery-的区别"><a href="#jQuery-function-与-function-jQuery-的区别" class="headerlink" title="jQuery(function(){}); 与(function(){})(jQuery);的区别"></a>jQuery(function(){}); 与(function(){})(jQuery);的区别</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">jQuery(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div><div class="line"><span class="comment">//相当于</span></div><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);<span class="comment">//是某个DOM元素加载完毕后执行方法里的代码。</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)();</div><div class="line"><span class="comment">//相当于</span></div><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;&#125;;</div><div class="line">fn(jQuery);</div><div class="line"><span class="comment">//定义了一个匿名函数，其中jQuery代表这个匿名函数的实参。通常用在JQuery插件开发中，起到了定义插件的私有域的作用</span></div></pre></td></tr></table></figure>
+<h3 id="开发-jQuery-插件标准结构"><a href="#开发-jQuery-插件标准结构" class="headerlink" title="开发 jQuery 插件标准结构"></a>开发 jQuery 插件标准结构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//step01 定义JQuery的作用域,防止$符号污染的 jQuery 插件</span></div><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</div><div class="line">    <span class="comment">//step03-a 插件的默认值属性</span></div><div class="line">    <span class="keyword">var</span> defaults = &#123;</div><div class="line">        <span class="attr">prevId</span>: <span class="string">'prevBtn'</span>,</div><div class="line">        <span class="attr">prevText</span>: <span class="string">'Previous'</span>,</div><div class="line">        <span class="attr">nextId</span>: <span class="string">'nextBtn'</span>,</div><div class="line">        <span class="attr">nextText</span>: <span class="string">'Next'</span></div><div class="line">        <span class="comment">//……</span></div><div class="line">    &#125;;</div><div class="line">    <span class="comment">//step02 插件的扩展方法名称</span></div><div class="line">    $.fn.easySlider = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</div><div class="line">        <span class="comment">//step03-b 合并用户自定义属性，默认属性</span></div><div class="line">        <span class="keyword">var</span> options = $.extend(defaults, options);</div><div class="line">        <span class="comment">//step4 支持JQuery选择器</span></div><div class="line">        <span class="comment">//step5 支持链式调用</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
+<ol>
+<li>定义作用域;</li>
+<li>为 jQuery 扩展一个插件;</li>
+<li>设置默认值;</li>
+<li>支持jQuery 选择器</li>
+<li>支持JQuery的链接调用</li>
+<li>插件里的方法</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/24/JS-Tips/" itemprop="url">
                   JS Tips
                 </a>
@@ -717,149 +824,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/09/学习笔记-Javascript高级程序设计/" itemprop="url">
-                  学习笔记-Javascript高级程序设计
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-09T18:22:00+08:00" content="2016-05-09">
-              2016-05-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><h2 id="JavaScript模块化编程的重要性"><a href="#JavaScript模块化编程的重要性" class="headerlink" title="JavaScript模块化编程的重要性"></a>JavaScript模块化编程的重要性</h2><ol>
-<li><p>出现大量的全局变量<br>JS在每个地方都可以定义全局变量,容易造成变量污染,程序将难以维护.</p>
-</li>
-<li><p>JS 加载顺序要按照代码的依赖顺序</p>
-</li>
-<li>html一次性加载过多的 JS 脚本页面容易出现假死</li>
-</ol>
-<h2 id="window-location-href的用法-动态输出跳转"><a href="#window-location-href的用法-动态输出跳转" class="headerlink" title="window.location.href的用法(动态输出跳转)"></a>window.location.href的用法(动态输出跳转)</h2><h3 id="self-location-href-“-url”"><a href="#self-location-href-“-url”" class="headerlink" title="self.location.href = “/url”"></a>self.location.href = “/url”</h3><p>当前页面打开 URL 页面</p>
-<h3 id="location-href-“-url”"><a href="#location-href-“-url”" class="headerlink" title="location.href = “/url”"></a>location.href = “/url”</h3><p>当前页面打开 URL 页面</p>
-<h3 id="windows-location-href-“-url”"><a href="#windows-location-href-“-url”" class="headerlink" title="windows.location.href = “/url”"></a>windows.location.href = “/url”</h3><p>当前页面打开 URL 页面</p>
-<h3 id="this-location-href-”-url”"><a href="#this-location-href-”-url”" class="headerlink" title="this.location.href=”/url”"></a>this.location.href=”/url”</h3><p>当前页面打开URL页面</p>
-<h3 id="parent-location-href-”-url”"><a href="#parent-location-href-”-url”" class="headerlink" title="parent.location.href=”/url”"></a>parent.location.href=”/url”</h3><p>在父页面打开新页面</p>
-<h3 id="top-location-href-”-url”"><a href="#top-location-href-”-url”" class="headerlink" title="top.location.href=”/url”"></a>top.location.href=”/url”</h3><p>在顶层页面打开新页面</p>
-<h2 id="JavaScript-数据类型"><a href="#JavaScript-数据类型" class="headerlink" title="JavaScript 数据类型"></a>JavaScript 数据类型</h2><h3 id="5种简单数据"><a href="#5种简单数据" class="headerlink" title="5种简单数据"></a>5种简单数据</h3><h2 id="JS中的内部属性与delete操作符介绍"><a href="#JS中的内部属性与delete操作符介绍" class="headerlink" title="JS中的内部属性与delete操作符介绍"></a>JS中的内部属性与delete操作符介绍</h2><p>在讲解Configurable之前，我们首先来看一道面试题：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log( <span class="built_in">window</span>.a ); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> <span class="built_in">window</span>.a ); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log( <span class="built_in">window</span>.a ); <span class="comment">// undefined</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line"><span class="built_in">console</span>.log( <span class="built_in">window</span>.b ); <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> <span class="built_in">window</span>.b ); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log( <span class="built_in">window</span>.b ); <span class="comment">// 2</span></div></pre></td></tr></table></figure></p>
-<p>从上面的这道题可以看出两个的区别：在没有使用var声明变量时，使用delete关键词是可以进行删除的，再次获取时值就是undefined了；在使用var声明的变量，使用delete是不能删除的，再获取时值依然是2。</p>
-<h3 id="delete操作符"><a href="#delete操作符" class="headerlink" title="delete操作符"></a>delete操作符</h3><p>使用delete删除变量或属性时，删除成功返回true，否则返回false。如上面的例子中，delete无法删除变量a时，则返回false；而delete能成功删除变量b，则返回true。</p>
-<p>除了上述的两种情况，还有其他的各种常用变量也有能被delete删除的，也有不能被删除的。我们先不管delete这些变量时，为什么会产生这样的结果，这里只看他的返回值：</p>
-<p>删除delete数组中其中的一个元素：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用for~in是循环不到的，直接忽略到该元素</span></div><div class="line"><span class="comment">// 使用for()可以得到该元素，但是值是undefined</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"><span class="built_in">console</span>.log( arr );         <span class="comment">// [1, 2, 3, 4]</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> arr[<span class="number">2</span>] );   <span class="comment">// true，删除成功</span></div><div class="line"><span class="built_in">console</span>.log( arr );         <span class="comment">// [1, 2, undefined, 4]</span></div></pre></td></tr></table></figure></p>
-<p>删除function类型的变量：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// chrome 不能删除；火狐可以删除</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( func );</div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> func );</div><div class="line"><span class="built_in">console</span>.log( func );</div></pre></td></tr></table></figure></p>
-<p>删除function.length，该length是获取形参的个数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( func1.length );    <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> func1.length ); <span class="comment">// true，删除成功</span></div><div class="line"><span class="built_in">console</span>.log( func1.length );    <span class="comment">// 0</span></div></pre></td></tr></table></figure></p>
-<p>删除常用变量：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> <span class="literal">NaN</span> );      <span class="comment">// false，删除失败</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> <span class="literal">undefined</span> );<span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> <span class="literal">Infinity</span> ); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> <span class="literal">null</span> );     <span class="comment">// true，删除成功</span></div></pre></td></tr></table></figure></p>
-<p>删除prototype，而不是删除prototype上的属性：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line">&#125;</div><div class="line">Person.prototype.name = <span class="string">"蚊子"</span>;</div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> Person.prototype ); <span class="comment">// false，无法删除</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> <span class="built_in">Object</span>.prototype ); <span class="comment">// false</span></div></pre></td></tr></table></figure></p>
-<p>删除数组和字符串的length时：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"><span class="built_in">console</span>.log( arr.length );      <span class="comment">// 4</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> arr.length );   <span class="comment">// false，删除失败</span></div><div class="line"><span class="built_in">console</span>.log( arr.length );      <span class="comment">// 4</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> str = <span class="string">'abcdefg'</span>;</div><div class="line"><span class="built_in">console</span>.log( str.length );      <span class="comment">// 7</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> str.length );   <span class="comment">// false，删除失败</span></div><div class="line"><span class="built_in">console</span>.log( str.length );      <span class="comment">// 7</span></div></pre></td></tr></table></figure></p>
-<p>删除obj中的属性时：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'wenzi'</span>, <span class="attr">age</span>:<span class="number">25</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log( obj.name );    <span class="comment">// wenzi</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> obj.name ); <span class="comment">// true，删除成功</span></div><div class="line"><span class="built_in">console</span>.log( obj.name );    <span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log( obj );         <span class="comment">// &#123; age:25 &#125;</span></div></pre></td></tr></table></figure></p>
-<p>删除实例对象中的属性时，从以下的输出结果可以看出，使用delete删除属性时，删除的仅仅是实例对象本身的属性，而不能删除prototype上的属性，即使再删一次也是删除掉不的；若要删除prototype上的属性的属性或方法，只能是：delete Person.prototype.name：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = <span class="string">'wenzi'</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype.name = <span class="string">'蚊子'</span>;</div><div class="line"><span class="keyword">var</span> student = <span class="keyword">new</span> Person();</div><div class="line"><span class="built_in">console</span>.log( student.name );    <span class="comment">// wenzi</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> student.name ); <span class="comment">// true，删除成功</span></div><div class="line"><span class="built_in">console</span>.log( student.name );    <span class="comment">// 蚊子</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> student.name ); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log( student.name );    <span class="comment">// 蚊子</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> Person.prototype.name );<span class="comment">// true，删除成功</span></div><div class="line"><span class="built_in">console</span>.log( student.name );    <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
-<h3 id="js的内部属性"><a href="#js的内部属性" class="headerlink" title="js的内部属性"></a>js的内部属性</h3><p>在上面的例子中，有的变量或属性能够删除成功，而有的变量或属性则无法进行删除，那是什么决定这个变量或属性能不能被删除呢。</p>
-<p>ECMA-262第5版定义了JS对象属性中特征（用于JS引擎，外部无法直接访问）。ECMAScript中有两种属性：数据属性和访问器属性。</p>
-<h4 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h4><p>数据属性指包含一个数据值的位置，可在该位置读取或写入值，该属性有4个供述其行为的特性：</p>
-<p>[[configurable]]:表示能否使用delete操作符删除从而重新定义，或能否修改为访问器属性。默认为true;<br>[[Enumberable]]:表示是否可通过for-in循环返回属性。默认true;<br>[[Writable]]:表示是否可修改属性的值。默认true;<br>[[Value]]:包含该属性的数据值。读取/写入都是该值。默认为undefined；如上面实例对象Person中定义了name属性，其值为’wenzi’,对该值的修改都反正在这个位置<br>要修改对象属性的默认特征（默认都为true)，可调用Object.defineProperty()方法，它接收三个参数：属性所在对象，属性名和一个描述符对象（必须是：configurable、enumberable、writable和value，可设置一个或多个值）。</p>
-<p>如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'name'</span>, &#123;</div><div class="line">  <span class="attr">configurable</span>: <span class="literal">false</span>,  <span class="comment">// 不可删除，且不能修改为访问器属性</span></div><div class="line">  writable: <span class="literal">false</span>,      <span class="comment">// 不可修改</span></div><div class="line">  value: <span class="string">'wenzi'</span>            <span class="comment">// name的值为wenzi</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log( person.name);          <span class="comment">// wenzi</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> person.name );  <span class="comment">// false，无法删除</span></div><div class="line">person.name = <span class="string">'lily'</span>;</div><div class="line"><span class="built_in">console</span>.log( person.name );         <span class="comment">// wenzi</span></div></pre></td></tr></table></figure></p>
-<p>可以看出，delete及重置person.name的值都没有生效，这就是因为调用defineProperty函数修改了对象属性的特征；值得注意的是一旦将configurable设置为false，则无法再使用defineProperty将其修改为true（执行会报错：Uncaught TypeError: Cannot redefine property: name）;</p>
-<h4 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h4><p>它主要包括一对getter和setter函数，在读取访问器属性时，会调用getter返回有效值；写入访问器属性时，调用setter，写入新值；该属性有以下4个特征：</p>
-<p>[[Configurable]]:是否可通过delete操作符删除重新定义属性；<br>[[Numberable]]:是否可通过for-in循环查找该属性；<br>[[Get]]:读取属性时自动调用，默认：undefined;<br>[[Set]]:写入属性时自动调用，默认：undefined;<br>访问器属性不能直接定义，必须使用defineProperty()来定义，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">  <span class="attr">_age</span>: <span class="number">18</span></div><div class="line">&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'isAdult'</span>, &#123;</div><div class="line">    <span class="attr">Configurable</span> : <span class="literal">false</span>,</div><div class="line">  <span class="attr">get</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>._age &gt;= <span class="number">18</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log( person.isAdult ); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<p>不过还是有一点需要额外注意一下，Object.defineProperty()方法设置属性时，不能同时声明访问器属性（set和get）和数据属性（writable或者value）。意思就是，某个属性设置了writable或者value属性，那么这个属性就不能声明get和set了，反之亦然。</p>
-<p>如若像下面的方式进行定义，访问器属性和数据属性同时存在：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'name'</span>, &#123;</div><div class="line">  <span class="attr">value</span>: <span class="string">'wenzi'</span>,</div><div class="line">  <span class="attr">set</span>: <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    myName = name;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">get</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> myName;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>上面的代码看起来貌似是没有什么问题，但是真正执行时会报错，报错如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Uncaught TypeError: Invalid property. A property cannot both have accessors and be writable or have a value</div></pre></td></tr></table></figure></p>
-<p>对于数据属性，可以取得：configurable,enumberable,writable和value；</p>
-<p>对于访问器属性，可以取得：configurable,enumberable,get和set。</p>
-<p>由此我们可知：一个变量或属性是否可以被删除，是由其内部属性Configurable进行控制的，若Configurable为true，则该变量或属性可以被删除，否则不能被删除。</p>
-<p>可是我们应该怎么获取这个Configurable值呢，总不能用delete试试能不能删除吧。有办法滴！！</p>
-<h4 id="获取内部属性"><a href="#获取内部属性" class="headerlink" title="获取内部属性"></a>获取内部属性</h4><p>ES5为我们提供了Object.getOwnPropertyDescriptor(object, property)来获取内部属性。</p>
-<p>如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;<span class="attr">name</span>:<span class="string">'wenzi'</span>&#125;;</div><div class="line"><span class="keyword">var</span> desp = <span class="built_in">Object</span>.getOwnPropertyDescriptor(person, <span class="string">'name'</span>); <span class="comment">// person中的name属性</span></div><div class="line"><span class="built_in">console</span>.log( desp );    <span class="comment">// &#123;value: "wenzi", writable: true, enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure></p>
-<p>通过Object.getOwnPropertyDescriptor(object, property)我们能够获取到4个内部属性，configurable控制着变量或属性是否可被删除。这个例子中，person.name的configurable是true，则说明是可以被删除的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( person.name );         <span class="comment">// wenzi</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> person.name );  <span class="comment">// true，删除成功</span></div><div class="line"><span class="built_in">console</span>.log( person.name );         <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
-<p>我们再回到最开始的那个面试题：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">a = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> desp = <span class="built_in">Object</span>.getOwnPropertyDescriptor(<span class="built_in">window</span>, <span class="string">'a'</span>);</div><div class="line"><span class="built_in">console</span>.log( desp.configurable );   <span class="comment">// true，可以删除</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line"><span class="keyword">var</span> desp = <span class="built_in">Object</span>.getOwnPropertyDescriptor(<span class="built_in">window</span>, <span class="string">'b'</span>);</div><div class="line"><span class="built_in">console</span>.log( desp.configurable );   <span class="comment">// false，不能删除</span></div></pre></td></tr></table></figure></p>
-<p>跟我们使用delete操作删除变量时产生的结果是一样的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -900,7 +869,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

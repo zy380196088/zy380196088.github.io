@@ -85,18 +85,21 @@
 
 
 <meta name="description" content="let 和 constlet 是 ES6新增的用来声明局部变量的,只在let命令所在的代码块内有效。
-for循环的计数器，就很合适使用let命令。代码如下:12345for (let i = 0; i &amp;lt; 10; i++) &amp;#123;  // ...&amp;#125;console.log(i)// ReferenceError: i is not defined">
+for循环的计数器，就很合适使用let命令。代码如下:12345for (let i = 0; i &amp;lt; 10; i++) &amp;#123;  // ...&amp;#125;console.log(i)// ReferenceError: i is not defined
+let命令改变了语法行为,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6学习笔记">
 <meta property="og:url" content="http://zy380196088.github.io./2016/12/06/ES6学习笔记/index.html">
 <meta property="og:site_name" content="Zoey's Garden">
 <meta property="og:description" content="let 和 constlet 是 ES6新增的用来声明局部变量的,只在let命令所在的代码块内有效。
-for循环的计数器，就很合适使用let命令。代码如下:12345for (let i = 0; i &amp;lt; 10; i++) &amp;#123;  // ...&amp;#125;console.log(i)// ReferenceError: i is not defined">
-<meta property="og:updated_time" content="2017-07-20T02:28:31.000Z">
+for循环的计数器，就很合适使用let命令。代码如下:12345for (let i = 0; i &amp;lt; 10; i++) &amp;#123;  // ...&amp;#125;console.log(i)// ReferenceError: i is not defined
+let命令改变了语法行为,">
+<meta property="og:updated_time" content="2017-07-20T03:45:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记">
 <meta name="twitter:description" content="let 和 constlet 是 ES6新增的用来声明局部变量的,只在let命令所在的代码块内有效。
-for循环的计数器，就很合适使用let命令。代码如下:12345for (let i = 0; i &amp;lt; 10; i++) &amp;#123;  // ...&amp;#125;console.log(i)// ReferenceError: i is not defined">
+for循环的计数器，就很合适使用let命令。代码如下:12345for (let i = 0; i &amp;lt; 10; i++) &amp;#123;  // ...&amp;#125;console.log(i)// ReferenceError: i is not defined
+let命令改变了语法行为,">
 
 
 
@@ -344,6 +347,7 @@ for循环的计数器，就很合适使用let命令。代码如下:12345for (let
         <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
 <h1 id="let-和-const"><a href="#let-和-const" class="headerlink" title="let 和 const"></a>let 和 const</h1><p>let 是 ES6新增的用来声明局部变量的,只在let命令所在的代码块内有效。</p>
 <p>for循环的计数器，就很合适使用let命令。代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for (let i = 0; i &lt; 10; i++) &#123;</div><div class="line">  // ...</div><div class="line">&#125;</div><div class="line">console.log(i)</div><div class="line">// ReferenceError: i is not defined</div></pre></td></tr></table></figure></p>
+<p>let命令改变了语法行为,不会发生变量提升,它所声明的变量一定要在声明后使用,否则报错。</p>
 
       
     </div>
@@ -470,7 +474,7 @@ for循环的计数器，就很合适使用let命令。代码如下:12345for (let
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
