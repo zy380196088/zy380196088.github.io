@@ -281,6 +281,131 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/13/Node.js入门小记/" itemprop="url">
+                  初学Node.js小记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-13T20:12:33+08:00" content="2017-04-13">
+              2017-04-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<h1 id="require-和-module"><a href="#require-和-module" class="headerlink" title="require 和 module"></a>require 和 module</h1><p>Node提供了两个核心模块require,module来管理模块依赖. 他们在全局范围内可以用.不需要用 require(‘require’)和 require(‘module’)医用.</p>
+<h1 id="path"><a href="#path" class="headerlink" title="path"></a>path</h1><h2 id="path-dirname-filepath-获取路径"><a href="#path-dirname-filepath-获取路径" class="headerlink" title="path.dirname(filepath) 获取路径"></a>path.dirname(filepath) 获取路径</h2><h2 id="path-basename-filepath-获取文件名"><a href="#path-basename-filepath-获取文件名" class="headerlink" title="path.basename(filepath) 获取文件名"></a>path.basename(filepath) 获取文件名</h2><h2 id="path-extname-filepath-获取扩展名"><a href="#path-extname-filepath-获取扩展名" class="headerlink" title="path.extname(filepath) 获取扩展名"></a>path.extname(filepath) 获取扩展名</h2><h2 id="path-join-…paths"><a href="#path-join-…paths" class="headerlink" title="path.join([…paths])"></a>path.join([…paths])</h2><h2 id="path-resolve-…paths"><a href="#path-resolve-…paths" class="headerlink" title="path.resolve([…paths])"></a>path.resolve([…paths])</h2><h2 id="path-normalize-filepath"><a href="#path-normalize-filepath" class="headerlink" title="path.normalize(filepath)"></a>path.normalize(filepath)</h2><h2 id="path-format-pathObject-文件路径分解"><a href="#path-format-pathObject-文件路径分解" class="headerlink" title="path.format(pathObject) 文件路径分解"></a>path.format(pathObject) 文件路径分解</h2><p>将pathObject 的 root ,dir , base , name , ext属性按照一定的规则,组合成一个文件路径.</p>
+<h2 id="path-parse-filepath-文件路径解析"><a href="#path-parse-filepath-文件路径解析" class="headerlink" title="path.parse(filepath) 文件路径解析"></a>path.parse(filepath) 文件路径解析</h2><h2 id="path-relative-from-to-获取相对路径"><a href="#path-relative-from-to-获取相对路径" class="headerlink" title="path.relative(from,to) 获取相对路径"></a>path.relative(from,to) 获取相对路径</h2><h2 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a>path.delimiter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//Linux</div><div class="line">console.log(process.env.PATH)</div><div class="line">// &apos;/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin&apos;</div><div class="line"></div><div class="line">process.env.PATH.split(path.delimiter)</div><div class="line">// returns [&apos;/usr/bin&apos;, &apos;/bin&apos;, &apos;/usr/sbin&apos;, &apos;/sbin&apos;, &apos;/usr/local/bin&apos;]</div><div class="line"></div><div class="line">//Windows</div><div class="line">console.log(process.env.PATH)</div><div class="line">// &apos;C:\Windows\system32;C:\Windows;C:\Program Files\node\&apos;</div><div class="line"></div><div class="line">process.env.PATH.split(path.delimiter)</div><div class="line">// returns [&apos;C:\\Windows\\system32&apos;, &apos;C:\\Windows&apos;, &apos;C:\\Program Files\\node\\&apos;]</div></pre></td></tr></table></figure>
+<h2 id="util"><a href="#util" class="headerlink" title="util"></a>util</h2><h3 id="until-inherits-constructor-superConstructor"><a href="#until-inherits-constructor-superConstructor" class="headerlink" title="until.inherits(constructor,superConstructor)"></a>until.inherits(constructor,superConstructor)</h3><p>实现对象间原型继承的函数.</p>
+<h3 id="util-inspect-object-showHidden-depth-colors"><a href="#util-inspect-object-showHidden-depth-colors" class="headerlink" title="util.inspect(object,[showHidden],[depth],[colors])"></a>util.inspect(object,[showHidden],[depth],[colors])</h3><p>将任意对象转换为字符串的方法，通常用于调试和错误输出.</p>
+<h3 id="util-isArray"><a href="#util-isArray" class="headerlink" title="util.isArray()"></a>util.isArray()</h3><h3 id="xutil-isRegExp"><a href="#xutil-isRegExp" class="headerlink" title="xutil.isRegExp()"></a>xutil.isRegExp()</h3><h3 id="util-isDate"><a href="#util-isDate" class="headerlink" title="util.isDate()"></a>util.isDate()</h3><h3 id="util-isError"><a href="#util-isError" class="headerlink" title="util.isError()"></a>util.isError()</h3><h3 id="util-format"><a href="#util-format" class="headerlink" title="util.format()"></a>util.format()</h3><h3 id="util-debug"><a href="#util-debug" class="headerlink" title="util. debug()"></a>util. debug()</h3><h2 id="事件驱动-events"><a href="#事件驱动-events" class="headerlink" title="事件驱动 events"></a>事件驱动 events</h2><h3 id="events-EventEmitter"><a href="#events-EventEmitter" class="headerlink" title="events.EventEmitter"></a>events.EventEmitter</h3><p>事件发射与事件监听器功能的封装.</p>
+<h4 id="EventEmitter-on-event-listener"><a href="#EventEmitter-on-event-listener" class="headerlink" title="EventEmitter.on(event, listener)"></a>EventEmitter.on(event, listener)</h4><p>为指定事件注册一个监听器.</p>
+<h4 id="EventEmitter-emit-event-arg1-arg2-…"><a href="#EventEmitter-emit-event-arg1-arg2-…" class="headerlink" title="EventEmitter.emit(event, [arg1], [arg2], […])"></a>EventEmitter.emit(event, [arg1], [arg2], […])</h4><p>发射 event 事件.</p>
+<h4 id="EventEmitter-once-event-listener"><a href="#EventEmitter-once-event-listener" class="headerlink" title="EventEmitter.once(event, listener)"></a>EventEmitter.once(event, listener)</h4><p>为指定事件注册一个<strong><em>单次</em></strong>监听器</p>
+<h4 id="EventEmitter-removeListener-event-listener"><a href="#EventEmitter-removeListener-event-listener" class="headerlink" title="EventEmitter.removeListener(event, listener)"></a>EventEmitter.removeListener(event, listener)</h4><p> 除指定事件的某个监听器，listener必须是该事件已经注册过的监听器。</p>
+<h4 id="EventEmitter-removeAllListeners-event"><a href="#EventEmitter-removeAllListeners-event" class="headerlink" title="EventEmitter.removeAllListeners([event])"></a>EventEmitter.removeAllListeners([event])</h4><p>移除所有事件的所有监听器,如果指定 event，则移除指定事件的所有监听器。</p>
+<h3 id="继承-EventEmitter"><a href="#继承-EventEmitter" class="headerlink" title="继承 EventEmitter"></a>继承 EventEmitter</h3><p>包括 fs、net、 http 在内的，只要是支持事件响应的核心模块都是 EventEmitter 的 子类。</p>
+<h2 id="文件系统-fs"><a href="#文件系统-fs" class="headerlink" title="文件系统 fs"></a>文件系统 fs</h2><h3 id="fs-readFile-filename-encoding-callback-err-data"><a href="#fs-readFile-filename-encoding-callback-err-data" class="headerlink" title="fs.readFile(filename,[encoding],[callback(err,data)])"></a>fs.readFile(filename,[encoding],[callback(err,data)])</h3><h3 id="fs-readFileSync-filename-encoding"><a href="#fs-readFileSync-filename-encoding" class="headerlink" title="fs.readFileSync(filename, [encoding])"></a>fs.readFileSync(filename, [encoding])</h3><h3 id="fs-open-path-flags-mode-callback-err-fd"><a href="#fs-open-path-flags-mode-callback-err-fd" class="headerlink" title="fs.open(path,flags,[mode],[callback(err,fd)])"></a>fs.open(path,flags,[mode],[callback(err,fd)])</h3><h3 id="fs-read-fd-buffer-offset-length-position-callback-err-bytesRead-buffer"><a href="#fs-read-fd-buffer-offset-length-position-callback-err-bytesRead-buffer" class="headerlink" title="fs.read(fd, buffer, offset, length, position, [callback(err, bytesRead, buffer)])"></a>fs.read(fd, buffer, offset, length, position, [callback(err, bytesRead, buffer)])</h3><h2 id="HTTP服务器与客户端"><a href="#HTTP服务器与客户端" class="headerlink" title="HTTP服务器与客户端"></a>HTTP服务器与客户端</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/12/webpack-二三事/" itemprop="url">
                   webpack 小结
                 </a>
@@ -731,136 +856,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/04/JavaScript设计模式/" itemprop="url">
-                  JavaScript设计模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-04T22:24:12+08:00" content="2017-03-04">
-              2017-03-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
-<h1 id="面向过程与面向对象"><a href="#面向过程与面向对象" class="headerlink" title="面向过程与面向对象"></a>面向过程与面向对象</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><h3 id="创建一个类"><a href="#创建一个类" class="headerlink" title="创建一个类"></a>创建一个类</h3><p>首先声明一个函数保存在一个变量里(一般将首字母大写).<br>然后在这个函数(类)内部通过 this 添加属性或者方法来实现对类添加属性活着方法:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">id, bookName, price</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id ;</div><div class="line">    <span class="keyword">this</span>.bookName = bookName;</div><div class="line">    <span class="keyword">this</span>.price = price;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>也可以通过在类的原型上添加属性和方法.有如下两种方式:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法一:为原型对象属性赋值</span></div><div class="line">Book.prototype.display = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//方法二:将一个对象赋值给类的原型对象</span></div><div class="line">Book.prototype = &#123;</div><div class="line">    <span class="attr">display</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><p>constructor 是一个属性,当创建一个函数或者对象时都会为其创建一个原型对象 prototype,<br>在 prototype 对象中又会像函数中创建 this 一样创建一个 constructor 属性,<br>那么constructor 属性指向的就是拥有整个源性对象的函数或对象.</p>
-<h3 id="私有属性-私有方法"><a href="#私有属性-私有方法" class="headerlink" title="私有属性 私有方法"></a>私有属性 私有方法</h3><p>由于JavaScript的函数级作用域,生命在函数内部的变量以及方法在外界是访问不到的.<br>通过此特性即可创建类的私有变量以及私有方法.然而在函数内部通过 this 创建的属性和方法,在类创建对象时,每个对象自身都拥有一份并且可以在外部访问的到.<br>因此,通过 this 创建的属性可以看做是对象共有的属性和公有方法.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">id,name,price</span>)</span>&#123;</div><div class="line">    <span class="comment">//私有属性</span></div><div class="line">    <span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">    <span class="comment">//私有方法</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">checkId</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;;</div><div class="line">    <span class="comment">//特权方法</span></div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.getPrice = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.setPrice = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">    <span class="comment">//对象共有属性</span></div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">    <span class="comment">//对象公有方法</span></div><div class="line">    <span class="keyword">this</span>.copy = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"></div><div class="line">    <span class="comment">//构造器</span></div><div class="line">    <span class="keyword">this</span>.setName(name);</div><div class="line">    <span class="keyword">this</span>.setPrie(price);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>我们时常将累得静态变量通过闭包来实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//静态私有变量</span></div><div class="line">    <span class="keyword">var</span> bookNum = <span class="number">0</span>;</div><div class="line">    <span class="comment">//静态私有方法</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">checkBook</span> (<span class="params">name</span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="comment">//返回构造函数</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">newId,newName , newPrice</span>)</span>&#123;</div><div class="line">        <span class="comment">//私有变量</span></div><div class="line">        <span class="keyword">var</span> name , price;</div><div class="line">        <span class="comment">//私有方法</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">checkID</span>(<span class="params">id</span>)</span>&#123;&#125;</div><div class="line">        <span class="comment">//特权方法</span></div><div class="line">        <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">        <span class="keyword">this</span>.getPrice = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">        <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">        <span class="keyword">this</span>.setPrice = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">        <span class="comment">//对象共有属性</span></div><div class="line">        <span class="keyword">this</span>.id = newId;</div><div class="line">        <span class="comment">//公有方法</span></div><div class="line">        <span class="keyword">this</span>.copy = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">        <span class="comment">//构造器</span></div><div class="line">        <span class="keyword">this</span>.setName(name);</div><div class="line">        <span class="keyword">this</span>.setPrice(price);</div><div class="line">    &#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">Book.prototype = &#123;</div><div class="line">    <span class="attr">isJSBook</span> :<span class="literal">false</span>,</div><div class="line">    <span class="attr">display</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="找位监察-创建对象的安全模式"><a href="#找位监察-创建对象的安全模式" class="headerlink" title="找位监察 - 创建对象的安全模式"></a>找位监察 - 创建对象的安全模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//图书安全类</span></div><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">title,time ,type</span>)</span>&#123;</div><div class="line">    <span class="comment">//判断执行过程中 this 是否是当前这个对象(如果是说明是用 new 创建的)</span></div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> Book)&#123;</div><div class="line">        <span class="keyword">this</span>.title = title ;</div><div class="line">        <span class="keyword">this</span>.time = time;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="comment">//否则重新创建这个对象</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Book(title,time,type);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> book = Book(<span class="string">'JavaScript'</span>,<span class="string">'2014'</span>,<span class="string">'js'</span>);</div></pre></td></tr></table></figure>
-<h2 id="传宗接代-继承"><a href="#传宗接代-继承" class="headerlink" title="传宗接代-继承"></a>传宗接代-继承</h2><h3 id="子类的原型对象-类式继承"><a href="#子类的原型对象-类式继承" class="headerlink" title="子类的原型对象 - 类式继承"></a>子类的原型对象 - 类式继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//声明父类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperClass</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.superValue = <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//为父类添加公有方法.</span></div><div class="line">SuperClass.prototype.getSuperValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.superValue;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//申明子类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubClass</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.subValue = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//继承父类</span></div><div class="line">SubClass.prototype = <span class="keyword">new</span> SuperClass();</div><div class="line"><span class="comment">//为子类添加公有方法</span></div><div class="line">SubClass.prototype.getSuperValue = <span class="function"><span class="keyword">function</span></span></div><div class="line">(<span class="params"></span>)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.subValue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们可以通过 instanceof 来检测某个对象是否是某个类的实例,或者说某个对象是否继承了某个类.<br>instanceof 通过判断对象的 prototype 链来确定这个对象是否是某个类的实例,而不关心对象与类的自身结构.</p>
-<h3 id="创建即继承-构造函数继承"><a href="#创建即继承-构造函数继承" class="headerlink" title="创建即继承 - 构造函数继承"></a>创建即继承 - 构造函数继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//声明父类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperClass</span>(<span class="params">id</span>)</span>&#123;</div><div class="line">    <span class="comment">//引用类型共有属性</span></div><div class="line">    <span class="keyword">this</span>.books = [<span class="string">'JavaScript'</span>,<span class="string">'html'</span>,<span class="string">'css'</span>];</div><div class="line">    <span class="comment">//值类型共有属性</span></div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">&#125;</div><div class="line"><span class="comment">//父类声明原型方法</span></div><div class="line">SuperClass.prototype.showBooks = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.book)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//申明子类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubClass</span>(<span class="params">id</span>)</span>&#123;</div><div class="line">    <span class="comment">//继承父类</span></div><div class="line">    SuperClass.call(<span class="keyword">this</span>,id);</div><div class="line">&#125;</div><div class="line"><span class="comment">//创建子类实例</span></div><div class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> SubClass(<span class="number">10</span>);</div><div class="line">VAR instance2 = <span class="keyword">new</span> SubClass(<span class="number">11</span>);</div><div class="line"></div><div class="line">instancel.books.push(<span class="string">"设计模式"</span>); </div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(instance1.books);<span class="comment">//['JavaScript','html','css','设计模式']</span></div><div class="line"><span class="built_in">console</span>.log(instance1.id);<span class="comment">//10</span></div><div class="line"><span class="built_in">console</span>.log(instance2.books)<span class="comment">//['JavaScript','html','css']</span></div><div class="line"><span class="built_in">console</span>.log(instace2.id)<span class="comment">//11</span></div></pre></td></tr></table></figure>
-<h3 id="将有点为我所用–组合继承"><a href="#将有点为我所用–组合继承" class="headerlink" title="将有点为我所用–组合继承"></a>将有点为我所用–组合继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//组合式继承</span></div><div class="line"><span class="comment">//申明父类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubClass</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="comment">//值类型公有属性</span></div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="comment">//引用类型公有属性</span></div><div class="line">    <span class="keyword">this</span>.books = [<span class="string">"html"</span>,<span class="string">"css"</span>,<span class="string">"Javascript"</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">//父类原型公有方法</span></div><div class="line">SuperClass.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</div><div class="line">&#125;</div><div class="line"><span class="comment">//声明子类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubClass</span>(<span class="params">name,time</span>)</span>&#123;</div><div class="line">    <span class="comment">//构造函数式继承父类 name 属性</span></div><div class="line">    SubClass.call(<span class="keyword">this</span>,name);</div><div class="line">    <span class="comment">//子类中新增公有属性</span></div><div class="line">    <span class="keyword">this</span>.time = time;</div><div class="line">&#125;</div><div class="line"><span class="comment">//类式继承 子类原型继承父类</span></div><div class="line">SubClass.prototype = <span class="keyword">new</span> SuperClass();</div><div class="line"><span class="comment">//子类原型方法</span></div><div class="line">SubClass.prototype.getTime = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.time)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="洁净的继承者–-原型式继承"><a href="#洁净的继承者–-原型式继承" class="headerlink" title="洁净的继承者– 原型式继承"></a>洁净的继承者– 原型式继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//原型是继承</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritObject</span>(<span class="params">o</span>)</span>&#123;</div><div class="line">    <span class="comment">//申明一个过渡函数对象</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">    <span class="comment">//过渡对象的原型继承父对象</span></div><div class="line">    F.prototype = o;</div><div class="line">    <span class="comment">//返回过渡对象的一个实例,该实例的原型继承了父对象</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="如虎添翼–寄生式继承"><a href="#如虎添翼–寄生式继承" class="headerlink" title="如虎添翼–寄生式继承"></a>如虎添翼–寄生式继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//寄生式继承</span></div><div class="line"><span class="comment">//申明对基对象</span></div><div class="line"><span class="keyword">var</span> book = &#123;</div><div class="line">    <span class="attr">name</span> : <span class="string">"js book"</span>,</div><div class="line">    <span class="attr">alikeBooks</span>:[<span class="string">"css book"</span>,<span class="string">"html book"</span>]</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createBook</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="comment">//通过原型继承方式创建新对象</span></div><div class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> inheritObject(obj);</div><div class="line">    <span class="comment">//拓展新对象</span></div><div class="line">    o.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(name);</div><div class="line">    &#125;;</div><div class="line">    <span class="comment">//返回拓展后的新对象</span></div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>寄生式继承就是对原型继承的第二次封装,并且在这第二次封装过程中对继承的对象进行了拓展,这样新创建的对象不仅仅有父类中的属性和方法而且还添加新的属性和方法.</p>
-<h2 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//单继承 属性复制</span></div><div class="line"><span class="keyword">var</span> extend = <span class="function"><span class="keyword">function</span>(<span class="params">target,source</span>)</span>&#123;</div><div class="line">    <span class="comment">//遍历源对象中的属性</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> property <span class="keyword">in</span> source)&#123;</div><div class="line">        <span class="comment">//将源对象中的属性复制到目标对象中</span></div><div class="line">        target[property] = source[property];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//返回目标对象</span></div><div class="line">    <span class="keyword">return</span> target;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function add()&#123;</div><div class="line">    //获取参数</div><div class="line">    var arg = arguments;</div><div class="line">    //获取参数长度</div><div class="line">    var len = arg.length;</div><div class="line"></div><div class="line">    switch(len)&#123;</div><div class="line">        case 0:</div><div class="line">            return &apos;null&apos;;</div><div class="line">        case 1:</div><div class="line">            return arg[0];</div><div class="line">        case 2:</div><div class="line">            return arg[0]+arg[1];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="创建型设计模式"><a href="#创建型设计模式" class="headerlink" title="创建型设计模式"></a>创建型设计模式</h1><h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">//工厂模式</div><div class="line">function createBook(name , time,type)&#123;</div><div class="line">    //创建一个对象,并对对象拓展属性和方法</div><div class="line">    var o  = new Object();</div><div class="line"></div><div class="line">    o.name = name;</div><div class="line">    o.time = time;</div><div class="line">    o.type = type;</div><div class="line">    o.getName = function()&#123;</div><div class="line">        console.log(this.name);</div><div class="line">    &#125;</div><div class="line">    //将对象返回</div><div class="line">    return o;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function createPop(type,text)&#123;</div><div class="line">    var o = new Object();</div><div class="line">    o.content = text;</div><div class="line">    o.show = function()&#123;</div><div class="line">        //显示方法</div><div class="line">    &#125;</div><div class="line">    if(type  == &apos;alert&apos;)&#123;&#125;</div><div class="line">    if(type  == &apos;prompt&apos;)&#123;&#125;</div><div class="line">    if(type == &apos;confirm&apos;)&#123;&#125;</div><div class="line"></div><div class="line">    //将对象返回</div><div class="line">    return o;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//创建警示框</div><div class="line">var userNameAlert = createPop(&apos;alert&apos;,&apos;用户名只能是26个字母和数字&apos;)</div></pre></td></tr></table></figure>
-<h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2><p>工厂方法模式本意是说将实际创建对象工作推迟到子类当中.可以将工厂发发看作是一个实例化对象的工厂类.我们可以采用安全模式类,将创建对象的基类放在工厂方法类的原型中即可.</p>
-<h3 id="安全模式类"><a href="#安全模式类" class="headerlink" title="安全模式类"></a>安全模式类</h3><h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -906,7 +901,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
