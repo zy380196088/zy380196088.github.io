@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Zoey's Garden">
 <meta property="og:description" content="经典中的经典 : 垂直居中的方法弹性盒子布局flex给父容器设置:123display:flex;justify-content:center;align-items:center;
 绝对定位居中1234567891011.parent&amp;#123;  position:relative;&amp;#125;.children&amp;#123;  margin:auto;  position:absolute;">
-<meta property="og:updated_time" content="2017-04-19T11:08:47.000Z">
+<meta property="og:updated_time" content="2017-08-14T09:30:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS常用的">
 <meta name="twitter:description" content="经典中的经典 : 垂直居中的方法弹性盒子布局flex给父容器设置:123display:flex;justify-content:center;align-items:center;
@@ -345,6 +345,8 @@
 <h2 id="iOS惯性滚动"><a href="#iOS惯性滚动" class="headerlink" title="iOS惯性滚动"></a>iOS惯性滚动</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.div</span>&#123;</div><div class="line">  <span class="attribute">-webkit-overflow-scrolling</span>:touch <span class="meta">!important</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="CSS3-之-blur-高斯模糊-毛玻璃效果"><a href="#CSS3-之-blur-高斯模糊-毛玻璃效果" class="headerlink" title="CSS3 之 blur (高斯模糊,毛玻璃效果)"></a>CSS3 之 blur (高斯模糊,毛玻璃效果)</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.blur</span>&#123;</div><div class="line">    <span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(10px); <span class="comment">/* Chrome, Opera */</span></div><div class="line">       <span class="attribute">-moz-filter</span>: <span class="built_in">blur</span>(10px);</div><div class="line">        <span class="attribute">-ms-filter</span>: <span class="built_in">blur</span>(10px);</div><div class="line">            <span class="attribute">filter</span>: <span class="built_in">blur</span>(10px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>注意:IE 不支持blur,IE6?-IE9浏览器可以借助IE filter模糊滤镜实现，如下CSS：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);</div></pre></td></tr></table></figure></p>
+<h2 id="span-标签换行问题"><a href="#span-标签换行问题" class="headerlink" title="span 标签换行问题"></a>span 标签换行问题</h2><p>加上样式：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.break</span>&#123;</div><div class="line">  <span class="attribute">display</span>:inline-block;</div><div class="line">  <span class="attribute">width</span>:<span class="number">60%</span>;</div><div class="line">  <span class="attribute">word-wrap</span>:break-word;</div><div class="line">  <span class="attribute">white-space</span>:normal;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有时候给span样式设置了 display:block;活着 display:inline-block;后仍然不换行…<br>是因为 span 不是块状元素。本身自带有 左浮动的效果，并且连续的英文字母跟数字是没办法 自动换行的;必须要<strong>强制换行</strong>。<br>但是光用word-wrap:break-word; 是不行的。所以,必须要在限制了宽度的情况下,还要增加 white-space:normal;</p>
 
       
     </div>
@@ -479,7 +481,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -496,7 +498,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -547,7 +549,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#经典中的经典-垂直居中的方法"><span class="nav-number">1.</span> <span class="nav-text">经典中的经典 : 垂直居中的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#弹性盒子布局flex"><span class="nav-number">1.1.</span> <span class="nav-text">弹性盒子布局flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绝对定位居中"><span class="nav-number">1.2.</span> <span class="nav-text">绝对定位居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负边距-变形"><span class="nav-number">1.3.</span> <span class="nav-text">负边距,变形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS背景图拉伸自适应尺寸，全浏览器兼容"><span class="nav-number">2.</span> <span class="nav-text">CSS背景图拉伸自适应尺寸，全浏览器兼容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS模拟-placeholder"><span class="nav-number">3.</span> <span class="nav-text">CSS模拟 placeholder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改浏览器的滚动条样式"><span class="nav-number">4.</span> <span class="nav-text">更改浏览器的滚动条样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清除浮动"><span class="nav-number">5.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让页面上的内容不能被选中"><span class="nav-number">6.</span> <span class="nav-text">让页面上的内容不能被选中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单行超出省略字"><span class="nav-number">7.</span> <span class="nav-text">单行超出省略字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS惯性滚动"><span class="nav-number">8.</span> <span class="nav-text">iOS惯性滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3-之-blur-高斯模糊-毛玻璃效果"><span class="nav-number">9.</span> <span class="nav-text">CSS3 之 blur (高斯模糊,毛玻璃效果)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#经典中的经典-垂直居中的方法"><span class="nav-number">1.</span> <span class="nav-text">经典中的经典 : 垂直居中的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#弹性盒子布局flex"><span class="nav-number">1.1.</span> <span class="nav-text">弹性盒子布局flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绝对定位居中"><span class="nav-number">1.2.</span> <span class="nav-text">绝对定位居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负边距-变形"><span class="nav-number">1.3.</span> <span class="nav-text">负边距,变形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS背景图拉伸自适应尺寸，全浏览器兼容"><span class="nav-number">2.</span> <span class="nav-text">CSS背景图拉伸自适应尺寸，全浏览器兼容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS模拟-placeholder"><span class="nav-number">3.</span> <span class="nav-text">CSS模拟 placeholder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改浏览器的滚动条样式"><span class="nav-number">4.</span> <span class="nav-text">更改浏览器的滚动条样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清除浮动"><span class="nav-number">5.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让页面上的内容不能被选中"><span class="nav-number">6.</span> <span class="nav-text">让页面上的内容不能被选中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单行超出省略字"><span class="nav-number">7.</span> <span class="nav-text">单行超出省略字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS惯性滚动"><span class="nav-number">8.</span> <span class="nav-text">iOS惯性滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3-之-blur-高斯模糊-毛玻璃效果"><span class="nav-number">9.</span> <span class="nav-text">CSS3 之 blur (高斯模糊,毛玻璃效果)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#span-标签换行问题"><span class="nav-number">10.</span> <span class="nav-text">span 标签换行问题</span></a></li></ol></div>
             
           </div>
         </section>
