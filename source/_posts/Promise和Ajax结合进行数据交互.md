@@ -44,6 +44,24 @@ funciton _ajax(url,type,data,successFn,errorFn){
 
 2. 调用示例
 ```JS
-_ajax('/rest/commom/login','post',{"userName":'joy',"passWord":'xxxxoooo'},
-loginOK(res),loginFail(errorCode,"登录失败",backLoginPage)).then(_ajax('/rest/commom/userInfo','post',{"userId":1},renderUserInfo(res),UserInfoFail(errorCode,"获取用户信息失败",backLoginPage))).then(initUserPage);
+_ajax(
+  '/rest/commom/login',
+  'post',
+  {
+    "userName":'joy',
+    "passWord":'xxxxoooo'
+  },
+  loginOK(res),
+  loginFail(errorCode,"登录失败",backLoginPage)
+).then(
+  _ajax(
+    '/rest/commom/userInfo',
+    'post',
+    {
+      "userId":1
+    },
+    renderUserInfo(res),
+    UserInfoFail(errorCode,"获取用户信息失败",backLoginPage)
+  )
+).then(initUserPage);
 ```
