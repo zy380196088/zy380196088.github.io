@@ -531,4 +531,8 @@ $(function() {
 })
 ```
 
-
+## 返回数组中最大值,最小值
+```js
+const arrayMax = arr => Math.max(...arr)
+const arrayMin = arr => Math.min(...arr)
+```
