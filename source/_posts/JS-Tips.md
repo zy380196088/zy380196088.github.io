@@ -536,3 +536,7 @@ $(function() {
 const arrayMax = arr => Math.max(...arr)
 const arrayMin = arr => Math.min(...arr)
 ```
+## 计算数组中值出现的次数
+```js
+const countOccurrences = (arr,value) => arr.reduce((a,v)=> v=== value ? a+1 : a + 0, 0)
+```
