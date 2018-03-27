@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[SVG Notes]]></title>
+      <url>http://zy380196088.github.io./2018/03/27/SVG-Notes/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<h1 id="基本形状"><a href="#基本形状" class="headerlink" title="基本形状"></a>基本形状</h1><h2 id="线段"><a href="#线段" class="headerlink" title="线段"></a>线段<line></line></h2><h3 id="stroke-width-线条粗细"><a href="#stroke-width-线条粗细" class="headerlink" title="stroke-width: 线条粗细"></a>stroke-width: 线条粗细</h3><h3 id="stroke-线条填充颜色"><a href="#stroke-线条填充颜色" class="headerlink" title="stroke: 线条填充颜色"></a>stroke: 线条填充颜色</h3><blockquote>
+<p>rgba()<br>hsl()<br>hsla()<br>transparent == rgba(0,0,0,0)</p>
+<h3 id="stroke-opacity-线条的不透明度"><a href="#stroke-opacity-线条的不透明度" class="headerlink" title="stroke-opacity: 线条的不透明度"></a>stroke-opacity: 线条的不透明度</h3><h3 id="stroke-dasharray-虚线段长度"><a href="#stroke-dasharray-虚线段长度" class="headerlink" title="stroke-dasharray: 虚线段长度"></a>stroke-dasharray: 虚线段长度</h3></blockquote>
+<h2 id="矩形"><a href="#矩形" class="headerlink" title="矩形 "></a>矩形 <rect></rect></h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">rect</span> <span class="attr">x</span>=<span class="string">"10"</span> <span class="attr">y</span>=<span class="string">"50"</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"50"</span> <span class="attr">style</span>=<span class="string">"fill:#fff;stoke:red;fill-opacity:0.5;"</span>/&gt;</span></div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[2018 浮生记]]></title>
       <url>http://zy380196088.github.io./2018/03/26/2018-%E6%B5%AE%E7%94%9F%E8%AE%B0/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
