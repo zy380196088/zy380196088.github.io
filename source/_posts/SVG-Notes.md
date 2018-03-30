@@ -5,19 +5,18 @@ tags: [ SVG ]
 categories:
 ---
 
-<!--more-->
 # 基本形状
 ## 线段<line/>
 ### stroke-width: 线条粗细
-
 ### stroke: 线条填充颜色
-
 > rgba()
 > hsl()
 > hsla()
 > transparent == rgba(0,0,0,0)
 ### stroke-opacity: 线条的不透明度
 ### stroke-dasharray: 虚线段长度
+
+<!--more-->
 
 ## 矩形 <rect/>
 ```html
