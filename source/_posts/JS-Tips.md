@@ -530,5 +530,24 @@ $(function() {
     })
 })
 ```
-
-
+## 获取页面的DOM节点数量
+诊断内存泄漏的一个重要步骤是判断页面的DOM数量的增长情况，因此我们需要持续获取页面的DOM数量.
+```js
+//  递归函数
+function countNodes(node) {
+    //  计算自身
+    var count = 1;
+    //  判断是否存在子节点
+    if(node.hasChildNodes()) {
+        //  获取子节点
+        var cnodes = node.childNodes;
+        //  对子节点进行递归统计
+        for(var i=0; i<cnodes.length; i++) {
+            count = count + countNodes(cnodes.item(i))
+        }
+    }
+    return count;
+}
+//  统计body的节点数量
+countNodes(document.body)
+```
