@@ -18,6 +18,7 @@ categories:
 现代浏览器大都已经内置支持了Promise，连第三方库都不需要了，只有IE不行，放弃了(鄙视IE一波)
 
 1. 改造ajax封装函数,在成功的时候调用resolve(),失败的时候调用reject(),并且返回Promise对象;
+
 ```JS
 function _ajax(url,type,data,successFn,errorFn){
   var p = new Promise(function(resolve,reject){
@@ -43,6 +44,26 @@ function _ajax(url,type,data,successFn,errorFn){
 ```
 
 2. 调用示例
-```js
-_ajax('/rest/commom/login','post',{"userName":'joy',"passWord":'xxxxoooo'},loginOK(res),loginFail(errorCode,"登录失败",backLoginPage())).then(_ajax('/rest/commom/userInfo','post',{"userId":1},renderUserInfo(res),UserInfoFail(errorCode," 获取用户信息失败",backLoginPage()))).then(initUserPage());
+
+```JS
+_ajax(
+  '/rest/commom/login',
+  'post',
+  {
+    "userName":'joy',
+    "passWord":'xxxxoooo'
+  },
+  loginOK(res),
+  loginFail(errorCode,"登录失败",backLoginPage)
+).then(
+  _ajax(
+    '/rest/commom/userInfo',
+    'post',
+    {
+      "userId":1
+    },
+    renderUserInfo(res),
+    UserInfoFail(errorCode,"获取用户信息失败",backLoginPage)
+  )
+).then(initUserPage);
 ```

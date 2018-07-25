@@ -4,4 +4,9 @@ db.json
 *.log
 node_modules/
 public/
+<<<<<<< HEAD
 .deploy*/
+=======
+.deploy*/
+.idea
+>>>>>>> 15a38c85de558af32e3a6e349ba9411e50904ceb

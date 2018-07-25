@@ -4,16 +4,19 @@ date: 2016-08-24 12:26:52
 tags: [javascript]
 ---
 
-## URL (http开头)地址正则
+# JS常用的代码片段
 
-```
+## URL(http)开头地址正则
+
+```js
 var re=/(http:\/\/)?[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*/gi;
 ```
 
 ## 检查某对象是否具有某属性
 
 当你需要检查某属性是否存在于一个对象,你可能会这样做:
-```javascript
+
+```js
 var myObject = {
     name: 'tips'
 };
@@ -51,6 +54,7 @@ querySelectorAll 方法返回一个"类数组"对象为node list.看似数组却
 ```
 
 ## "快速排序"
+
 "快速排序"的思想步骤:
 1.在数组中,找一个基点
 2.建立两个数组,分别存储左边和右边的数组
@@ -101,29 +105,34 @@ function Person(name) {
 ```
 
 ## JavaScript 中 !! 的作用
-经常看到这样的例子：﻿﻿
-```js
+
+经常看到这样的例子：
+
+```JS
 var a；
 var b=!!a;
 ```
+
 a默认是undefined。!a是true，!!a则是false，所以b的值是false，而不再是undefined，也非其它值，主要是为后续判断提供便利。
 
 !!一般用来将后面的表达式强制转换为布尔类型的数据（boolean），也就是只能是true或者false;
 因为javascript是弱类型的语言（变量没有固定的数据类型）所以有时需要强制转换为相应的类型，类似的如:
+
 ```js
-a=parseInt(“1234″)
-a=”1234″-0 //转换为数字
-b=1234+”” //转换为字符串
-c=someObject.toString() //将对象转换为字符串
+    a=parseInt(“1234″)
+    a=”1234″-0 //转换为数字
+    b=1234+”” //转换为字符串
+    c=someObject.toString() //将对象转换为字符串
 ```
+
 其中第1种、第4种为显式转换，2、3为隐式转换
 
 布尔型的转换，javascript约定规则为:
 **false、undefinded、null、0、”” 为 false**
 **true、1、”somestring”、[Object] 为 true**
 
-对null与undefined等其他用隐式转换的值，用!操作符时都会产生true的结果，所以用两个感叹号的作用就在于将这些值转换为“等价”的布尔值； 
-再来看看：
+对null与undefined等其他用隐式转换的值，用!操作符时都会产生true的结果，所以用两个感叹号的作用就在于将这些值转换为“等价”的布尔值；再来看看：
+
 ```js
 var foo;
 alert(!foo);//undifined情况下，一个感叹号返回的是true;
@@ -141,24 +150,26 @@ alert(test);
 //注意对象必须是以下格式的才可以通过此方式转化为数组
 //获取的DOM集合，以及函数的arguments也可以通过此方式转化为数组
 var obj={
-	0:'qian',
-	1:'long',
-	2:'chu',
-	3:'tian',
-	length:4
+    0:'qian',
+    1:'long',
+    2:'chu',
+    3:'tian',
+    length:4
 }
 var _slice=[].slice;
 var objArr=_slice.call(obj);
 ```
 
 ## 验证是否为数组
-```javascript
+
+```JS
  function isArray(obj){
     return  Object.prototype.toString.call(obj) === '[object Array]' ;
 }
 ```
 
 ## 清空数组
+
 ```javascript
 //方式一 通过将长度设置为0
 var arr=[1,2,3,4,5];
@@ -172,12 +183,14 @@ arr=[];
 ```
 
 ## 保留指定小数位
+
 ```javascript
 var num =4.345678;
 num = num.toFixed(4);  // 4.3457 第四位小数位以四舍五入计算
 ```
 
 ## 生成指定长度的随机字母数字字符串
+
 ```javascript
 function getRandomStr(len) {
     var str = "";
@@ -187,6 +200,7 @@ function getRandomStr(len) {
 ```
 
 ## 找出数组中出现次数最的元素，并给出其出现过的位置
+
 ```javascript
 function getMaxAndIndex( arr ){
         var obj = {};
@@ -218,22 +232,28 @@ function getMaxAndIndex( arr ){
 ## 字符串的split函数的特殊值情况
 
 1. 参数不传，返回包含原字符串对象，长度为1的数组.
+
 ```js
 "".split()//[""]
 "xxcanghai".split()//["xxcanghai"]
 ```
+
 2. 参数传空字符串，返回将原字符串每个字符分隔的数组,若原字符串为空字符串则返回空数组.
+
 ```js
 "".split("")//[]
 "xxcanghai".split("")//["x", "x", "c", "a", "n", "g", "h", "a", "i"]
 ```
+
 3. 原字符串为空字符串，参数不为空时，会返回包含一个空字符串的数组.
+
 ```js
 "".split(",")//[""]，错误，应为[]
 "".split("xxcanghai")//[""]，错误，应为[]
 ```
 
 ## 类型判断:
+
 ```javascript
 //判断undefined
 var tmp = undifined;
@@ -271,6 +291,7 @@ if(!tmp){
 ```
 
 ## jsonp方式跨域
+
 ```javascript
 function jsonp(config){
     var options = config || {}; // 需要配置url, success, time, fail四个属性.
@@ -312,6 +333,7 @@ jsonp({
 ```
 
 ## JS生成随机字符串
+
 ```javascript
 //这样生成一个32位的随机字符串，相同的概率很低。
 var random_str = function(){
@@ -327,12 +349,15 @@ var random_str = function(){
 ```
 
 ## 常用正则表达式
+
 ### JavaScript过滤Emoji表情:
+
 ```javascript
 name = name.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, "");
 ```
 
 ### 手机号验证:
+
 ```javascript
 var validate_phoneNumber =function(num){
     var reg = /^1[3-9]\d{9}$/;
@@ -341,16 +366,19 @@ var validate_phoneNumber =function(num){
 ```
 
 ### 身份证号码验证:
+
 ```javascript
 var reg = /^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
 ```
 
 ### ip验证:
+
 ```javascript
 var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}$/;
 ```
 
 ### 判断是否有中文：
+
 ```javascript
 var reg = /.*[\u4e00-\u9fa5]+.*$/;
 reg.test('123792739测试')  //true
@@ -359,6 +387,7 @@ reg.test('123792739测试')  //true
 ## 常用的JS函数
 
 ### 获取浏览器url中的参数值：
+
 ```javascript
 var getURLParam = function(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)', "ig").exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
@@ -366,6 +395,7 @@ var getURLParam = function(name) {
 ```
 
 ### 操作cookie：
+
 ```javascript
 own.setCookie = function(cname, cvalue, exdays){
     var d = new Date();
@@ -386,6 +416,7 @@ own.getCookie = function(cname) {
 ```
 
 ### 数组排序sort函数：
+
 ```javascript
 var arr = [11,36,6,27,80,32];
 arr.srot(function(a,b){
@@ -416,6 +447,7 @@ arr.sort(function(a, b) {
 ```
 
 ### 判断是对象还是数组：
+
 ```javascript
 function isArray = function(o) {
     return toString.apply(o) === '[object Array]';
@@ -425,8 +457,8 @@ function isObject = function(o) {
 }
 ```
 
-
 ## 浅拷贝 和 深拷贝
+
 ```javascript
 //浅拷贝
   var obj = {
@@ -489,8 +521,10 @@ function isObject = function(o) {
 ```
 
 ## 原生JS实现千位分隔符
+
 目的:每隔3位数字,加一个','
 思考:实现的方法有哪些? (字符串数组分割,正则表达式等)
+
 ```js
 //正则表达式实现
 function thousandBitSeparator(num) {
@@ -506,6 +540,7 @@ console.log(thousandBitSeparator(1000));
 ```
 
 ## 银行卡号每隔4位插入空格(只支持 IE9+)
+
 ```js
 $(function() {
 
@@ -532,11 +567,38 @@ $(function() {
 ```
 
 ## 返回数组中最大值,最小值
+
 ```js
 const arrayMax = arr => Math.max(...arr)
 const arrayMin = arr => Math.min(...arr)
 ```
+
 ## 计算数组中值出现的次数
+
 ```js
 const countOccurrences = (arr,value) => arr.reduce((a,v)=> v=== value ? a+1 : a + 0, 0)
+```
+
+## 获取页面的DOM节点数量
+
+诊断内存泄漏的一个重要步骤是判断页面的DOM数量的增长情况，因此我们需要持续获取页面的DOM数量.
+
+```js
+//  递归函数
+function countNodes(node) {
+    //  计算自身
+    var count = 1;
+    //  判断是否存在子节点
+    if(node.hasChildNodes()) {
+        //  获取子节点
+        var cnodes = node.childNodes;
+        //  对子节点进行递归统计
+        for(var i=0; i<cnodes.length; i++) {
+            count = count + countNodes(cnodes.item(i))
+        }
+    }
+    return count;
+}
+//  统计body的节点数量
+countNodes(document.body)
 ```
