@@ -281,6 +281,103 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/26/2018-浮生记/" itemprop="url">
+                  2018 浮生记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-26T13:23:16+08:00" content="2018-03-26">
+              2018-03-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<blockquote>
+<p>不要知道的的太多,会难过.<br>擅自喜欢,<br>擅自想入非非,<br>所以,<br>活该你难过.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/12/31/2017-再见-你好-2018/" itemprop="url">
                   2017,再见,你好,2018
                 </a>
@@ -431,14 +528,13 @@
 <p>当ajax很多,而且还设计到很复杂的事件异步操作时候,这种方法就不太合适了.</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p>现代浏览器大都已经内置支持了Promise，连第三方库都不需要了，只有IE不行，放弃了(鄙视IE一波)</p>
 <ol>
-<li><p>改造ajax封装函数,在成功的时候调用resolve(),失败的时候调用reject(),并且返回Promise对象;</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">funciton _ajax(url,type,data,successFn,errorFn)&#123;</div><div class="line">  <span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(funciton(resolve,reject)&#123;</div><div class="line">    $.ajax(&#123;</div><div class="line">      <span class="attr">url</span>:url,</div><div class="line">      <span class="attr">type</span>:type==<span class="literal">null</span>?<span class="string">'POST'</span>:type,</div><div class="line">      <span class="attr">dataType</span>:<span class="string">'json'</span>,</div><div class="line">      <span class="attr">data</span>: data==<span class="literal">null</span>?<span class="string">''</span>:<span class="built_in">JSON</span>.stringify(data),</div><div class="line">      <span class="attr">async</span>:<span class="literal">true</span>,</div><div class="line">      <span class="attr">contentType</span>:<span class="string">"application/json"</span>,</div><div class="line">      <span class="attr">success</span>:<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</div><div class="line">        successFn(res);</div><div class="line">        resolve();</div><div class="line">      &#125;,</div><div class="line">      <span class="attr">error</span>:<span class="function"><span class="keyword">function</span>(<span class="params">XMLHttpRequest,textStatus,errorThrown</span>)</span>&#123;</div><div class="line">          errorFn(XMLHttpRequest,textStatus,errorThrown);</div><div class="line">          reject();</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">return</span> p;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>调用示例</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">_ajax(</div><div class="line">  <span class="string">'/rest/commom/login'</span>,</div><div class="line">  <span class="string">'post'</span>,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"userName"</span>:<span class="string">'joy'</span>,</div><div class="line">    <span class="string">"passWord"</span>:<span class="string">'xxxxoooo'</span></div><div class="line">  &#125;,</div><div class="line">  loginOK(res),</div><div class="line">  loginFail(errorCode,<span class="string">"登录失败"</span>,backLoginPage)</div><div class="line">).then(</div><div class="line">  _ajax(</div><div class="line">    <span class="string">'/rest/commom/userInfo'</span>,</div><div class="line">    <span class="string">'post'</span>,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"userId"</span>:<span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    renderUserInfo(res),</div><div class="line">    UserInfoFail(errorCode,<span class="string">"获取用户信息失败"</span>,backLoginPage)</div><div class="line">  )</div><div class="line">).then(initUserPage);</div></pre></td></tr></table></figure>
-</li>
+<li>改造ajax封装函数,在成功的时候调用resolve(),失败的时候调用reject(),并且返回Promise对象;</li>
 </ol>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_ajax</span>(<span class="params">url,type,data,successFn,errorFn</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">    $.ajax(&#123;</div><div class="line">      <span class="attr">url</span>:url,</div><div class="line">      <span class="attr">type</span>:type==<span class="literal">null</span>?<span class="string">'POST'</span>:type,</div><div class="line">      <span class="attr">dataType</span>:<span class="string">'json'</span>,</div><div class="line">      <span class="attr">data</span>: data==<span class="literal">null</span>?<span class="string">''</span>:<span class="built_in">JSON</span>.stringify(data),</div><div class="line">      <span class="attr">async</span>:<span class="literal">true</span>,</div><div class="line">      <span class="attr">contentType</span>:<span class="string">"application/json"</span>,</div><div class="line">      <span class="attr">success</span>:<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</div><div class="line">        successFn(res);</div><div class="line">        resolve();</div><div class="line">      &#125;,</div><div class="line">      <span class="attr">error</span>:<span class="function"><span class="keyword">function</span>(<span class="params">XMLHttpRequest,textStatus,errorThrown</span>)</span>&#123;</div><div class="line">          errorFn(XMLHttpRequest,textStatus,errorThrown);</div><div class="line">          reject();</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">return</span> p;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>调用示例</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">_ajax(</div><div class="line">  <span class="string">'/rest/commom/login'</span>,</div><div class="line">  <span class="string">'post'</span>,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"userName"</span>:<span class="string">'joy'</span>,</div><div class="line">    <span class="string">"passWord"</span>:<span class="string">'xxxxoooo'</span></div><div class="line">  &#125;,</div><div class="line">  loginOK(res),</div><div class="line">  loginFail(errorCode,<span class="string">"登录失败"</span>,backLoginPage)</div><div class="line">).then(</div><div class="line">  _ajax(</div><div class="line">    <span class="string">'/rest/commom/userInfo'</span>,</div><div class="line">    <span class="string">'post'</span>,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"userId"</span>:<span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    renderUserInfo(res),</div><div class="line">    UserInfoFail(errorCode,<span class="string">"获取用户信息失败"</span>,backLoginPage)</div><div class="line">  )</div><div class="line">).then(initUserPage);</div></pre></td></tr></table></figure>
           
         
       
@@ -697,124 +793,6 @@
               阅读全文 &raquo;
             </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/20/强制清除缓存的几种方法/" itemprop="url">
-                  强制清除缓存的几种方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-20T13:55:08+08:00" content="2017-07-20">
-              2017-07-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
-<h1 id="关于浏览器缓存"><a href="#关于浏览器缓存" class="headerlink" title="关于浏览器缓存"></a>关于浏览器缓存</h1><p>浏览器缓存,有时候我们需要他用来提高网站性能和浏览器速度.<br>但是有时候又不得不清除缓存,因为缓存可能会存在一些错误的数据.</p>
-<h1 id="清除网页缓存的几种方法"><a href="#清除网页缓存的几种方法" class="headerlink" title="清除网页缓存的几种方法"></a>清除网页缓存的几种方法</h1><h2 id="META"><a href="#META" class="headerlink" title="META"></a>META</h2><p>在 head里添加 如下meta标签,比较友好的高级浏览器可以清除缓存.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">META</span> <span class="attr">HTTP-EQUIV</span>=<span class="string">"pragma"</span> <span class="attr">CONTENT</span>=<span class="string">"no-cache"</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">META</span> <span class="attr">HTTP-EQUIV</span>=<span class="string">"Cache-Control"</span> <span class="attr">CONTENT</span>=<span class="string">"no-cache, must-revalidate"</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">META</span> <span class="attr">HTTP-EQUIV</span>=<span class="string">"expires"</span> <span class="attr">CONTENT</span>=<span class="string">"0"</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h2 id="清理-form-表单的临时缓存"><a href="#清理-form-表单的临时缓存" class="headerlink" title="清理 form 表单的临时缓存"></a>清理 form 表单的临时缓存</h2><h3 id="用-ajax-请求服务器最新文件-并加上请求头-If-Modified-Since和Cache-Control-如下"><a href="#用-ajax-请求服务器最新文件-并加上请求头-If-Modified-Since和Cache-Control-如下" class="headerlink" title="用 ajax 请求服务器最新文件,并加上请求头 If-Modified-Since和Cache-Control,如下:"></a>用 ajax 请求服务器最新文件,并加上请求头 If-Modified-Since和Cache-Control,如下:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    <span class="attr">url</span>:<span class="string">'www.xxxxxx.com'</span>,</div><div class="line">    <span class="attr">dataType</span>:<span class="string">'json'</span>,</div><div class="line">    <span class="attr">data</span>:&#123;&#125;,</div><div class="line">    <span class="attr">beforeSend</span>:<span class="function"><span class="keyword">function</span>(<span class="params">xmlHttp</span>)</span>&#123;</div><div class="line">        xmlHttp.setRequestHeader(<span class="string">"If-Modified-Since"</span>,<span class="string">"0"</span>); </div><div class="line">        xmlHttp.setRequestHeader(<span class="string">"Cache-Control"</span>,<span class="string">"no-cache"</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">success</span>:<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</div><div class="line">        <span class="comment">//操作</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">async</span>:<span class="literal">false</span></div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
-<h2 id="地址加上随机数"><a href="#地址加上随机数" class="headerlink" title="地址加上随机数"></a>地址加上随机数</h2><p>在网页地址后加上:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"?v="</span>+<span class="built_in">Math</span>.random();<span class="comment">//v 可以自己定义成别的字符串</span></div></pre></td></tr></table></figure></p>
-<h2 id="地址加时间戳"><a href="#地址加时间戳" class="headerlink" title="地址加时间戳"></a>地址加时间戳</h2><p>其实原理和随机数差不多,<br>URL + <code>&quot;?timestamp=&quot; + new Date().getTime()</code>;</p>
-
-          
         
       
     </div>
