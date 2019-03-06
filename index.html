@@ -343,17 +343,99 @@
 
       
         
-          
-            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
-<h1 id="Three-js库提供的各种光源"><a href="#Three-js库提供的各种光源" class="headerlink" title="Three.js库提供的各种光源"></a>Three.js库提供的各种光源</h1><h2 id="AmbientLight-环境光"><a href="#AmbientLight-环境光" class="headerlink" title="AmbientLight 环境光"></a>AmbientLight 环境光</h2><p>基础光源,它的颜色会添加到整个场景和所有对象的当前颜色上</p>
-<h2 id="PointLight-点光源"><a href="#PointLight-点光源" class="headerlink" title="PointLight 点光源"></a>PointLight 点光源</h2><p>空间中的一点,朝所有的方向发射光线</p>
-<h2 id="SpotLight-聚光灯光源"><a href="#SpotLight-聚光灯光源" class="headerlink" title="SpotLight 聚光灯光源"></a>SpotLight 聚光灯光源</h2><p>有聚光的效果的光源,类似台灯,吊灯,手电筒</p>
-<h2 id="DirectionalLight-方向光"><a href="#DirectionalLight-方向光" class="headerlink" title="DirectionalLight 方向光"></a>DirectionalLight 方向光</h2><p>无限光,平行的光线,例如太阳光</p>
-<h2 id="HemispherreLight-半球光"><a href="#HemispherreLight-半球光" class="headerlink" title="HemispherreLight 半球光"></a>HemispherreLight 半球光</h2><p>特殊光源,创建更加自然的室外光线,模拟反光面和光线微弱的天空</p>
-<h2 id="AreaLight-面光源"><a href="#AreaLight-面光源" class="headerlink" title="AreaLight 面光源"></a>AreaLight 面光源</h2><p>散发光线的平面,而不是点散发的光线</p>
-<h2 id="LensFlare-镜头眩光"><a href="#LensFlare-镜头眩光" class="headerlink" title="LensFlare 镜头眩光"></a>LensFlare 镜头眩光</h2><p>添加眩光效果</p>
-
-          
+          <h1 id="常用的object对象"><a href="#常用的object对象" class="headerlink" title="常用的object对象"></a>常用的object对象</h1><table>
+<thead>
+<tr>
+<th>对象名</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plane</td>
+<td>平面:作为地面的二维矩形.渲染结果是平中央的一块黑色矩形</td>
+</tr>
+<tr>
+<td>cube</td>
+<td>方块:三维立方体</td>
+</tr>
+<tr>
+<td>sphere</td>
+<td>球体</td>
+</tr>
+<tr>
+<td>wireframe</td>
+<td>线框</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>相机</td>
+</tr>
+<tr>
+<td>Axes</td>
+<td>轴: x,y,z 辅助线</td>
+</tr>
+<tr>
+<td>scene</td>
+<td>场景</td>
+</tr>
+<tr>
+<td>rendered</td>
+<td>渲染器</td>
+</tr>
+<tr>
+<td>material</td>
+<td>材质</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>状态:FPS帧频</td>
+</tr>
+<tr>
+<td>mesh</td>
+<td>网格</td>
+</tr>
+<tr>
+<td>Geometry</td>
+<td>几何体</td>
+</tr>
+</tbody>
+</table>
+<h1 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h1><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>requestAnimationFrame()</td>
+<td>用于执行renderer的动画操作</td>
+</tr>
+<tr>
+<td>setClearColorHex()</td>
+<td>高速rendere的背景色</td>
+</tr>
+<tr>
+<td>setSize()</td>
+<td>将scene 渲染成多大尺寸</td>
+</tr>
+<tr>
+<td>lookAt()</td>
+<td>使camera看向什么地方</td>
+</tr>
+<tr>
+<td>stats.update()</td>
+<td>刷新 FPS 帧频</td>
+</tr>
+</tbody>
+</table>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/02/15/three-js-学习笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
