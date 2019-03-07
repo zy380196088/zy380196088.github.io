@@ -190,7 +190,7 @@ stats
 
 mesh
 网">
-<meta property="og:updated_time" content="2019-03-07T09:00:44.126Z">
+<meta property="og:updated_time" content="2019-03-07T11:51:07.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="three.js 学习笔记">
 <meta name="twitter:description" content="常用的object对象
@@ -652,9 +652,101 @@ mesh
 </tbody>
 </table>
 <h2 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h2><h3 id="正投影相机"><a href="#正投影相机" class="headerlink" title="正投影相机"></a>正投影相机</h3><h3 id="透视相机"><a href="#透视相机" class="headerlink" title="透视相机"></a>透视相机</h3><h1 id="光源"><a href="#光源" class="headerlink" title="光源"></a>光源</h1><h2 id="AmbientLight-环境光"><a href="#AmbientLight-环境光" class="headerlink" title="AmbientLight 环境光"></a>AmbientLight 环境光</h2><p>基础光源,它的颜色会添加到整个场景和所有对象的当前颜色上;没有特定的光源,不会影响阴影;###不能将AmbientLight作为场景中唯一的光源;####</p>
-<h2 id="PointLight-点光源"><a href="#PointLight-点光源" class="headerlink" title="PointLight 点光源"></a>PointLight 点光源</h2><p>空间中的一点,朝所有的方向发射光线.<br>|属性|描述|<br>|—-|—-|<br>|color|颜色|<br>|intensity| 光照强度,默认值是1|<br>|distance | 距离 |<br>|position | 光源所在的位置 |<br>|visible| 是否可见|</p>
+<h2 id="PointLight-点光源"><a href="#PointLight-点光源" class="headerlink" title="PointLight 点光源"></a>PointLight 点光源</h2><p>空间中的一点,朝所有的方向发射光线.</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>颜色</td>
+</tr>
+<tr>
+<td>intensity</td>
+<td>光照强度,默认值是1</td>
+</tr>
+<tr>
+<td>distance</td>
+<td>距离</td>
+</tr>
+<tr>
+<td>position</td>
+<td>光源所在的位置</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>是否可见</td>
+</tr>
+</tbody>
+</table>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> poingLight = <span class="keyword">new</span> THREE.PointLight(color);</div></pre></td></tr></table></figure>
-<h2 id="SpotLight-聚光灯光源"><a href="#SpotLight-聚光灯光源" class="headerlink" title="SpotLight 聚光灯光源"></a>SpotLight 聚光灯光源</h2><p>有聚光的效果的光源,类似台灯,吊灯,手电筒.<br>|属性|描述|<br>|—-|—-|<br>|castShadow|投影:设置为true,光源产生阴影|<br>|shadowCameraNear|投影近点|<br>|shadowCameraFar|投影远点|<br>|shadowCameraFov|投影视场:生成阴影的视场有多大|<br>|target |目标:决定光照的方向|<br>|shadowBias|阴影偏移:偏置阴影的位置|<br>|angle|角度|<br>|exponent|光强衰减指数|<br>|onlyShadow|仅阴影|<br>|shadowCameraVisible|投影方式可见|<br>|shadowDarkness|阴影暗度|<br>|shadowMapWidth|阴影映射宽度|<br>|shadowMapHeight|阴影映射高度|</p>
+<h2 id="SpotLight-聚光灯光源"><a href="#SpotLight-聚光灯光源" class="headerlink" title="SpotLight 聚光灯光源"></a>SpotLight 聚光灯光源</h2><p>有聚光的效果的光源,类似台灯,吊灯,手电筒.</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>castShadow</td>
+<td>投影:设置为true,光源产生阴影</td>
+</tr>
+<tr>
+<td>shadowCameraNear</td>
+<td>投影近点</td>
+</tr>
+<tr>
+<td>shadowCameraFar</td>
+<td>投影远点</td>
+</tr>
+<tr>
+<td>shadowCameraFov</td>
+<td>投影视场:生成阴影的视场有多大</td>
+</tr>
+<tr>
+<td>target</td>
+<td>目标:决定光照的方向</td>
+</tr>
+<tr>
+<td>shadowBias</td>
+<td>阴影偏移:偏置阴影的位置</td>
+</tr>
+<tr>
+<td>angle</td>
+<td>角度</td>
+</tr>
+<tr>
+<td>exponent</td>
+<td>光强衰减指数</td>
+</tr>
+<tr>
+<td>onlyShadow</td>
+<td>仅阴影</td>
+</tr>
+<tr>
+<td>shadowCameraVisible</td>
+<td>投影方式可见</td>
+</tr>
+<tr>
+<td>shadowDarkness</td>
+<td>阴影暗度</td>
+</tr>
+<tr>
+<td>shadowMapWidth</td>
+<td>阴影映射宽度</td>
+</tr>
+<tr>
+<td>shadowMapHeight</td>
+<td>阴影映射高度</td>
+</tr>
+</tbody>
+</table>
 <h2 id="DirectionalLight-方向光"><a href="#DirectionalLight-方向光" class="headerlink" title="DirectionalLight 方向光"></a>DirectionalLight 方向光</h2><p>无限光,平行的光线,例如太阳光</p>
 <h2 id="HemispherreLight-半球光"><a href="#HemispherreLight-半球光" class="headerlink" title="HemispherreLight 半球光"></a>HemispherreLight 半球光</h2><p>特殊光源,创建更加自然的室外光线,模拟反光面和光线微弱的天空<br>的方向发射光线<br>|属性|描述|<br>|—-|—-|<br>|groundColor|从地面发出光纤的颜色|<br>|Color|从天空发出光纤的颜色|<br>|intensity |光线照射的强度|</p>
 <h2 id="AreaLight-面光源"><a href="#AreaLight-面光源" class="headerlink" title="AreaLight 面光源"></a>AreaLight 面光源</h2><p>散发光线的平面,而不是点散发的光线</p>
