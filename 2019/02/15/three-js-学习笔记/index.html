@@ -190,7 +190,7 @@ stats
 
 mesh
 网">
-<meta property="og:updated_time" content="2019-03-05T01:46:54.613Z">
+<meta property="og:updated_time" content="2019-03-07T09:00:44.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="three.js 学习笔记">
 <meta name="twitter:description" content="常用的object对象
@@ -617,14 +617,173 @@ mesh
 </tr>
 </tbody>
 </table>
-<h3 id="几何和网格对象"><a href="#几何和网格对象" class="headerlink" title="几何和网格对象"></a>几何和网格对象</h3><h1 id="Three-js库提供的各种光源"><a href="#Three-js库提供的各种光源" class="headerlink" title="Three.js库提供的各种光源"></a>Three.js库提供的各种光源</h1><h2 id="AmbientLight-环境光"><a href="#AmbientLight-环境光" class="headerlink" title="AmbientLight 环境光"></a>AmbientLight 环境光</h2><p>基础光源,它的颜色会添加到整个场景和所有对象的当前颜色上</p>
-<h2 id="PointLight-点光源"><a href="#PointLight-点光源" class="headerlink" title="PointLight 点光源"></a>PointLight 点光源</h2><p>空间中的一点,朝所有的方向发射光线</p>
-<h2 id="SpotLight-聚光灯光源"><a href="#SpotLight-聚光灯光源" class="headerlink" title="SpotLight 聚光灯光源"></a>SpotLight 聚光灯光源</h2><p>有聚光的效果的光源,类似台灯,吊灯,手电筒</p>
+<h3 id="几何和网格对象"><a href="#几何和网格对象" class="headerlink" title="几何和网格对象"></a>几何和网格对象</h3><h2 id="网格的属性和函数"><a href="#网格的属性和函数" class="headerlink" title="网格的属性和函数"></a>网格的属性和函数</h2><table>
+<thead>
+<tr>
+<th>函数/属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>位置:决定该对象相对其父对象的位置</td>
+</tr>
+<tr>
+<td>rotation</td>
+<td>旋转</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>比例</td>
+</tr>
+<tr>
+<td>translateX()</td>
+<td>X轴平移</td>
+</tr>
+<tr>
+<td>translateY()</td>
+<td>Y轴平移</td>
+</tr>
+<tr>
+<td>translateZ()</td>
+<td>Z轴平移</td>
+</tr>
+</tbody>
+</table>
+<h2 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h2><h3 id="正投影相机"><a href="#正投影相机" class="headerlink" title="正投影相机"></a>正投影相机</h3><h3 id="透视相机"><a href="#透视相机" class="headerlink" title="透视相机"></a>透视相机</h3><h1 id="光源"><a href="#光源" class="headerlink" title="光源"></a>光源</h1><h2 id="AmbientLight-环境光"><a href="#AmbientLight-环境光" class="headerlink" title="AmbientLight 环境光"></a>AmbientLight 环境光</h2><p>基础光源,它的颜色会添加到整个场景和所有对象的当前颜色上;没有特定的光源,不会影响阴影;###不能将AmbientLight作为场景中唯一的光源;####</p>
+<h2 id="PointLight-点光源"><a href="#PointLight-点光源" class="headerlink" title="PointLight 点光源"></a>PointLight 点光源</h2><p>空间中的一点,朝所有的方向发射光线.<br>|属性|描述|<br>|—-|—-|<br>|color|颜色|<br>|intensity| 光照强度,默认值是1|<br>|distance | 距离 |<br>|position | 光源所在的位置 |<br>|visible| 是否可见|</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> poingLight = <span class="keyword">new</span> THREE.PointLight(color);</div></pre></td></tr></table></figure>
+<h2 id="SpotLight-聚光灯光源"><a href="#SpotLight-聚光灯光源" class="headerlink" title="SpotLight 聚光灯光源"></a>SpotLight 聚光灯光源</h2><p>有聚光的效果的光源,类似台灯,吊灯,手电筒.<br>|属性|描述|<br>|—-|—-|<br>|castShadow|投影:设置为true,光源产生阴影|<br>|shadowCameraNear|投影近点|<br>|shadowCameraFar|投影远点|<br>|shadowCameraFov|投影视场:生成阴影的视场有多大|<br>|target |目标:决定光照的方向|<br>|shadowBias|阴影偏移:偏置阴影的位置|<br>|angle|角度|<br>|exponent|光强衰减指数|<br>|onlyShadow|仅阴影|<br>|shadowCameraVisible|投影方式可见|<br>|shadowDarkness|阴影暗度|<br>|shadowMapWidth|阴影映射宽度|<br>|shadowMapHeight|阴影映射高度|</p>
 <h2 id="DirectionalLight-方向光"><a href="#DirectionalLight-方向光" class="headerlink" title="DirectionalLight 方向光"></a>DirectionalLight 方向光</h2><p>无限光,平行的光线,例如太阳光</p>
-<h2 id="HemispherreLight-半球光"><a href="#HemispherreLight-半球光" class="headerlink" title="HemispherreLight 半球光"></a>HemispherreLight 半球光</h2><p>特殊光源,创建更加自然的室外光线,模拟反光面和光线微弱的天空</p>
+<h2 id="HemispherreLight-半球光"><a href="#HemispherreLight-半球光" class="headerlink" title="HemispherreLight 半球光"></a>HemispherreLight 半球光</h2><p>特殊光源,创建更加自然的室外光线,模拟反光面和光线微弱的天空<br>的方向发射光线<br>|属性|描述|<br>|—-|—-|<br>|groundColor|从地面发出光纤的颜色|<br>|Color|从天空发出光纤的颜色|<br>|intensity |光线照射的强度|</p>
 <h2 id="AreaLight-面光源"><a href="#AreaLight-面光源" class="headerlink" title="AreaLight 面光源"></a>AreaLight 面光源</h2><p>散发光线的平面,而不是点散发的光线</p>
-<h2 id="LensFlare-镜头眩光"><a href="#LensFlare-镜头眩光" class="headerlink" title="LensFlare 镜头眩光"></a>LensFlare 镜头眩光</h2><p>添加眩光效果</p>
-
+<h2 id="LensFlare-镜头眩光"><a href="#LensFlare-镜头眩光" class="headerlink" title="LensFlare 镜头眩光"></a>LensFlare 镜头眩光</h2><p>添加眩光效果;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lensflare = THREE.LensFlare (texture,size,distance,bleding,color);</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>texture</td>
+<td>纹理</td>
+</tr>
+<tr>
+<td>size</td>
+<td>尺寸</td>
+</tr>
+<tr>
+<td>distance</td>
+<td>距离</td>
+</tr>
+<tr>
+<td>blending</td>
+<td>融合</td>
+</tr>
+<tr>
+<td>color</td>
+<td>颜色</td>
+</tr>
+</tbody>
+</table>
+<h1 id="材质"><a href="#材质" class="headerlink" title="材质"></a>材质</h1><h2 id="材质分类"><a href="#材质分类" class="headerlink" title="材质分类"></a>材质分类</h2><h3 id="MeshBasicMatreial-网格基础材质"><a href="#MeshBasicMatreial-网格基础材质" class="headerlink" title="MeshBasicMatreial 网格基础材质"></a>MeshBasicMatreial 网格基础材质</h3><h3 id="MeshDepthMaterial-网格深度材质"><a href="#MeshDepthMaterial-网格深度材质" class="headerlink" title="MeshDepthMaterial 网格深度材质"></a>MeshDepthMaterial 网格深度材质</h3><h3 id="MeshNormalMaterial-网格法向材质"><a href="#MeshNormalMaterial-网格法向材质" class="headerlink" title="MeshNormalMaterial 网格法向材质"></a>MeshNormalMaterial 网格法向材质</h3><h3 id="MeshFaceMaterial-网格面材质"><a href="#MeshFaceMaterial-网格面材质" class="headerlink" title="MeshFaceMaterial 网格面材质"></a>MeshFaceMaterial 网格面材质</h3><h3 id="MeshLamberMaterial-网格朗伯材质"><a href="#MeshLamberMaterial-网格朗伯材质" class="headerlink" title="MeshLamberMaterial 网格朗伯材质"></a>MeshLamberMaterial 网格朗伯材质</h3><h3 id="MeshPhongMaterial-网格Phong式材质"><a href="#MeshPhongMaterial-网格Phong式材质" class="headerlink" title="MeshPhongMaterial 网格Phong式材质"></a>MeshPhongMaterial 网格Phong式材质</h3><h3 id="ShaderMaterial-着色器材质"><a href="#ShaderMaterial-着色器材质" class="headerlink" title="ShaderMaterial 着色器材质"></a>ShaderMaterial 着色器材质</h3><h3 id="LineBasicMaterial-直线基础材质"><a href="#LineBasicMaterial-直线基础材质" class="headerlink" title="LineBasicMaterial 直线基础材质"></a>LineBasicMaterial 直线基础材质</h3><h3 id="LineDashedMaterial-虚线材质"><a href="#LineDashedMaterial-虚线材质" class="headerlink" title="LineDashedMaterial 虚线材质"></a>LineDashedMaterial 虚线材质</h3><h2 id="材质的基础属性"><a href="#材质的基础属性" class="headerlink" title="材质的基础属性"></a>材质的基础属性</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>标识符</td>
+</tr>
+<tr>
+<td>name</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>透明度</td>
+</tr>
+<tr>
+<td>transparent</td>
+<td>是否透明</td>
+</tr>
+<tr>
+<td>overdraw</td>
+<td>过渡描绘</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>是否可见</td>
+</tr>
+<tr>
+<td>side</td>
+<td>侧面</td>
+</tr>
+<tr>
+<td>needsUpdate</td>
+<td>是否刷新</td>
+</tr>
+</tbody>
+</table>
+<h2 id="材质的融合属性"><a href="#材质的融合属性" class="headerlink" title="材质的融合属性"></a>材质的融合属性</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>blending</td>
+<td>融合</td>
+</tr>
+<tr>
+<td>blendsrc</td>
+<td>融合源</td>
+</tr>
+<tr>
+<td>blenddst</td>
+<td>融合目标</td>
+</tr>
+<tr>
+<td>blendingequation</td>
+<td>融合公式</td>
+</tr>
+</tbody>
+</table>
+<h2 id="高级属性"><a href="#高级属性" class="headerlink" title="高级属性"></a>高级属性</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>depthTest</td>
+<td>深度测试</td>
+</tr>
+<tr>
+<td>depthWrite</td>
+<td></td>
+</tr>
+<tr>
+<td>polygonOffset,polygonOffset-Factor,polygonOffsetUnits</td>
+</tr>
+<tr>
+<td>alphaTest</td>
+<td>设定该属性为0-1的值,像素的alpha小于该值则不会显示出来</td>
+</tr>
+</tbody>
+</table>
+<h1 id="几何体"><a href="#几何体" class="headerlink" title="几何体"></a>几何体</h1><h1 id="高级几何体和二元操作"><a href="#高级几何体和二元操作" class="headerlink" title="高级几何体和二元操作"></a>高级几何体和二元操作</h1><h1 id="粒子系统"><a href="#粒子系统" class="headerlink" title="粒子系统"></a>粒子系统</h1><h1 id="创建动画和移动相机"><a href="#创建动画和移动相机" class="headerlink" title="创建动画和移动相机"></a>创建动画和移动相机</h1><h1 id="加载和使用纹理"><a href="#加载和使用纹理" class="headerlink" title="加载和使用纹理"></a>加载和使用纹理</h1>
       
     </div>
 
@@ -814,7 +973,7 @@ mesh
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用的object对象"><span class="nav-number">1.</span> <span class="nav-text">常用的object对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用方法"><span class="nav-number">2.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#场景"><span class="nav-number">3.</span> <span class="nav-text">场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建场景"><span class="nav-number">3.1.</span> <span class="nav-text">创建场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景加雾化效果"><span class="nav-number">3.1.1.</span> <span class="nav-text">场景加雾化效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景重要的属性和方法"><span class="nav-number">3.1.2.</span> <span class="nav-text">场景重要的属性和方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何和网格对象"><span class="nav-number">3.1.3.</span> <span class="nav-text">几何和网格对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Three-js库提供的各种光源"><span class="nav-number">4.</span> <span class="nav-text">Three.js库提供的各种光源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AmbientLight-环境光"><span class="nav-number">4.1.</span> <span class="nav-text">AmbientLight 环境光</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PointLight-点光源"><span class="nav-number">4.2.</span> <span class="nav-text">PointLight 点光源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpotLight-聚光灯光源"><span class="nav-number">4.3.</span> <span class="nav-text">SpotLight 聚光灯光源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DirectionalLight-方向光"><span class="nav-number">4.4.</span> <span class="nav-text">DirectionalLight 方向光</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HemispherreLight-半球光"><span class="nav-number">4.5.</span> <span class="nav-text">HemispherreLight 半球光</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AreaLight-面光源"><span class="nav-number">4.6.</span> <span class="nav-text">AreaLight 面光源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LensFlare-镜头眩光"><span class="nav-number">4.7.</span> <span class="nav-text">LensFlare 镜头眩光</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用的object对象"><span class="nav-number">1.</span> <span class="nav-text">常用的object对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用方法"><span class="nav-number">2.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#场景"><span class="nav-number">3.</span> <span class="nav-text">场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建场景"><span class="nav-number">3.1.</span> <span class="nav-text">创建场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景加雾化效果"><span class="nav-number">3.1.1.</span> <span class="nav-text">场景加雾化效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景重要的属性和方法"><span class="nav-number">3.1.2.</span> <span class="nav-text">场景重要的属性和方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何和网格对象"><span class="nav-number">3.1.3.</span> <span class="nav-text">几何和网格对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网格的属性和函数"><span class="nav-number">3.2.</span> <span class="nav-text">网格的属性和函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相机"><span class="nav-number">3.3.</span> <span class="nav-text">相机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正投影相机"><span class="nav-number">3.3.1.</span> <span class="nav-text">正投影相机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#透视相机"><span class="nav-number">3.3.2.</span> <span class="nav-text">透视相机</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#光源"><span class="nav-number">4.</span> <span class="nav-text">光源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AmbientLight-环境光"><span class="nav-number">4.1.</span> <span class="nav-text">AmbientLight 环境光</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PointLight-点光源"><span class="nav-number">4.2.</span> <span class="nav-text">PointLight 点光源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpotLight-聚光灯光源"><span class="nav-number">4.3.</span> <span class="nav-text">SpotLight 聚光灯光源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DirectionalLight-方向光"><span class="nav-number">4.4.</span> <span class="nav-text">DirectionalLight 方向光</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HemispherreLight-半球光"><span class="nav-number">4.5.</span> <span class="nav-text">HemispherreLight 半球光</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AreaLight-面光源"><span class="nav-number">4.6.</span> <span class="nav-text">AreaLight 面光源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LensFlare-镜头眩光"><span class="nav-number">4.7.</span> <span class="nav-text">LensFlare 镜头眩光</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#材质"><span class="nav-number">5.</span> <span class="nav-text">材质</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#材质分类"><span class="nav-number">5.1.</span> <span class="nav-text">材质分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MeshBasicMatreial-网格基础材质"><span class="nav-number">5.1.1.</span> <span class="nav-text">MeshBasicMatreial 网格基础材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MeshDepthMaterial-网格深度材质"><span class="nav-number">5.1.2.</span> <span class="nav-text">MeshDepthMaterial 网格深度材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MeshNormalMaterial-网格法向材质"><span class="nav-number">5.1.3.</span> <span class="nav-text">MeshNormalMaterial 网格法向材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MeshFaceMaterial-网格面材质"><span class="nav-number">5.1.4.</span> <span class="nav-text">MeshFaceMaterial 网格面材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MeshLamberMaterial-网格朗伯材质"><span class="nav-number">5.1.5.</span> <span class="nav-text">MeshLamberMaterial 网格朗伯材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MeshPhongMaterial-网格Phong式材质"><span class="nav-number">5.1.6.</span> <span class="nav-text">MeshPhongMaterial 网格Phong式材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ShaderMaterial-着色器材质"><span class="nav-number">5.1.7.</span> <span class="nav-text">ShaderMaterial 着色器材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LineBasicMaterial-直线基础材质"><span class="nav-number">5.1.8.</span> <span class="nav-text">LineBasicMaterial 直线基础材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LineDashedMaterial-虚线材质"><span class="nav-number">5.1.9.</span> <span class="nav-text">LineDashedMaterial 虚线材质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#材质的基础属性"><span class="nav-number">5.2.</span> <span class="nav-text">材质的基础属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#材质的融合属性"><span class="nav-number">5.3.</span> <span class="nav-text">材质的融合属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级属性"><span class="nav-number">5.4.</span> <span class="nav-text">高级属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#几何体"><span class="nav-number">6.</span> <span class="nav-text">几何体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高级几何体和二元操作"><span class="nav-number">7.</span> <span class="nav-text">高级几何体和二元操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#粒子系统"><span class="nav-number">8.</span> <span class="nav-text">粒子系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建动画和移动相机"><span class="nav-number">9.</span> <span class="nav-text">创建动画和移动相机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加载和使用纹理"><span class="nav-number">10.</span> <span class="nav-text">加载和使用纹理</span></a></li></ol></div>
             
           </div>
         </section>
