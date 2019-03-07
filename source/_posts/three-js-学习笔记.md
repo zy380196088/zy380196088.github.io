@@ -79,7 +79,7 @@ scene.fog = new THREE.Fog(Oxffffff);
 
 ### 透视相机
 
-# Three.js库提供的各种光源
+# 光源
 
 ## AmbientLight 环境光
 
@@ -119,7 +119,6 @@ var poingLight = new THREE.PointLight(color);
 |shadowMapWidth|阴影映射宽度|
 |shadowMapHeight|阴影映射高度|
 
-
 ## DirectionalLight 方向光
 
 无限光,平行的光线,例如太阳光
@@ -140,4 +139,79 @@ var poingLight = new THREE.PointLight(color);
 
 ## LensFlare 镜头眩光
 
-添加眩光效果
+添加眩光效果;
+
+```js
+var lensflare = THREE.LensFlare (texture,size,distance,bleding,color);
+```
+
+|属性|描述|
+|----|----|
+|texture|纹理|
+|size|尺寸|
+|distance|距离|
+|blending|融合|
+|color|颜色|
+
+# 材质
+
+## 材质分类
+
+### MeshBasicMatreial 网格基础材质
+
+### MeshDepthMaterial 网格深度材质
+
+### MeshNormalMaterial 网格法向材质
+
+### MeshFaceMaterial 网格面材质
+
+### MeshLamberMaterial 网格朗伯材质
+
+### MeshPhongMaterial 网格Phong式材质
+
+### ShaderMaterial 着色器材质
+
+### LineBasicMaterial 直线基础材质
+
+### LineDashedMaterial 虚线材质
+
+## 材质的基础属性
+
+|属性|描述|
+|----|----|
+|ID|标识符|
+|name |名称|
+|opacity|透明度|
+|transparent|是否透明|
+|overdraw|过渡描绘|
+|visible|是否可见|
+|side|侧面|
+|needsUpdate|是否刷新|
+
+## 材质的融合属性
+
+|属性|描述|
+|----|----|
+|blending|融合|
+|blendsrc|融合源|
+|blenddst|融合目标|
+|blendingequation|融合公式|
+
+## 高级属性
+
+|属性|描述|
+|----|----|
+|depthTest|深度测试|
+|depthWrite||
+|polygonOffset,polygonOffset-Factor,polygonOffsetUnits|
+|alphaTest|设定该属性为0-1的值,像素的alpha小于该值则不会显示出来|
+
+# 几何体
+
+# 高级几何体和二元操作
+
+# 粒子系统
+
+# 创建动画和移动相机
+
+# 加载和使用纹理
