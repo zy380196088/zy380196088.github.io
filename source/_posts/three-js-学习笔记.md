@@ -64,7 +64,7 @@ scene.fog = new THREE.Fog(Oxffffff);
 
 ## 网格的属性和函数
 
-|函数/属性| 描述|
+| 函数/属性 | 描述 |
 |----- | ----- |
 | position | 位置:决定该对象相对其父对象的位置 |
 | rotation | 旋转 |
@@ -88,6 +88,7 @@ scene.fog = new THREE.Fog(Oxffffff);
 ## PointLight 点光源
 
 空间中的一点,朝所有的方向发射光线.
+
 |属性|描述|
 |----|----|
 |color|颜色|
@@ -103,6 +104,7 @@ var poingLight = new THREE.PointLight(color);
 ## SpotLight 聚光灯光源
 
 有聚光的效果的光源,类似台灯,吊灯,手电筒.
+
 |属性|描述|
 |----|----|
 |castShadow|投影:设置为true,光源产生阴影|
@@ -127,6 +129,7 @@ var poingLight = new THREE.PointLight(color);
 
 特殊光源,创建更加自然的室外光线,模拟反光面和光线微弱的天空
 的方向发射光线
+
 |属性|描述|
 |----|----|
 |groundColor|从地面发出光纤的颜色|
