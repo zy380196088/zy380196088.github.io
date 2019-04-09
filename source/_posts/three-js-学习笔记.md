@@ -211,6 +211,43 @@ var lensflare = THREE.LensFlare (texture,size,distance,bleding,color);
 
 # 几何体
 
+## PlaneGeometry 平面
+
+## CircleGeometry 圆形
+
+## ShapeGeometry 塑形
+
+## CubeGeometry 立方体
+
+## SphereGeometry 球体
+
+## CylinderGeometry 圆柱
+
+## TorusGeometry 圆环
+
+## TorusKnotGeometry 换面纽结
+
+## PolyhedronGeometry 多面体
+
+## IcosahedronGeometry 二十面体
+
+## OctahedronGeometry 八面体
+
+## TetraHedronGeometry 四面体
+
+## ConvexGeometry 图面体
+
+## LatheGeometry 扫描面
+
+## ExtrudeGeometry 拉伸几何体
+
+## TubeGeometry 管状体
+
+## ParametricGeometry 参数几何体
+
+## TextGeometry 文本几何体
+
+
 # 高级几何体和二元操作
 
 # 粒子系统
