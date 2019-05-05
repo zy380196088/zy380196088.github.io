@@ -247,7 +247,6 @@ var lensflare = THREE.LensFlare (texture,size,distance,bleding,color);
 
 ## TextGeometry 文本几何体
 
-
 # 高级几何体和二元操作
 
 # 粒子系统
