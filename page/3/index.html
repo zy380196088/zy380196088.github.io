@@ -281,6 +281,148 @@
             
               
                 
+                <a class="post-title-link" href="/2017/11/08/SASS/" itemprop="url">
+                  关于SASS
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-08T14:12:24+08:00" content="2017-11-08">
+              2017-11-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><h1 id="SASS-常用"><a href="#SASS-常用" class="headerlink" title="SASS 常用"></a>SASS 常用</h1><ol>
+<li>@mixin 混合宏<br>建议使用混合宏来创建相同的代码块.<br>优点:可传参.<br>缺点:容易造成代码冗余.</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@mixin position-center($width,$height)&#123;</div><div class="line">    width:$width;</div><div class="line">    height:$height;</div><div class="line">    position:absolute;</div><div class="line">    left:50%;</div><div class="line">    top:50%;</div><div class="line">    margin:(-($height)/2) 0 0 (-($width)/2);</div><div class="line">&#125;</div><div class="line"></div><div class="line">.center&#123;</div><div class="line">    @include position-center(600px,300px)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>@extend() 继承<br>如果你的代码块不需要专任何变量参数，而且有一个基类已在文件中存在，那么建议使用 继承。<br>不足：如果是类(.class)，不管有没有调用(@extend)，在编译的时候，都会生成对应的CSS。</li>
+</ol>
+<ol>
+<li>占坑符 %placeholder<br>占坑和继承基本类似，唯一不同的是，相同的生成CSS块并没有在类中存在，而是额外声明。<br>如果不调用已声明的占位符，将不会产生任何CSS。<br>如果在不同选择器调用占位符，那么编译出来CSS将会把相同的代码合并在一起。<br>不足：就是不能传参啦！个人觉得%placeholder优于@extend。</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">%mt15&#123;</div><div class="line">    margin-top:15px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">%pt15&#123;</div><div class="line">    padding-top:15px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.btn6&#123;</div><div class="line">    @extend %mt15;</div><div class="line">    @extend %pt15;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="建议-如果你需要参数变量，使用mixin。否则，继承一个placehodler。"><a href="#建议-如果你需要参数变量，使用mixin。否则，继承一个placehodler。" class="headerlink" title="建议: 如果你需要参数变量，使用mixin。否则，继承一个placehodler。"></a>建议: 如果你需要参数变量，使用mixin。否则，继承一个placehodler。</h2><h1 id="写个-Sass组件"><a href="#写个-Sass组件" class="headerlink" title="写个 Sass组件"></a>写个 Sass组件</h1><ol>
+<li><p>定义提示颜色</p>
+<blockquote>
+<p>验证<br>错误<br>警告<br>信息</p>
+</blockquote>
+</li>
+<li><p>基本样式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">%message&#123;</div><div class="line">    padding: .05rem;</div><div class="line">    border-radius: .1rem;</div><div class="line">    border:1px solid ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@mixin message($color)&#123;</div><div class="line">    @extend %message;</div><div class="line">    color:$color;</div><div class="line">    border-color:lighten($color,20%);</div><div class="line">    background:lighten($color,40%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>调用 mixin</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.message-error &#123;</div><div class="line">  @include message(#b94a48);</div><div class="line">&#125;</div><div class="line"></div><div class="line">.message-valid &#123;</div><div class="line">  @include message(#468847);</div><div class="line">&#125;</div><div class="line"></div><div class="line">.message-warning &#123;</div><div class="line">  @include message(#c09853);</div><div class="line">&#125;</div><div class="line"></div><div class="line">.message-info &#123;</div><div class="line">  @include message(#3a87ad);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>用嵌套列表（Nested Lists 可扩展配置的组件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$message-types: (</div><div class="line">  (error    #b94a48)</div><div class="line">  (valid    #468847)</div><div class="line">  (warning  #c09853)</div><div class="line">  (info     #3a87ad)</div><div class="line">) !default;</div><div class="line"></div><div class="line">@each $message-type in $message-types &#123;</div><div class="line">  $type:  nth($message-type, 1);</div><div class="line">  $color: nth($message-type, 2);</div><div class="line"></div><div class="line">  .message-#&#123;$type&#125; &#123;</div><div class="line">    @include message($color);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用 map (Sass 3.3)<br>可以使用Sass 3.3中新增的数据类型：Maps.代码更简洁方便.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$message-types: (</div><div class="line">  error   :  #b94a48,</div><div class="line">  valid   :  #468847,</div><div class="line">  warning :  #c09853,</div><div class="line">  info    :  #3a87ad</div><div class="line">) !default;</div><div class="line"></div><div class="line">@each $type, $color in $message-types &#123;</div><div class="line">  .message-#&#123;$type&#125; &#123;</div><div class="line">    @include message($color);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/21/Vue和Echarts/" itemprop="url">
                   Vue 和 Echarts
                 </a>
@@ -723,121 +865,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/10/移动开发之-touch事件/" itemprop="url">
-                  移动开发之-touch事件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-10T01:17:42+08:00" content="2017-06-10">
-              2017-06-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="属性"><a href="#属性" class="headerlink" title="属性:"></a>属性:</h1><h2 id="touches-当前屏幕上所有触摸点的列表"><a href="#touches-当前屏幕上所有触摸点的列表" class="headerlink" title="touches:当前屏幕上所有触摸点的列表"></a>touches:当前屏幕上所有触摸点的列表</h2><h2 id="targetTouches-当前对象上所有触触摸点的列表"><a href="#targetTouches-当前对象上所有触触摸点的列表" class="headerlink" title="targetTouches:当前对象上所有触触摸点的列表"></a>targetTouches:当前对象上所有触触摸点的列表</h2><h2 id="changedTouches-涉及当前-引发-事件的触摸点的列表"><a href="#changedTouches-涉及当前-引发-事件的触摸点的列表" class="headerlink" title="changedTouches:涉及当前(引发)事件的触摸点的列表"></a>changedTouches:涉及当前(引发)事件的触摸点的列表</h2><p>接下来要了解下它们之间的区别.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/06/10/移动开发之-touch事件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -883,7 +910,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

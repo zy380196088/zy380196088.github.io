@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[drag]]></title>
+      <url>http://zy380196088.github.io./2019/05/05/drag/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<h2 id="拖拽的属性"><a href="#拖拽的属性" class="headerlink" title="拖拽的属性"></a>拖拽的属性</h2><p>draggable: true/false</p>
+<h2 id="在拖动目标上触发事件-源元素"><a href="#在拖动目标上触发事件-源元素" class="headerlink" title="在拖动目标上触发事件 (源元素)"></a>在拖动目标上触发事件 (源元素)</h2><blockquote>
+<p>ondragstart - 用户开始拖动元素时触发<br>ondrag - 元素正在拖动时触发<br>ondragend - 用户完成元素拖动后触发</p>
+</blockquote>
+<h2 id="释放目标时触发的事件"><a href="#释放目标时触发的事件" class="headerlink" title="释放目标时触发的事件"></a>释放目标时触发的事件</h2><blockquote>
+<p>ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件<br>ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件<br>ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件<br>ondrop - 在一个拖动过程中，释放鼠标键时触发此事件</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[three.js 学习笔记]]></title>
       <url>http://zy380196088.github.io./2019/02/15/three-js-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="常用的object对象"><a href="#常用的object对象" class="headerlink" title="常用的object对象"></a>常用的object对象</h1><table>
