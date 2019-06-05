@@ -281,6 +281,110 @@
             
               
                 
+                <a class="post-title-link" href="/2017/12/01/Promise和Ajax结合进行数据交互/" itemprop="url">
+                  Promise和Ajax结合进行数据交互
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-01T15:59:56+08:00" content="2017-12-01">
+              2017-12-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<h1 id="Ajax问题"><a href="#Ajax问题" class="headerlink" title="Ajax问题"></a>Ajax问题</h1><p>当处理复杂页面和很多ajax请求的时候,经常会遇到某个ajax请求依赖其他ajax请求结果的情况.当依赖比较少和简单的时候,估计大多前端小伙伴将有依赖的ajax写在依赖的ajax回调函数里;</p>
+<p>当ajax很多,而且还设计到很复杂的事件异步操作时候,这种方法就不太合适了.</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>现代浏览器大都已经内置支持了Promise，连第三方库都不需要了，只有IE不行，放弃了(鄙视IE一波)</p>
+<ol>
+<li>改造ajax封装函数,在成功的时候调用resolve(),失败的时候调用reject(),并且返回Promise对象;</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_ajax</span>(<span class="params">url,type,data,successFn,errorFn</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">    $.ajax(&#123;</div><div class="line">      <span class="attr">url</span>:url,</div><div class="line">      <span class="attr">type</span>:type==<span class="literal">null</span>?<span class="string">'POST'</span>:type,</div><div class="line">      <span class="attr">dataType</span>:<span class="string">'json'</span>,</div><div class="line">      <span class="attr">data</span>: data==<span class="literal">null</span>?<span class="string">''</span>:<span class="built_in">JSON</span>.stringify(data),</div><div class="line">      <span class="attr">async</span>:<span class="literal">true</span>,</div><div class="line">      <span class="attr">contentType</span>:<span class="string">"application/json"</span>,</div><div class="line">      <span class="attr">success</span>:<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</div><div class="line">        successFn(res);</div><div class="line">        resolve();</div><div class="line">      &#125;,</div><div class="line">      <span class="attr">error</span>:<span class="function"><span class="keyword">function</span>(<span class="params">XMLHttpRequest,textStatus,errorThrown</span>)</span>&#123;</div><div class="line">          errorFn(XMLHttpRequest,textStatus,errorThrown);</div><div class="line">          reject();</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">return</span> p;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>调用示例</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">_ajax(</div><div class="line">  <span class="string">'/rest/commom/login'</span>,</div><div class="line">  <span class="string">'post'</span>,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"userName"</span>:<span class="string">'joy'</span>,</div><div class="line">    <span class="string">"passWord"</span>:<span class="string">'xxxxoooo'</span></div><div class="line">  &#125;,</div><div class="line">  loginOK(res),</div><div class="line">  loginFail(errorCode,<span class="string">"登录失败"</span>,backLoginPage)</div><div class="line">).then(</div><div class="line">  _ajax(</div><div class="line">    <span class="string">'/rest/commom/userInfo'</span>,</div><div class="line">    <span class="string">'post'</span>,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"userId"</span>:<span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    renderUserInfo(res),</div><div class="line">    UserInfoFail(errorCode,<span class="string">"获取用户信息失败"</span>,backLoginPage)</div><div class="line">  )</div><div class="line">).then(initUserPage);</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/11/08/SASS/" itemprop="url">
                   关于SASS
                 </a>
@@ -748,123 +852,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/05/移动端之坑/" itemprop="url">
-                  移动端之坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-05T17:24:09+08:00" content="2017-07-05">
-              2017-07-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
-<h2 id="iOS-Safari-微信浏览器等中-click点击事件失效的解决办法"><a href="#iOS-Safari-微信浏览器等中-click点击事件失效的解决办法" class="headerlink" title="iOS Safari,微信浏览器等中,click点击事件失效的解决办法"></a>iOS Safari,微信浏览器等中,click点击事件失效的解决办法</h2><p>Iphone上对于动态生成的html元素绑定点击事件$(document).click()失效.</p>
-<p>最近在微信公众号上利用Clipboard实现网页内容复制<br>最近做一个一键复制的功能.结果测试时在 Android 机器上没问题,但是iPhone 上就是复制不成功.<br>一下午百思不得其解…最后终于找到了问题所在.</p>
-<p>苹果对于默认不可点击的事件动态绑定 click 是无效的.<br>当使用委托给一个元素添加click事件时，如果事件是委托到 document 或 body 上，并且委托的元素是默认不可点击的（如 div, span 等），此时 click 事件会失效。</p>
-<p>给​目标元素加一条css样式规则: <strong>cursor: pointer;</strong><br>哈哈,如此简单粗暴,记住了!</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -910,7 +897,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
