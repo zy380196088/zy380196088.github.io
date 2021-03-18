@@ -281,6 +281,121 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/14/面试小记/" itemprop="url">
+                  面试小记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T12:49:23+08:00" content="2017-03-14">
+              2017-03-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>总结一些常见和必GET的前端面试点.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/14/面试小记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/13/MongoDB学习/" itemprop="url">
                   MongoDB学习
                 </a>
@@ -749,133 +864,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/06/ES6学习笔记/" itemprop="url">
-                  ES6学习笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-06T17:52:31+08:00" content="2016-12-06">
-              2016-12-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
-<h1 id="let-和-const"><a href="#let-和-const" class="headerlink" title="let 和 const"></a>let 和 const</h1><p>let 是 ES6新增的用来声明局部变量的,只在let命令所在的代码块内有效。<br>for循环的计数器，就很合适使用let命令。代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for (let i = 0; i &lt; 10; i++) &#123;</div><div class="line">  // ...</div><div class="line">&#125;</div><div class="line">console.log(i)</div><div class="line">// ReferenceError: i is not defined</div></pre></td></tr></table></figure>
-<p>let命令改变了语法行为,不会发生变量提升,它所声明的变量一定要在声明后使用,否则报错。</p>
-<h1 id="for-of-循环"><a href="#for-of-循环" class="headerlink" title="for of 循环"></a>for of 循环</h1><blockquote>
-<p>最简洁、最直接的遍历数组元素(或其他集合)的语法<br>与 forEach()不同的是，它可以正确响应 break、continue 和 return 语句</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray )&#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="模板字符串-反撇号"><a href="#模板字符串-反撇号" class="headerlink" title="模板字符串 - 反撇号(`)"></a>模板字符串 - 反撇号(`)</h1><blockquote>
-<p>如果你需要在模板字符串中引入字符 <strong>$</strong> 和 <strong>{</strong>。无论你要实现什么样的目标， 你都需要用反斜杠转义每一个字符:<code>\$</code>和<code>\{</code></p>
-</blockquote>
-<h1 id="生成器-Generators"><a href="#生成器-Generators" class="headerlink" title="生成器 Generators"></a>生成器 Generators</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">GetUp</span>(<span class="params">time</span>)</span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"现在是"</span> + time + <span class="string">"!"</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"赶快洗漱,准备出门!"</span>;</div><div class="line">  <span class="keyword">if</span>( (<span class="keyword">new</span> <span class="built_in">Date</span>()).getHours() &gt; time)&#123;</div><div class="line">    <span class="keyword">yield</span> <span class="string">"快迟到了,没时间刷牙洗脸了,赶紧出门!"</span>;</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">yield</span> <span class="string">"正在刷牙洗脸..."</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"OK,出门咯!"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> getUp = GetUp(<span class="number">8</span>);</div></pre></td></tr></table></figure>
-<blockquote>
-<p>普通函数使用 function 声明, 而生成器函数使用function <em> 声明.<br>普通函数和生成器函数之间最大的区别是 普通函数不能自暂停, 生成器函数可以;<br><em>*yield</em></em> 关键字用来暂停和继续执行一个生成器函数。当外部调用生成器的 next() 方法时，yield 关键字右侧的表达式才会执行<br>普通函数只可以return 一次, 而生成器函数可以 yield 多次<br>每当生成器执行 yields 语句，生成器的堆栈结构(本地变量、 参数、临时值、生成器内部当前的执行位置)被移出堆栈。然而，生成器对象保留了对 这个堆栈结构的引用(备份)，所以稍后调用.next()可以重新激活堆栈结构并且继续执 行。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -921,7 +909,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -997,7 +985,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

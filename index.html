@@ -281,6 +281,104 @@
             
               
                 
+                <a class="post-title-link" href="/2021/03/18/某OD技术面随机编程题/" itemprop="url">
+                  某OD技术面随机编程题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-03-18T19:17:29+08:00" content="2021-03-18">
+              2021-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<p>最后大概给了不到30分钟来做这道题。<br>脑子没转过来，没找出它的规律。<br>后面面试结束后，琢磨挺久，总算还是算写出来了。<br>记录下。</p>
+<p>题目大概：<br>编写一个函数，接收两个参数一个字符串str，一个数字numRows；<br>似的字符串的每个字符按照numRows来进行倒N排列输出；<br>例如：’PAYPALISHIRING’,3</p>
+<p>经过函数后输出如下格式:<br>P, ,A, ,H, ,N,<br>A,P,L,S,I,I,G,<br>Y, ,I, ,R, , , </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">transform</span>(<span class="params">str, numRows</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> total = str.length;</div><div class="line">  <span class="keyword">let</span> arr = [];</div><div class="line">  <span class="keyword">let</span> vLen = <span class="number">2</span> * numRows - <span class="number">2</span>; <span class="comment">//每个V有多少字符</span></div><div class="line">  <span class="keyword">let</span> columns = <span class="built_in">Math</span>.ceil(total / vLen) * (numRows - <span class="number">1</span>)</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</div><div class="line">    <span class="keyword">let</span> row = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; columns; j++) &#123;</div><div class="line">      <span class="keyword">let</span> n = <span class="built_in">Math</span>.floor(j / (numRows - <span class="number">1</span>)); <span class="comment">//前面有多少V</span></div><div class="line">      <span class="keyword">if</span> ((j % (numRows - <span class="number">1</span>)) === <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">let</span> _idx = <span class="built_in">Math</span>.floor(j / (numRows - <span class="number">1</span>)) * vLen + i;</div><div class="line">        row[j] = str[_idx];</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((numRows - <span class="number">1</span> - i) === (j % (numRows - <span class="number">1</span>))) &#123;</div><div class="line">        <span class="keyword">let</span> _idx = n * vLen;</div><div class="line">        <span class="comment">// console.log(_idx + numRows + (numRows - 1 - i))</span></div><div class="line">        row[j] = str[_idx + numRows + (numRows - <span class="number">1</span> - i) - <span class="number">1</span>];</div><div class="line">        <span class="comment">// console.log(n, str[n + numRows - 1])</span></div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        row[j] = <span class="string">' '</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    arr[i] = row;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(arr[i].toString())</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">transform(<span class="string">'PAYPALISHIRING'</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/06/05/Mac-VScode-更新错误/" itemprop="url">
                   Mac VScode 更新错误
                 </a>
@@ -776,100 +874,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/07/25/关于vue-中使用axios代理/" itemprop="url">
-                  关于vue 中使用axios代理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-07-25T11:35:43+08:00" content="2018-07-25">
-              2018-07-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -915,7 +919,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -991,7 +995,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -281,6 +281,142 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/19/Flex-布局/" itemprop="url">
+                  Flex 布局
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-19T15:39:37+08:00" content="2017-04-19">
+              2017-04-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<p>学习 FLex, 首先我们来了解几个相关概念:</p>
+<h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><p>容器具有这样的特点：父容器可以统一设置子容器的排列方式，子容器也可以单独设置自身的排列方式，如果两者同时设置，以子容器的设置为准.</p>
+<h2 id="父容器-container"><a href="#父容器-container" class="headerlink" title="父容器 container"></a>父容器 container</h2><h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><p>用于定义如何沿着主轴方向排列子容器.</p>
+<h4 id="位置排列"><a href="#位置排列" class="headerlink" title="位置排列"></a>位置排列</h4><blockquote>
+<p>flex-start 起始端对齐<br>flex-end 末尾端对齐<br>center 居中对齐</p>
+</blockquote>
+<h4 id="分布排列"><a href="#分布排列" class="headerlink" title="分布排列"></a>分布排列</h4><blockquote>
+<p>space-between<br>子容器沿主轴均匀分布，位于首尾两端的子容器与父容器相切。</p>
+<p>space-around<br>子容器沿主轴均匀分布，位于首尾两端的子容器到父容器的距离是子容器间距的一半。</p>
+</blockquote>
+<h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p>属性用于定义如何沿着交叉轴方向分配子容器的间距</p>
+<h4 id="位置排列-flex-start-flex-end-center"><a href="#位置排列-flex-start-flex-end-center" class="headerlink" title="位置排列 flex-start flex-end center"></a>位置排列 flex-start flex-end center</h4><blockquote>
+<p>flex-start<br>flex-end<br>center</p>
+</blockquote>
+<h4 id="基线排列-baseline"><a href="#基线排列-baseline" class="headerlink" title="基线排列 baseline"></a>基线排列 baseline</h4><p>基线对齐,默认指首行文字.</p>
+<h4 id="拉伸排列-stretch"><a href="#拉伸排列-stretch" class="headerlink" title="拉伸排列 stretch"></a>拉伸排列 stretch</h4><p>子容器沿交叉轴方向的尺寸拉伸至与父容器一致.</p>
+<h3 id="flex-wrap-设置换行方式"><a href="#flex-wrap-设置换行方式" class="headerlink" title="flex-wrap 设置换行方式"></a>flex-wrap 设置换行方式</h3><h4 id="flex-wrap-nowrap-不换行"><a href="#flex-wrap-nowrap-不换行" class="headerlink" title="flex-wrap:nowrap 不换行"></a>flex-wrap:nowrap 不换行</h4><h4 id="flex-wrap-wrap-换行"><a href="#flex-wrap-wrap-换行" class="headerlink" title="flex-wrap:wrap 换行"></a>flex-wrap:wrap 换行</h4><h4 id="flex-wrap-wrap-reverse-逆序换行"><a href="#flex-wrap-wrap-reverse-逆序换行" class="headerlink" title="flex-wrap:wrap-reverse 逆序换行"></a>flex-wrap:wrap-reverse 逆序换行</h4><p>逆序换行是指沿着交叉轴的反方向换行。</p>
+<h3 id="flex-flow-轴向与换行组合设置"><a href="#flex-flow-轴向与换行组合设置" class="headerlink" title="flex-flow 轴向与换行组合设置"></a>flex-flow 轴向与换行组合设置</h3><h3 id="flex-content-多行沿交叉轴对齐"><a href="#flex-content-多行沿交叉轴对齐" class="headerlink" title="flex-content 多行沿交叉轴对齐"></a>flex-content 多行沿交叉轴对齐</h3><h2 id="子容器-item"><a href="#子容器-item" class="headerlink" title="子容器 item"></a>子容器 item</h2><h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><p>子容器是有弹性的（flex 即弹性），它们会自动填充剩余空间，子容器的伸缩比例由 flex 属性确定.<br>flex 的值可以使无单位数字(1,2,3…),也可以是带单位的(100px,200px…)<br>还可以为 none,设置为 none 的话不会伸缩.</p>
+<h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p>每个子容器也可以单独定义沿交叉轴排列的方式，此属性的可选值与父容器 align-items 属性完全一致，如果两者同时设置则以子容器的 align-self 属性为准。</p>
+<h1 id="轴"><a href="#轴" class="headerlink" title="轴"></a>轴</h1><h2 id="主轴-main-axis"><a href="#主轴-main-axis" class="headerlink" title="主轴 main axis"></a>主轴 main axis</h2><p>主轴的起始端由 flex-start 表示，末尾段由 flex-end 表示。不同的主轴方向对应的起始端、末尾段的位置也不相同。</p>
+<h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><h4 id="flex-direction-row-向右"><a href="#flex-direction-row-向右" class="headerlink" title="flex-direction:row 向右"></a>flex-direction:row 向右</h4><h4 id="flex-direction-column-向下"><a href="#flex-direction-column-向下" class="headerlink" title="flex-direction: column 向下"></a>flex-direction: column 向下</h4><h4 id="flex-direction-row-reverse-向左"><a href="#flex-direction-row-reverse-向左" class="headerlink" title="flex-direction: row-reverse 向左"></a>flex-direction: row-reverse 向左</h4><h4 id="flex-direction-column-reverse-向上"><a href="#flex-direction-column-reverse-向上" class="headerlink" title="flex-direction: column-reverse 向上"></a>flex-direction: column-reverse 向上</h4><h2 id="交叉轴-cross-axis"><a href="#交叉轴-cross-axis" class="headerlink" title="交叉轴 cross axis"></a>交叉轴 cross axis</h2><p>主轴沿逆时针方向旋转 90° 就得到了交叉轴，交叉轴的起始端和末尾段也由 flex-start 和 flex-end 表示。</p>
+<h1 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h1><p>使用 flex 居中布局首先要设置父容器:<br><code>display:flex;</code><br>设置 <code>justify-content:center;</code>实现水平居中;<br>再设置 <code>align-items:center;</code>实现垂直居中;</p>
+<p>代码示例:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#dad</span>&#123;</div><div class="line">    <span class="attribute">display</span>:flex;</div><div class="line">    <span class="attribute">justify-content</span>:center;</div><div class="line">    <span class="attribute">align-items</span>:center;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#son</span>&#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">50%</span>;</div><div class="line">    <span class="attribute">height</span>:<span class="number">50%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/19/Mac-下换-oh-my-zsh-排坑/" itemprop="url">
                   Mac 下换 oh my zsh 排坑
                 </a>
@@ -740,121 +876,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/14/面试小记/" itemprop="url">
-                  面试小记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-14T12:49:23+08:00" content="2017-03-14">
-              2017-03-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>总结一些常见和必GET的前端面试点.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/14/面试小记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -900,7 +921,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -976,7 +997,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

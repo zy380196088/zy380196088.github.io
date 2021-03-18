@@ -281,6 +281,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/27/移动端web开发/" itemprop="url">
+                  移动端web开发Meta标签
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-27T20:11:33+08:00" content="2016-06-27">
+              2016-06-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><h2 id="关闭自动识别数字串为电话链接"><a href="#关闭自动识别数字串为电话链接" class="headerlink" title="关闭自动识别数字串为电话链接"></a>关闭自动识别数字串为电话链接</h2><p>关闭iPhone上Safari(一些其他基于webkit Android手机浏览器)自动将数字串识别为电话链接.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"telephone=no"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如果关闭自动识别后,又希望某些电话能够被识别,可以通过如下声明<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"tel:18500888800"</span>&gt;</span>18500888800<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="关闭邮箱识别"><a href="#关闭邮箱识别" class="headerlink" title="关闭邮箱识别"></a>关闭邮箱识别</h2><p>加上下面代码将不识别邮箱<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"email=no"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="删除默认的苹果工具栏和菜单"><a href="#删除默认的苹果工具栏和菜单" class="headerlink" title="删除默认的苹果工具栏和菜单"></a>删除默认的苹果工具栏和菜单</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-capable"</span> <span class="attr">content</span>=<span class="string">"yes"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>如果需要显示时,不加上条meta即可,默认为显示.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">”apple-mobile-web-app-status-bar-style”</span> <span class="attr">content</span>=<span class="string">black”</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明）。<br>注意： 若值为“black-translucent”将会占据页面px位置，浮在页面上方（会覆盖页面20px高度–iphone4和itouch4的Retina屏幕为40px)。</p>
+<h2 id="在手机HOME界面创建应用程序样式的图标"><a href="#在手机HOME界面创建应用程序样式的图标" class="headerlink" title="在手机HOME界面创建应用程序样式的图标"></a>在手机HOME界面创建应用程序样式的图标</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- for IOS--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon"</span> <span class="attr">href</span>=<span class="string">"/static/images/xxx.png"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- for Android--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon-precomposed"</span> <span class="attr">href</span>=<span class="string">"/static/images/xxx.png"</span>&gt;</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/19/CSS小技巧/" itemprop="url">
                   CSS常用的
                 </a>
@@ -722,103 +823,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/06/mysql入门学习/" itemprop="url">
-                  mysql入门学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-06T10:33:48+08:00" content="2016-05-06">
-              2016-05-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><h2 id="php常用的mysql函数："><a href="#php常用的mysql函数：" class="headerlink" title="php常用的mysql函数："></a>php常用的mysql函数：</h2><h3 id="mysql-connect-“主机名称-ip”-”用户名”-”密码”"><a href="#mysql-connect-“主机名称-ip”-”用户名”-”密码”" class="headerlink" title="mysql_connect(“主机名称/ip”,”用户名”,”密码”)"></a>mysql_connect(“主机名称/ip”,”用户名”,”密码”)</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$link = @mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"root"</span>)<span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"数据库连接错误"</span>).mysql_error();</div></pre></td></tr></table></figure>
-<h3 id="mysql-error"><a href="#mysql-error" class="headerlink" title="mysql_error()"></a>mysql_error()</h3><p>返回上一个mysql操作的文本错误信息；@错误抑制符号</p>
-<h3 id="mysql-select-db-“数据库名称”-link"><a href="#mysql-select-db-“数据库名称”-link" class="headerlink" title="mysql_select_db(“数据库名称”,$link)"></a>mysql_select_db(“数据库名称”,$link)</h3><h3 id="mysql-query"><a href="#mysql-query" class="headerlink" title="mysql_query()"></a>mysql_query()</h3><p>向数据库发送一条sql命令</p>
-<h3 id="mysql-affected-rows"><a href="#mysql-affected-rows" class="headerlink" title="mysql_affected_rows()"></a>mysql_affected_rows()</h3><p>取的前一条sql语句，返回受影响的行数</p>
-<h3 id="mysql-cloes"><a href="#mysql-cloes" class="headerlink" title="mysql_cloes()"></a>mysql_cloes()</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -864,7 +868,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -940,7 +944,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
