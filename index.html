@@ -379,6 +379,104 @@
             
               
                 
+                <a class="post-title-link" href="/2020/05/21/前端项目设计和模块化分析/" itemprop="url">
+                  前端项目设计和模块化分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-21T09:34:24+08:00" content="2020-05-21">
+              2020-05-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><a id="more"></a>
+<h2 id="项目设计与与原理分析"><a href="#项目设计与与原理分析" class="headerlink" title="项目设计与与原理分析"></a>项目设计与与原理分析</h2><h3 id="CSS模块化设计"><a href="#CSS模块化设计" class="headerlink" title="CSS模块化设计"></a>CSS模块化设计</h3><blockquote>
+<p>先整体后部分再颗粒化(布局-&gt;页面-&gt;功能-&gt;业务)</p>
+</blockquote>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">reset<span class="selector-class">.scss</span> <span class="comment">//样式重置</span></div><div class="line">layout<span class="selector-class">.scss</span> <span class="comment">//布局</span></div><div class="line">element<span class="selector-class">.scss</span> <span class="comment">//功能</span></div><div class="line"></div><div class="line">@<span class="keyword">mixin</span> btn(<span class="variable">$size</span>:<span class="number">14px</span>,<span class="variable">$color</span>:<span class="number">#fff</span>,<span class="variable">$bgcolor</span>:<span class="number">#F04752</span>,<span class="variable">$padding</span>:<span class="number">5px</span>,<span class="variable">$radius</span>:<span class="number">5px</span>)&#123;</div><div class="line">  <span class="attribute">padding</span>: <span class="variable">$padding</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="variable">$bgcolor</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="variable">$radius</span>;</div><div class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="variable">$bgcolor</span>;</div><div class="line">  <span class="attribute">font-size</span>: <span class="variable">$size</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="variable">$color</span>;</div><div class="line">  <span class="attribute">text-align</span> : center;</div><div class="line">  <span class="attribute">line-height</span> : <span class="number">1</span>;</div><div class="line">  <span class="attribute">display</span> : inline-block;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/06/05/Mac-VScode-更新错误/" itemprop="url">
                   Mac VScode 更新错误
                 </a>
@@ -759,121 +857,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/11/13/面试题-之-关于数组去重-方法大全/" itemprop="url">
-                  面试题 之 关于数组去重 方法大全
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-11-13T13:11:29+08:00" content="2018-11-13">
-              2018-11-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>关于数组去重方法大全 (也是在网上看到的一篇文章 弄懂去重你就GET啦)</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/13/面试题-之-关于数组去重-方法大全/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -919,7 +902,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
